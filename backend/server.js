@@ -21,7 +21,7 @@ app.use(express.json());
 /****** 
  * ROUTES
  ******/
-app.use('/api/sicoain', require('./routes/sicoain.routes.js'));
+app.use('/', require('./routes/user.routes'));
 
 
 /****** 
