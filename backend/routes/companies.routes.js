@@ -3,10 +3,10 @@ const router = express.Router();
 
 const companies = require('../controllers/companies.controller');
 
-router.get('/api/companies', companies.getCompanies);
-router.post('/api/companies', companies.createCompanies);
-router.get('/api/companies/:id', companies.getCompany);
-router.put('/api/companies/:id', companies.updateCompanies);
-router.delete('/api/companies/:id', companies.deleteCompanies);
+router.get('/', companies.getCompanies);
+router.post('/', companies.createCompanies);
+router.get('/:id', companies.getCompany);
+router.put('/:id', companies.updateCompanies);
+router.delete('/:id', companies.deleteCompanies);
 
 module.exports = router;

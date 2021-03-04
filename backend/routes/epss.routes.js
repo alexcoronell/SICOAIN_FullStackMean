@@ -3,10 +3,10 @@ const router = express.Router();
 
 const epss = require('../controllers/epss.controller');
 
-router.get('/api/epss', epss.getEpss);
-router.post('/api/epss', epss.createEpss);
-router.get('/api/epss/:id', epss.getEps);
-router.put('/api/epss/:id', epss.updateEpss);
-router.delete('/api/epss/:id', epss.deleteEpss);
+router.get('/', epss.getEpss);
+router.post('/', epss.createEpss);
+router.get('/:id', epss.getEps);
+router.put('/:id', epss.updateEpss);
+router.delete('/:id', epss.deleteEpss);
 
 module.exports = router;

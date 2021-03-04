@@ -3,10 +3,10 @@ const router = express.Router();
 
 const users = require('../controllers/users.controller');
 
-router.get('/api/users', users.getUsers);
-router.post('/api/users', users.createUsers);
-router.get('/api/users/:id', users.getUser);
-router.put('/api/users/:id', users.updateUsers);
-router.delete('/api/users/:id', users.deleteUser);
+router.get('/', users.getUsers);
+router.post('/', users.createUsers);
+router.get('/:id', users.getUser);
+router.put('/:id', users.updateUsers);
+router.delete(':id', users.deleteUser);
 
 module.exports = router;
