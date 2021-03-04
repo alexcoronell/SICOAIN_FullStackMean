@@ -3,10 +3,10 @@ const router = express.Router();
 
 const arls = require('../controllers/arl.controller');
 
-router.get('/api/arls', arls.getarls);
-router.post('/api/arls', arls.createarls);
-router.get('/api/arls/:id', arls.getUser);
-router.put('/api/arls/:id', arls.updatearls);
-router.delete('/api/arls/:id', arls.deleteUser);
+router.get('/api/arls', arls.getArls);
+router.post('/api/arls', arls.createArls);
+router.get('/api/arls/:id', arls.getArl);
+router.put('/api/arls/:id', arls.updateArls);
+router.delete('/api/arls/:id', arls.deleteArls);
 
 module.exports = router;

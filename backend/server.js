@@ -21,8 +21,16 @@ app.use(express.json());
 /****** 
  * ROUTES
  ******/
-app.use('/users', require('./routes/user.routes'));
+
 app.use('/arls', require('./routes/arl.routes'));
+app.use('/companies', require('./routes/companies.routes.'))
+app.use('/departments', require('./routes/departments.routes.'))
+app.use('/employees', require('./routes/employees.routes.'))
+app.use('/epss', require('./routes/epss.routes.'))
+app.use('/municipalities', require('./routes/municipalities.routes.'))
+app.use('/positions', require('./routes/positions.routes.'))
+app.use('/records', require('./routes/records.routes.'))
+app.use('/users', require('./routes/user.routes'));
 app.use('/venues', require('./routes/venues.routes.'))
 
 
