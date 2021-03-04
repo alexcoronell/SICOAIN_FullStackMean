@@ -5,11 +5,11 @@ const {
 } = mongoose;
 
 const employeesSchema = new Schema({
-    tipoIdentificacion: {
+    identificationType: {
         type: String,
         required: true
     },
-    numeroIdentificacion: {
+    identificationNumber: {
         type: String,
         required: true
     },
@@ -49,7 +49,7 @@ const employeesSchema = new Schema({
         type: String,
         required: true
     },
-    campus: {
+    venues: {
         type: String,
         required: true
     },

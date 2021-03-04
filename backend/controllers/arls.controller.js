@@ -1,4 +1,4 @@
-const Arls = require('../models/arl');
+const Arls = require('../models/arls');
 
 const arlCtrl = {};
 

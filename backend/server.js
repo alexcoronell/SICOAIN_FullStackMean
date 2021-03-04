@@ -22,8 +22,8 @@ app.use(express.json());
  * ROUTES
  ******/
 app.use('/users', require('./routes/user.routes'));
-app.use('/arls', require('./controllers/arl.controller'));
-app.use('/venues', require('./controllers/venues.controller.'))
+app.use('/arls', require('./routes/arl.routes'));
+app.use('/venues', require('./routes/venues.routes.'))
 
 
 /****** 
