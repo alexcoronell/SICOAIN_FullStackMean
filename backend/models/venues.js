@@ -4,7 +4,7 @@ const {
     Schema
 } = mongoose;
 
-const campusSchema = new Schema({
+const venuesSchema = new Schema({
     company: {
         type: String,
         required: true
@@ -31,4 +31,4 @@ const campusSchema = new Schema({
     }
 })
 
-module.exports = mongoose.model('Campus', campusSchema);
+module.exports = mongoose.model('Venues', venuesSchema);
