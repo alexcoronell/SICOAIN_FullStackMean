@@ -27,4 +27,4 @@ const arlSchema = new Schema({
     }
 })
 
-module.exports = mongoose.model('Arl', arlSchema);
+module.exports = mongoose.model('Arls', arlSchema);
