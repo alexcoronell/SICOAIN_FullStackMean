@@ -8,13 +8,13 @@ arlCtrl.getArls = async (req, res) => {
 }
 
 arlCtrl.getArl = async (req, res) => {
-    const Arl = await Arls.findById(req.params.id);
-    res.json(Arl);
+    const arl = await Arls.findById(req.params.id);
+    res.json(arl);
 }
 
 arlCtrl.createArls = async (req, res) => {
-    const Arl = new Arls(req.body);
-    await Arl.save();
+    const arl = new Arls(req.body);
+    await arl.save();
     res.json({
         'status': 'Arl saved'
     });
@@ -24,7 +24,7 @@ arlCtrl.updateArls = async (req, res) => {
     const {
         id
     } = req.params;
-    const Arl = {
+    const arl = {
         Arl: req.body.Arl,
         name: req.body.name,
         phone: req.body.phone,
@@ -33,7 +33,7 @@ arlCtrl.updateArls = async (req, res) => {
         contidion: req.body.condition
     }
     await Arls.findByIdAndUpdate(id, {
-        $set: Arl
+        $set: arl
     }, {
         new: false
     });
@@ -42,15 +42,15 @@ arlCtrl.updateArls = async (req, res) => {
     })
 }
 
-arlCtrl.inactivateArl = function() {
+arlCtrl.inactivateArls = function() {
 
 }
 
-arlCtrl.activateArl = function() {
+arlCtrl.activateArls = function() {
 
 }
 
-arlCtrl.deleteArl = async (req, res) => {
+arlCtrl.deleteArls = async (req, res) => {
     await Arls.findByIdAndDelete(req.params.id)
     res.json({
         'status': 'Arl deleted'

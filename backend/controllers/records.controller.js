@@ -1,4 +1,4 @@
-const Records = require('../models/Records');
+const Records = require('../models/records');
 
 const recordCtrl = {};
 
@@ -48,7 +48,7 @@ recordCtrl.inactivaterecord = function() {
 
 }
 
-recordCtrl.deleteRecord = async (req, res) => {
+recordCtrl.deleteRecords = async (req, res) => {
     await Records.findByIdAndDelete(req.params.id)
     res.json({
         'status': 'Record deleted'

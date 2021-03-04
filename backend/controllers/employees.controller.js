@@ -1,4 +1,4 @@
-const Employees = require('../models/Employees');
+const Employees = require('../models/employees');
 
 const EmployeeCtrl = {};
 
@@ -64,7 +64,7 @@ EmployeeCtrl.activateEmployee = function() {
 
 }
 
-EmployeeCtrl.deleteEmployee = async (req, res) => {
+EmployeeCtrl.deleteEmployees = async (req, res) => {
     await Employees.findByIdAndDelete(req.params.id)
     res.json({
         'status': 'Employee deleted'

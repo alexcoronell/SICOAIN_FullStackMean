@@ -1,4 +1,4 @@
-const Departments = require('../models/Departments');
+const Departments = require('../models/departments');
 
 const departmentCtrl = {};
 
@@ -7,7 +7,7 @@ departmentCtrl.getDepartments = async (req, res) => {
     res.json(departmentList);
 }
 
-departmentCtrl.getdepartment = async (req, res) => {
+departmentCtrl.getDepartment = async (req, res) => {
     const department = await Departments.findById(req.params.id);
     res.json(department);
 }

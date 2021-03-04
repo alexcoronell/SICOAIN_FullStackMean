@@ -1,4 +1,4 @@
-const Municipalities = require('../models/Municipalities');
+const Municipalities = require('../models/municipalities');
 
 const municipalityCtrl = {};
 

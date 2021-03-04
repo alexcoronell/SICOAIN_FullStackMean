@@ -4,7 +4,7 @@ const {
     Schema
 } = mongoose;
 
-const arlSchema = new Schema({
+const arlsSchema = new Schema({
     name: {
         type: String,
         required: true
@@ -27,4 +27,4 @@ const arlSchema = new Schema({
     }
 })
 
-module.exports = mongoose.model('Arls', arlSchema);
+module.exports = mongoose.model('Arls', arlsSchema);

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const arls = require('../controllers/arl.controller');
+const arls = require('../controllers/arls.controller');
 
 router.get('/api/arls', arls.getArls);
 router.post('/api/arls', arls.createArls);

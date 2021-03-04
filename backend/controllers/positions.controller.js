@@ -1,4 +1,4 @@
-const Positions = require('../models/Positions');
+const Positions = require('../models/positions');
 
 const positionCtrl = {};
 

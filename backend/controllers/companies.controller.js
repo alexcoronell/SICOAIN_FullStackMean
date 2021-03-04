@@ -48,7 +48,7 @@ companyCtrl.activateCompany = function() {
 
 }
 
-companyCtrl.deleteCompany = async (req, res) => {
+companyCtrl.deleteCompanies = async (req, res) => {
     await Companies.findByIdAndDelete(req.params.id)
     res.json({
         'status': 'Company deleted'

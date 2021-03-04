@@ -50,7 +50,7 @@ epsCtrl.activateEps = function() {
 
 }
 
-epsCtrl.deleteEps = async (req, res) => {
+epsCtrl.deleteEpss = async (req, res) => {
     await Epss.findByIdAndDelete(req.params.id)
     res.json({
         'status': 'Eps deleted'
