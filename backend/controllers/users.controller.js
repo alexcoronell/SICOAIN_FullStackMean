@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken');
 const Users = require('../models/users');
 
 const userCtrl = {};
@@ -13,10 +14,13 @@ userCtrl.getUser = async (req, res) => {
 }
 
 userCtrl.createUsers = async (req, res) => {
-    const user = new Users(req.body);
-    await user.save();
+    const newUser = new Users(req.body)
+    await newUser.save();
+    const token = jwt.sign({
+        _id: newUser._id
+    }, 'secretKey');
     res.json({
-        'status': 'User saved'
+        'status': 'New user saved'
     });
 }
 
@@ -62,6 +66,26 @@ userCtrl.deleteUser = async (req, res) => {
     res.json({
         'status': 'User deleted'
     })
+}
+
+userCtrl.loginUser = async (req, res) => {
+    const {
+        user,
+        password
+    } = req.body;
+    const userLogin = await Users.findOne({
+        user
+    })
+    if (!userLogin) return res.status(401).send("The user doen't exist");
+    if (userLogin.password !== password) return res.status(401).send("Wrong Password");
+    if (userLogin.condition == false) return res.status(401).send("Inactive user");
+
+    const token = jwt.sign({
+        _id: user._id
+    }, 'secretKey');
+    return res.status(200).json({
+        token
+    });
 }
 
 module.exports = userCtrl;
