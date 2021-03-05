@@ -15,16 +15,19 @@
                 </div>
                 <div class="login__area__box__formArea">
                     <!-- <form #loginForm="ngForm" (ngSubmit)="validateLogin(loginForm)" class="login__area__box__formArea__form"> -->
-                    <form class="login__area__box__formArea__form">
+                    <form (submit)="login()" class="login__area__box__formArea__form">
                         <div class="row">
                             <div class="login__area__box__formArea__form__input input-field col s12">
-                                <input placeholder="Usuario" id="user" name="user" type="text" class="validate">
+                                <input [(ngModel)]="userLogin.user" placeholder="Usuario" id="user" name="user" type="text" class="validate">
                             </div>
                             <div class="login__area__box__formArea__form__input input-field col s12">
-                                <input placeholder="Contraseña" id="password" name=password type="password" class="validate">
+                                <input [(ngModel)]="userLogin.password" placeholder="Contraseña" id="password" name=password type="password" class="validate">
                             </div>
                             <button class="login__area__box__formArea__form__button btn waves-effect waves-light center" type="submit" name="login">Acceder
                                 <i class="material-icons right">send</i>
+                            </button>
+                            <button (click)="clearData()" class="login__area__box__formArea__form__button btn waves-effect center" type="button" name="login">Limpiar
+                                <i class="material-icons right">clear</i>
                             </button>
                         </div>
                     </form>

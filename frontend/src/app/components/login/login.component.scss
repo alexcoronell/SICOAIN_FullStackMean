@@ -27,13 +27,13 @@ h6 {
 
         &__box {
             border: 1px solid #26a69a;
-            padding: 0.5rem;
+            padding: 2rem;
             margin: 0 auto;
             max-width: 450px;
 
             &__header {
                 background-color: #26a69a;
-                margin: -0.5rem;
+                margin: -2rem -2rem 1rem -2rem;
 
                 h6 {
                     margin: 0;
@@ -55,7 +55,7 @@ h6 {
 
                     &__button {
                         display: inline;
-                        margin-left: auto;
+                        margin: 1rem 1rem 0 1rem;
                     }
                 }
             }
