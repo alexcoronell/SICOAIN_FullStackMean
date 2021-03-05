@@ -13,6 +13,7 @@ userCtrl.getUser = async (req, res) => {
     res.json(user);
 }
 
+// Create user
 userCtrl.createUsers = async (req, res) => {
     const newUser = new Users(req.body)
     await newUser.save();
@@ -61,6 +62,7 @@ userCtrl.activateUser = function() {
 
 }
 
+// Delete user
 userCtrl.deleteUser = async (req, res) => {
     await Users.findByIdAndDelete(req.params.id)
     res.json({
@@ -68,6 +70,7 @@ userCtrl.deleteUser = async (req, res) => {
     })
 }
 
+// login
 userCtrl.loginUser = async (req, res) => {
     const {
         user,
@@ -86,6 +89,22 @@ userCtrl.loginUser = async (req, res) => {
     return res.status(200).json({
         token
     });
+}
+
+// Verificación del token
+userCtrl.verifyToken(req, res, next) {
+    if (!req.headers.authorization) {
+        return res.status(401).send('Unauthorized Request')
+    }
+    // const token = req.headers.authorization.split(' ')[1];
+    const token = req.headers.authorization;
+    if (token === 'null') {
+        return res.status(401).send('Unauthorized Request')
+    }
+
+    const payload = jwt.verify(token, 'secretKey');
+    req.userId = payload._id;
+    next();
 }
 
 module.exports = userCtrl;
