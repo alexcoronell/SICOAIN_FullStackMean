@@ -1,3 +1,5 @@
+@import '../../scss/variables';
+
 footer.footer {
     position: fixed;
     bottom: 0;
@@ -5,9 +7,12 @@ footer.footer {
     right: 0;
     top: auto;
     margin: 0;
+    border-top: 3px double $main__color;
+    padding: 0;
 
     h6 {
-        color: white;
-        line-height: 2rem;
+        margin: 0 auto;
+        color: $main__color;
+        line-height: 3rem;
     }
 }
