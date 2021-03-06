@@ -1,0 +1,34 @@
+@import '../../scss/variables';
+
+.Header {
+    position: relative;
+    background-color: white;
+    border-bottom: 3px double $main__color;
+    padding: .5rem;
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+
+        &__logo {
+            width: 150px;
+            margin: 0;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        &__session {
+            display: inline;
+            margin: 0;
+
+            p {
+                margin: 0;
+                font-size: 0.7rem;
+                font-weight: 300;
+            }
+        }
+    }
+}
