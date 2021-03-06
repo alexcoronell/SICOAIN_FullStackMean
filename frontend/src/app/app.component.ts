@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'sicoainangular';
+  title = 'SICOAIN';
+
+  showHeader: boolean = true;
+  showFooter: boolean = true;
 }
