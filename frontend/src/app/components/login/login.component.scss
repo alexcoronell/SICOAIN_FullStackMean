@@ -6,6 +6,7 @@
     right: 0;
     bottom: auto;
     padding: 1.5rem 0;
+    display: none;
 }
 
 h6 {
@@ -15,7 +16,7 @@ h6 {
 }
 
 .login {
-    margin-top: 25%;
+    margin-top: 20vh;
 
     &__image {
         img {
@@ -81,6 +82,7 @@ footer.footer {
     top: auto;
     margin: 0;
     padding: 0;
+    display: none;
 
     h6 {
         color: white;
@@ -88,8 +90,18 @@ footer.footer {
     }
 }
 
+@media (max-width: 600px) {
+    .login {
+        &__area {
+            &__box {
+                max-width: 320px;
+            }
+        }
+    }
+}
+
 @media (min-width: 993px) {
     .login {
-        margin-top: 10%;
+        margin-top: 25vh;
     }
 }

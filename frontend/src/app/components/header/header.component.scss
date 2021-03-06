@@ -1,7 +1,11 @@
 @import '../../scss/variables';
 
 .Header {
-    position: relative;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
     background-color: white;
     border-bottom: 3px double $main__color;
     padding: .5rem;
