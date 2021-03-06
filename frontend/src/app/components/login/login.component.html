@@ -23,10 +23,11 @@
                             <div class="login__area__box__formArea__form__input input-field col s12">
                                 <input [(ngModel)]="userLogin.password" placeholder="Contraseña" id="password" name=password type="password" class="validate">
                             </div>
+                            <span id="errorLogin" *ngIf="loginValidate == false">Usuario o contraseña incorrectos</span>
                             <button class="login__area__box__formArea__form__button btn waves-effect waves-light center" type="submit" name="login">Acceder
                                 <i class="material-icons right">send</i>
                             </button>
-                            <button (click)="clearData()" class="login__area__box__formArea__form__button btn waves-effect center" type="button" name="login">Limpiar
+                            <button (click)="clearData()" class="login__area__box__formArea__form__button btn waves-effect waves-light center" type="button" name="login">Limpiar
                                 <i class="material-icons right">clear</i>
                             </button>
                         </div>
@@ -36,3 +37,7 @@
         </div>
     </div>
 </div>
+
+<footer class="nav-wrapper teal lighten-1 footer">
+    <h6 class="center">Desarrollado por Alex Coronell</h6>
+</footer>

@@ -13,8 +13,10 @@ export class LoginComponent implements OnInit {
     user: '',
     password: ''
   }
-
+  
   constructor(private loginService: LoginService, private router: Router) { }
+
+  loginValidate: boolean = true;
 
   ngOnInit(): void {
   }
@@ -26,7 +28,12 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token', res.token)
           this.router.navigate(['/main']);
         },
-        err => console.log(err)
+        err => {
+          this.loginValidate = false, 
+          console.log(err, this.loginValidate), 
+          setTimeout (() => {
+            this.loginValidate = true;
+        }, 3000); }
       )
   }
 
