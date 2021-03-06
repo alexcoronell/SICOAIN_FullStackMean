@@ -80,8 +80,8 @@ userCtrl.loginUser = async (req, res) => {
         user
     })
     if (!userLogin) return res.status(401).send("The user doen't exist");
-    if (userLogin.password !== password) return res.status(401).send("Wrong Password");
     if (userLogin.condition == false) return res.status(401).send("Inactive user");
+    if (userLogin.password !== password) return res.status(401).send("Wrong Password");
 
     const token = jwt.sign({
         _id: user._id

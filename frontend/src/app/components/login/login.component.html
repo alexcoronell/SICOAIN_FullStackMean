@@ -23,7 +23,7 @@
                             <div class="login__area__box__formArea__form__input input-field col s12">
                                 <input [(ngModel)]="userLogin.password" placeholder="Contraseña" id="password" name=password type="password" class="validate">
                             </div>
-                            <span id="errorLogin" *ngIf="loginValidate == false">Usuario o contraseña incorrectos</span>
+                            <span id="errorLogin" *ngIf="loginValidate == false">{{ message }}</span>
                             <button class="login__area__box__formArea__form__button btn waves-effect waves-light center" type="submit" name="login">Acceder
                                 <i class="material-icons right">send</i>
                             </button>

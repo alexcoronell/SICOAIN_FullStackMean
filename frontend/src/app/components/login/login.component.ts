@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,7 @@ export class LoginComponent implements OnInit {
     user: '',
     password: ''
   }
+  message: string = "";
   
   constructor(private loginService: LoginService, private router: Router) { }
 
@@ -29,8 +31,13 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/main']);
         },
         err => {
-          this.loginValidate = false, 
-          console.log(err, this.loginValidate), 
+          this.loginValidate = false;
+          if (err.error == "Inactive user") {
+            this.message = "El usuario " + this.userLogin.user + " se encuentra inactivo"
+            this.clearData();
+          } else {
+            this.message = "Usuario o contraseña incorrectos"
+          }
           setTimeout (() => {
             this.loginValidate = true;
         }, 3000); }
