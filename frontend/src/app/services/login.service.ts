@@ -8,11 +8,11 @@ import { Users } from '../models/users';
 export class LoginService {
 
   loginUser: Users;
-  readonly URL_API = "http://localhost:3000/api/users";
+  private readonly URL_API = "http://localhost:3000/api/users/login";
 
   constructor(private http: HttpClient) { }
 
-  getUsers() {
-    return this.http.get(this.URL_API);
+  login(loginUser) {
+    return this.http.post<any>(this.URL_API, loginUser)
   }
 }
