@@ -1,7 +1,7 @@
 <nav class="Nav">
     <div class="nav-wrapper container">
         <ul id="nav-mobile">
-            <li><a class="dropdown-trigger" data-target="usersMenu">Usuarios<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li *ngIf="userData.superuser == true"><a class="dropdown-trigger" data-target="usersMenu">Usuarios<i class="material-icons right">arrow_drop_down</i></a></li>
             <li><a class="dropdown-trigger" data-target="employeesMenu">Empleados y Cargos<i class="material-icons right">arrow_drop_down</i></a></li>
             <li><a class="dropdown-trigger" data-target="companiesMenu">Compañías<i class="material-icons right">arrow_drop_down</i></a></li>
             <li><a class="dropdown-trigger" data-target="venuesMenu">Sedes<i class="material-icons right">arrow_drop_down</i></a></li>
@@ -10,6 +10,7 @@
             <li><a class="dropdown-trigger" data-target="recordsMenu">Administración de Incidentes<i class="material-icons right">arrow_drop_down</i></a></li>
             <li><a class="dropdown-trigger" data-target="reportsMenu">Reportes<i class="material-icons right">arrow_drop_down</i></a></li>
             <li><a>Cambiar Contraseña</a></li>
+            <li><a routerLink='/' (click)="logOut()">Cerrar Sesión</a></li>
         </ul>
     </div>
 </nav>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserDataService } from '../../services/user-data.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userDataService: UserDataService) { }
+
+  userData: any = {};
+  showHeader: boolean = false;
 
   ngOnInit(): void {
+    this.userDataService.userDataSend.subscribe(data => {
+      this.userData = data.data;
+    })
+    this.userDataService.showHeader.subscribe(showHeader => {
+      this.showHeader = showHeader.showHeader;
+    })
   }
 
 }

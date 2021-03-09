@@ -1,10 +1,11 @@
-<header class="Header">
+<header class="Header" *ngIf="showHeader==true">
     <div class="container Header__container">
         <div class="Header__container__logo">
             <img src="../../../assets/images/logo.png" alt="Logo Sicoain" title="Sicoain">
         </div>
         <div class="Header__container__session">
-            <p>Usuario: nombreusuario</p>
+            <p>Usuario: {{ userData.name }}</p>
         </div>
     </div>
+    <app-menu></app-menu>
 </header>

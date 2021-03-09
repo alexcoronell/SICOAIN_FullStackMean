@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserDataService } from '../../services/user-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userDataService: UserDataService) { }
+
+  userData: any = {};
+  router: Router;
 
   ngOnInit(): void {
+    this.userDataService.userDataSend.subscribe(data => {
+      this.userData = data.data;
+    })
+  }
+
+  logOut(): void {
+    //this.loginComponent.logout();
+    this.userDataService.showHeader.emit({
+      showHeader: false
+    });
+    localStorage.removeItem('token');
+    this.router.navigate(['']);
   }
 
 }

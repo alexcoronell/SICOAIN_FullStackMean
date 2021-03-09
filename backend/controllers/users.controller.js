@@ -83,11 +83,14 @@ userCtrl.loginUser = async (req, res) => {
     if (userLogin.condition == false) return res.status(401).send("Inactive user");
     if (userLogin.password !== password) return res.status(401).send("Wrong Password");
 
+    const userData = userLogin;
+
     const token = jwt.sign({
         _id: user._id
     }, 'secretKey');
     return res.status(200).json({
-        token
+        token,
+        userData
     });
 }
 
