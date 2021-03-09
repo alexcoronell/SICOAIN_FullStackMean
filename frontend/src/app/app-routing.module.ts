@@ -7,6 +7,7 @@ import { MainComponent } from './components/main/main.component';
 import { UsersCreateComponent } from './components/users-create/users-create.component';
 import { UsersPasswordUpdateComponent } from './components/users-password-update/users-password-update.component';
 import { UsersUpdateComponent } from './components/users-update/users-update.component';
+import { UsersActivateDesactivateComponent } from './components/users-activate-desactivate/users-activate-desactivate.component'
 import { UsersComponent } from './components/users/users.component';
 
 const routes: Routes = [
@@ -33,6 +34,10 @@ const routes: Routes = [
   {
     path: 'users/passwordUpdate',
     component: UsersPasswordUpdateComponent
+  },
+  {
+    path: 'users/activateDesactivate',
+    component: UsersActivateDesactivateComponent
   },
   {
     path: '**',

@@ -1,1 +1,39 @@
-<p>users-activate-desactivate works!</p>
+<div class="components userForms">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m4 l3">
+                <app-users-menu></app-users-menu>
+            </div>
+            <div class="col s12 m8 l6">
+                <h3 class="center formTitle">Act/Desact. de Usuarios</h3>
+                <form>
+                    <!-- User -->
+                    <div class="input-field">
+                        <input id="user" name="user" type="text" class="validate">
+                        <label for="user">Usuario:</label>
+                    </div>
+
+                    <!-- User Name -->
+                    <div class="input-field">
+                        <input id="name" name="name" type="text" class="validate">
+                        <label for="name">Nombre:</label>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col s6">
+                            <button class="btn waves-effect waves-light right inactivate" type="submit">Desactivar
+                                <i class="material-icons right">save</i>
+                            </button>
+                        </div>
+                        <div class="col s6">
+                            <button class="btn waves-effect waves-light left cleanerButtom" type="button">Cancelar
+                                <i class="material-icons right">clear</i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
