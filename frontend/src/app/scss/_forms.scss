@@ -6,9 +6,22 @@
     margin: .5rem auto;
 }
 
+#toast-container {
+    top: auto;
+    bottom: 10vh !important;
+    left: 30% !important;
+    width: 360px !important;
+    //margin-left: 50% !important;
+    overflow: hidden !important;
+}
+
 
 @media (max-width: 600px) {
     .formTitle {
         margin-top: 2rem;
+    }
+
+    #toast-container {
+        left: 0 !important;
     }
 }

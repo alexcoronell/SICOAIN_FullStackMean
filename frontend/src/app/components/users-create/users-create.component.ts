@@ -1,4 +1,11 @@
+import { formatCurrency } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Users } from 'src/app/models/users';
+import { UsersService } from '../../services/users.service';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+
+declare var M: any;
 
 @Component({
   selector: 'app-users-create',
@@ -7,9 +14,44 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersCreateComponent implements OnInit {
 
-  constructor() { }
+  newUser: Users;
+
+  constructor(
+    private userService: UsersService,
+    private router: Router
+    ) {
+    this.newUser = new Users();
+  }
 
   ngOnInit(): void {
+  }
+
+  createUser(form: NgForm) {
+    console.log(form.value);
+    this.userService.createUser(form.value)
+    .subscribe(
+      res => {
+      this.clearData(form);
+      M.toast({
+        html: 'Usuario creado satisfactoriamente'
+      });
+      setTimeout (() => {
+        this.router.navigate(['/users']);
+    }, 2000);
+    },
+      err => {
+        M.toast({
+          html: 'Usuario no se pudo guardar'
+        })
+    })
+  }
+
+
+  clearData(form?: NgForm) {
+    if (form) {
+      form.reset();
+      this.newUser = new Users();
+    }
   }
 
 }
