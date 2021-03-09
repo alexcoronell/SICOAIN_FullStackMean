@@ -42,7 +42,8 @@ export class UsersCreateComponent implements OnInit {
     },
       err => {
         M.toast({
-          html: 'Usuario no se pudo guardar'
+          html: 'Usuario no se pudo guardar',
+          displayLength: 1500
         })
     })
   }
