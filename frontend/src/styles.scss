@@ -11,3 +11,57 @@
 .container {
     width: 95% !important;
 }
+
+.backgroundMain {
+    background-image: url('./assets/images/background03.jpg');
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 5vh;
+    right: 0;
+    left: auto;
+    top: auto;
+    height: 90vh;
+    width: 100%;
+    z-index: -99;
+    opacity: 0.7;
+}
+
+h1 {
+    color: $main__color;
+    text-align: center;
+}
+
+
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .colMain {
+        order: 1;
+    }
+
+    .colMenu {
+        order: 2;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 992px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (min-width: 993px) and (max-width: 1200px) {
+    h1 {
+        font-size: 3rem;
+    }
+}
+
+@media (min-width: 1201px) {
+    h1 {
+        font-size: 4rem;
+    }
+}
