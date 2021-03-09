@@ -33,11 +33,12 @@ export class UsersCreateComponent implements OnInit {
       res => {
       this.clearData(form);
       M.toast({
-        html: 'Usuario creado satisfactoriamente'
+        html: 'Usuario creado satisfactoriamente',
+        displayLength: 1500
       });
       setTimeout (() => {
         this.router.navigate(['/users']);
-    }, 2000);
+    }, 1500);
     },
       err => {
         M.toast({
