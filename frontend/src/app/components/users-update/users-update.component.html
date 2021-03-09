@@ -7,6 +7,7 @@
             <div class="col s12 m8 l6">
                 <h3 class="center formTitle">Edición de Usuarios</h3>
 
+                <!-- Formulario de búsqueda -->
                 <form *ngIf="showSearchForm" #userSearchForm="ngForm" (ngSubmit)="searchUser()">
                     <div class="input-field">
                         <input id="userSearch" name="userSearch" type="text" class="validate">
