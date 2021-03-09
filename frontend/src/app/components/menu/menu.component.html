@@ -1,7 +1,7 @@
 <nav class="Nav">
     <div class="nav-wrapper container">
         <ul id="nav-mobile">
-            <li *ngIf="userData.superuser == true"><a class="dropdown-trigger" data-target="usersMenu">Usuarios<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a class="dropdown-trigger" data-target="usersMenu">Usuarios<i class="material-icons right">arrow_drop_down</i></a></li>
             <li><a class="dropdown-trigger" data-target="employeesMenu">Empleados y Cargos<i class="material-icons right">arrow_drop_down</i></a></li>
             <li><a class="dropdown-trigger" data-target="companiesMenu">Compañías<i class="material-icons right">arrow_drop_down</i></a></li>
             <li><a class="dropdown-trigger" data-target="venuesMenu">Sedes<i class="material-icons right">arrow_drop_down</i></a></li>
@@ -17,7 +17,7 @@
 
 <!-- Menu Usuarios -->
 <ul id="usersMenu" class="dropdown-content">
-    <li><a>Creación de Usuarios</a></li>
+    <li><a routerLink="/users/create">Creación de Usuarios</a></li>
     <li><a>Edición de Usuarios</a></li>
     <li><a>Contraseña de Usuarios</a></li>
     <li><a>Act/Desact. de Usuarios</a></li>

@@ -11,6 +11,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MainComponent } from './components/main/main.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { UsersCreateComponent } from './components/users-create/users-create.component';
+import { UsersUpdateComponent } from './components/users-update/users-update.component';
+import { UsersActivateDesactivateComponent } from './components/users-activate-desactivate/users-activate-desactivate.component';
+import { UsersPasswordUpdateComponent } from './components/users-password-update/users-password-update.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import { MenuComponent } from './components/menu/menu.component';
     FooterComponent,
     MainComponent,
     HeaderComponent,
-    MenuComponent
+    MenuComponent,
+    UsersCreateComponent,
+    UsersUpdateComponent,
+    UsersActivateDesactivateComponent,
+    UsersPasswordUpdateComponent
   ],
   imports: [
     BrowserModule,
