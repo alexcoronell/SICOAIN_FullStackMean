@@ -1,0 +1,36 @@
+@import './variables';
+
+.Nav {
+    background-color: white;
+    color: $main__color;
+    height: auto;
+    border: 1px solid $main__color;
+    padding: 1rem;
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+
+        &__item {
+            &__link {
+                line-height: 2rem;
+                color: $main__color;
+                display: block;
+
+                &:hover {
+                    background-color: $main__color;
+                    color: white;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    .btn {
+        margin-top: 1rem;
+
+        i {
+            line-height: 2.5rem;
+        }
+    }
+}

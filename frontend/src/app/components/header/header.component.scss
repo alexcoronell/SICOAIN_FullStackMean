@@ -8,6 +8,7 @@
     right: 0;
     background-color: white;
     padding: .5rem;
+    border-bottom: 3px double $main__color;
 
     &__container {
         display: flex;

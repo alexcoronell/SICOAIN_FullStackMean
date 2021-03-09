@@ -9,10 +9,9 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(private userDataService: UserDataService) { }
+  constructor(private userDataService: UserDataService, private router: Router) { }
 
   userData: any = {};
-  router: Router;
 
   ngOnInit(): void {
     this.userDataService.userDataSend.subscribe(data => {

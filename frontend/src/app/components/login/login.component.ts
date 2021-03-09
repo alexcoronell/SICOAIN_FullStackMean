@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
           this.userDataService.showHeader.emit({
             showHeader: true
           });
-          this.router.navigate(['/users/create']);
+          this.router.navigate(['/main']);
         },
         err => {
           this.loginValidate = false;
