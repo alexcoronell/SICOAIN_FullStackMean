@@ -15,6 +15,10 @@
     overflow: hidden !important;
 }
 
+.inactivate {
+    background-color: $color__inactive;
+}
+
 
 @media (max-width: 600px) {
     .formTitle {
