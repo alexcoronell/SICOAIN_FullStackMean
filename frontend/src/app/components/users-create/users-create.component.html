@@ -1,74 +1,84 @@
-<div class="usersCreate">
+<div class="components userForms">
     <div class="container">
         <div class="row">
-            <h3 class="center formTitle">Creación de Usuarios</h3>
-            <div class="col s12 offset-m1 m10 offset-l3 l6 offset-xl4 xl4">
-
-                <!-- User -->
-                <div class="input-field">
-                    <input id="user" name="user" type="text" class="validate">
-                    <label for="user">Usuario:</label>
-                </div>
-
-                <!-- User Name -->
-                <div class="input-field">
-                    <input id="name" name="name" type="text" class="validate">
-                    <label for="name">Nombre:</label>
-                </div>
-
-                <!-- Checkboxes -->
-                <ul class="row">
-                    <div class="col m6">
-                        <li>
-                            <label>
-                                <input type="checkbox" class="filled-in" id="superuser" name="superuser" />
-                                <span>Superusuario</span>
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type="checkbox" class="filled-in" id="admin" name="admin" />
-                                <span>Administrador</span>
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type="checkbox" class="filled-in" id="analyst" name="analyst" />
-                                <span>Analista</span>
-                            </label>
-                        </li>
-                    </div>
-                    <div class="col m6">
-                        <li>
-                            <label>
-                                <input type="checkbox" class="filled-in" id="assistant" name="assistant" />
-                                <span>Asistente</span>
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type="checkbox" class="filled-in" id="consultant" name="consultant" />
-                                <span>Consultas</span>
-                            </label>
-                        </li>
-                    </div>
-                </ul>
-
-                <!-- Password -->
-                <div class="input-field">
-                    <input id="password" name="password" type="password" class="validate">
-                    <label for="password">Contraseña:</label>
-                </div>
-
-                <button class="btn waves-effect waves-light center" type="submit">Guardar
-                    <i class="material-icons right">save</i>
-                </button>
-                <button class="btn waves-effect waves-light center" type="button">Limpiar
-                    <i class="material-icons right">clear</i>
-                </button>
-
+            <div class="col s12 m4 l3">
+                <app-users-menu></app-users-menu>
             </div>
+            <div class="col s12 m8 l6">
+                <h3 class="center formTitle">Creación de Usuarios</h3>
+                <form>
+                    <!-- User -->
+                    <div class="input-field">
+                        <input id="user" name="user" type="text" class="validate">
+                        <label for="user">Usuario:</label>
+                    </div>
 
+                    <!-- User Name -->
+                    <div class="input-field">
+                        <input id="name" name="name" type="text" class="validate">
+                        <label for="name">Nombre:</label>
+                    </div>
+
+                    <!-- Checkboxes -->
+                    <ul class="row">
+                        <div class="col s12 m4">
+                            <li>
+                                <label>
+                                    <input type="checkbox" class="filled-in" id="superuser" name="superuser" />
+                                    <span>Superusuario</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox" class="filled-in" id="admin" name="admin" />
+                                    <span>Administrador</span>
+                                </label>
+                            </li>
+                        </div>
+                        <div class="col s12 m4">
+                            <li>
+                                <label>
+                                    <input type="checkbox" class="filled-in" id="analyst" name="analyst" />
+                                    <span>Analista</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox" class="filled-in" id="assistant" name="assistant" />
+                                    <span>Asistente</span>
+                                </label>
+                            </li>
+                        </div>
+                        <div class="col s12 m4">
+                            <li>
+                                <label>
+                                    <input type="checkbox" class="filled-in" id="consultant" name="consultant" />
+                                    <span>Consultas</span>
+                                </label>
+                            </li>
+                        </div>
+                    </ul>
+
+                    <!-- Password -->
+                    <div class="input-field">
+                        <input id="password" name="password" type="password" class="validate">
+                        <label for="password">Contraseña:</label>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s6">
+                            <button class="btn waves-effect waves-light right" type="submit">Guardar
+                                <i class="material-icons right">save</i>
+                            </button>
+                        </div>
+                        <div class="col s6">
+                            <button class="btn waves-effect waves-light left cleanerButtom" type="button">Limpiar
+                                <i class="material-icons right">clear</i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

@@ -3,4 +3,12 @@
 .formTitle {
     color: $main__color;
     text-align: center;
+    margin: .5rem auto;
+}
+
+
+@media (max-width: 600px) {
+    .formTitle {
+        margin-top: 2rem;
+    }
 }

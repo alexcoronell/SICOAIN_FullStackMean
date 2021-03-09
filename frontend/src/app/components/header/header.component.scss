@@ -9,6 +9,7 @@
     background-color: white;
     padding: .5rem;
     border-bottom: 3px double $main__color;
+    z-index: 99999;
 
     &__container {
         display: flex;

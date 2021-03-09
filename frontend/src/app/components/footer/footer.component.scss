@@ -10,6 +10,7 @@ footer.footer {
     margin: 0;
     border-top: 3px double $main__color;
     padding: 0;
+    z-index: 99999;
 
     h6 {
         margin: 0 auto;
