@@ -15,6 +15,7 @@ import { UsersCreateComponent } from './components/users-create/users-create.com
 import { UsersUpdateComponent } from './components/users-update/users-update.component';
 import { UsersActivateDesactivateComponent } from './components/users-activate-desactivate/users-activate-desactivate.component';
 import { UsersPasswordUpdateComponent } from './components/users-password-update/users-password-update.component';
+import { UsersMenuComponent } from './components/users-menu/users-menu.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { UsersPasswordUpdateComponent } from './components/users-password-update
     UsersCreateComponent,
     UsersUpdateComponent,
     UsersActivateDesactivateComponent,
-    UsersPasswordUpdateComponent
+    UsersPasswordUpdateComponent,
+    UsersMenuComponent
   ],
   imports: [
     BrowserModule,
