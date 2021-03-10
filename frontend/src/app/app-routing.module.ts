@@ -27,6 +27,12 @@ import { CompaniesCreateComponent } from './components/companies-create/companie
 import { CompaniesUpdateComponent } from './components/companies-update/companies-update.component';
 import { CompaniesActivateDesactivateComponent } from './components/companies-activate-desactivate/companies-activate-desactivate.component';
 
+// Componentes Sedes
+import { VenuesComponent } from './components/venues/venues.component';
+import { VenuesCreateComponent } from './components/venues-create/venues-create.component';
+import { VenuesUpdateComponent } from './components/venues-update/venues-update.component';
+import { VenuesActivateDesactivateComponent } from './components/venues-activate-desactivate/venues-activate-desactivate.component';
+
 // Componente cambio de contraseña
 import { PasswordChangeComponent } from './components/password-change/password-change.component';
 
@@ -102,6 +108,22 @@ const routes: Routes = [
   {
     path: 'companies/activateDesactivate',
     component: CompaniesActivateDesactivateComponent
+  },
+  {
+    path: 'venues',
+    component: VenuesComponent
+  },
+  {
+    path: 'venues/create',
+    component: VenuesCreateComponent
+  },
+  {
+    path: 'venues/update',
+    component: VenuesUpdateComponent
+  },
+  {
+    path: 'venues/activateDesactivate',
+    component: VenuesActivateDesactivateComponent
   },
   {
     path: 'passwordChange',
