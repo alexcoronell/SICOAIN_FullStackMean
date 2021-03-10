@@ -1,1 +1,49 @@
-<p>positions-create works!</p>
+<div class="components positionsForm">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m4 l3">
+                <app-employees-and-positions-menu></app-employees-and-positions-menu>
+            </div>
+            <div class="col s12 m8 l9">
+                <h3 class="center formTitle">Creación de Cargos</h3>
+
+                <form #positionForm="ngForm" (ngSubmit)="createPosition(positionForm)">
+
+                    <div class="row">
+                        <div class="col s12 offset-l3 l6">
+                            <!-- Position Name -->
+                            <div class="input-field">
+                                <input [(ngModel)]="position.name" id="name" name="name" type="text" class="validate">
+                                <label for="name">Nombre:</label>
+                            </div>
+
+
+                            <!-- Description -->
+                            <div class="input-field">
+                                <textarea [(ngModel)]="position.description" id="description" name="description" id="description" class="validate materialize-textarea"></textarea>
+                                <label for="description">Descripción:</label>
+                            </div>
+
+                            <input [(ngModel)]="position.condition" type="hidden" name="condition" id="condition" value="true">
+
+                            <!-- Área de botones -->
+                            <div class="row">
+                                <div class="col s6">
+                                    <button class="btn waves-effect waves-light right" type="submit">Guardar
+                                        <i class="material-icons right">save</i>
+                                    </button>
+                                </div>
+                                <div class="col s6">
+                                    <button (click)="clearData(positionForm)" class="btn waves-effect waves-light left clearData" type="button">Cancelar
+                                        <i class="material-icons right">clear</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

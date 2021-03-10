@@ -23,6 +23,11 @@
 .input-field {
     input {
         padding-left: 1rem !important;
+        width: 90%;
+    }
+
+    textarea {
+        width: 100%;
     }
 }
 
