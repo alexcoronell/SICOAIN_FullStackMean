@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-// Componentes
-import { LoginComponent } from './components/login/login.component';
+// Componente pantalla Principal
 import { MainComponent } from './components/main/main.component';
+
+// Componentes Usuario y Login
+import { LoginComponent } from './components/login/login.component';
 import { UsersCreateComponent } from './components/users-create/users-create.component';
 import { UsersPasswordUpdateComponent } from './components/users-password-update/users-password-update.component';
 import { UsersUpdateComponent } from './components/users-update/users-update.component';
@@ -19,6 +21,13 @@ import { PositionsCreateComponent } from './components/positions-create/position
 import { PositionsUpdateComponent } from './components/positions-update/positions-update.component';
 import { PositionsActivateDesactivateComponent } from './components/positions-activate-desactivate/positions-activate-desactivate.component';
 
+// Componentes compañía
+import { CompaniesComponent } from './components/companies/companies.component';
+import { CompaniesCreateComponent } from './components/companies-create/companies-create.component';
+import { CompaniesUpdateComponent } from './components/companies-update/companies-update.component';
+import { CompaniesActivateDesactivateComponent } from './components/companies-activate-desactivate/companies-activate-desactivate.component';
+
+// Componente cambio de contraseña
 import { PasswordChangeComponent } from './components/password-change/password-change.component';
 
 const routes: Routes = [
@@ -77,6 +86,22 @@ const routes: Routes = [
   {
     path: 'positions/activateDesactivate',
     component: PositionsActivateDesactivateComponent
+  },
+  {
+    path: 'companies',
+    component: CompaniesComponent
+  },
+  {
+    path: 'companies/create',
+    component: CompaniesCreateComponent
+  },
+  {
+    path: 'companies/update',
+    component: CompaniesUpdateComponent
+  },
+  {
+    path: 'companies/activateDesactivate',
+    component: CompaniesActivateDesactivateComponent
   },
   {
     path: 'passwordChange',
