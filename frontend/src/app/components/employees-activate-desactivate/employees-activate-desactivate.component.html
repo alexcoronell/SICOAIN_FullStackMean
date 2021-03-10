@@ -1,1 +1,82 @@
-<p>employees-activate-desactivate works!</p>
+<div class="components userForms">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m4 l3">
+                <app-employees-and-positions-menu></app-employees-and-positions-menu>
+            </div>
+            <div class="col s12 m8 l9">
+                <h3 class="center formTitle">Act/Desact. de Empleados</h3>
+
+                <!-- Formulario de búsqueda -->
+                <div class="row">
+                    <div class="col s12 offset-l3 l6">
+                        <form *ngIf="showSearchForm" #employeerSearchForm="ngForm" (ngSubmit)="searchEmployee()">
+                            <div class="input-field">
+                                <input id="searchEmployee" name="searchEmployee" type="text" class="validate">
+                                <label for="searchEmployee">Número de identificación:</label>
+                            </div>
+                            <button class="btn waves-effect waves-light right" type="submit">Buscar
+                                <i class="material-icons right">search</i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Formulario de actualización de empleados -->
+                <form *ngIf="showForm" #employeeForm="ngForm" (ngSubmit)="activateDesactivate(employeeForm)">
+                    <div class="row">
+
+
+                        <div class="col s12 offset-l3 l6">
+                            <!-- Columna 1 -->
+
+                            <!-- Tipo de Identificación -->
+                            <div class="input-field">
+                                <input [(ngModel)]="employee.identificationType" id="identificationType" name="identificationType" type="text" class="validate">
+                                <label for="identificationType">Tipo de Identificación</label>
+                            </div>
+
+                            <!-- Número de Identificaión -->
+                            <div class="input-field">
+                                <input [(ngModel)]="employee.identificationNumber" id="identificationNumber" name="identificationNumber" type="text" class="validate">
+                                <label for="identificationNumber">Número de Identificación:</label>
+                            </div>
+
+                            <!-- Nombres -->
+                            <div class="input-field">
+                                <input [(ngModel)]="employee.names" id="names" name="names" type="text" class="validate">
+                                <label for="names">Nombres:</label>
+                            </div>
+
+                            <!-- Apellidos -->
+                            <div class="input-field">
+                                <input [(ngModel)]="employee.lastNames" id="lastNames" name="lastNames" type="text" class="validate">
+                                <label for="lastNames">Apellidos:</label>
+                            </div>
+
+                        </div> <!-- Fin Columna 1 -->
+
+                    </div>
+
+                    <!-- Área de botones -->
+                    <div class="row">
+                        <div class="col s6">
+                            <button class="btn waves-effect waves-light right inactivate" type="submit">Desactivar
+                                <i class="material-icons right">save</i>
+                            </button>
+                            <button class="btn waves-effect waves-light right activate" type="submit">Activar
+                                <i class="material-icons right">save</i>
+                            </button>
+                        </div>
+                        <div class="col s6">
+                            <button (click)="clearData(userForm)" class="btn waves-effect waves-light left cleanerButtom" type="button">Cancelar
+                                <i class="material-icons right">clear</i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Fin Área de Botones -->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
