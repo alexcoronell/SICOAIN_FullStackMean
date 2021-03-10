@@ -17,6 +17,14 @@ import { UsersActivateDesactivateComponent } from './components/users-activate-d
 import { UsersPasswordUpdateComponent } from './components/users-password-update/users-password-update.component';
 import { UsersMenuComponent } from './components/users-menu/users-menu.component';
 import { PasswordChangeComponent } from './components/password-change/password-change.component';
+import { EmployeesAndPositionsComponent } from './components/employees-and-positions/employees-and-positions.component';
+import { EmployeesAndPositionsMenuComponent } from './components/employees-and-positions-menu/employees-and-positions-menu.component';
+import { EmployeesCreateComponent } from './components/employees-create/employees-create.component';
+import { EmployeesUpdateComponent } from './components/employees-update/employees-update.component';
+import { EmployeesActivateDesactivateComponent } from './components/employees-activate-desactivate/employees-activate-desactivate.component';
+import { PositionsCreateComponent } from './components/positions-create/positions-create.component';
+import { PositionsUpdateComponent } from './components/positions-update/positions-update.component';
+import { PositionsActivateDesactivateComponent } from './components/positions-activate-desactivate/positions-activate-desactivate.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +40,15 @@ import { PasswordChangeComponent } from './components/password-change/password-c
     UsersActivateDesactivateComponent,
     UsersPasswordUpdateComponent,
     UsersMenuComponent,
-    PasswordChangeComponent
+    PasswordChangeComponent,
+    EmployeesAndPositionsComponent,
+    EmployeesAndPositionsMenuComponent,
+    EmployeesCreateComponent,
+    EmployeesUpdateComponent,
+    EmployeesActivateDesactivateComponent,
+    PositionsCreateComponent,
+    PositionsUpdateComponent,
+    PositionsActivateDesactivateComponent
   ],
   imports: [
     BrowserModule,
