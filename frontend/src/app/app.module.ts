@@ -25,6 +25,11 @@ import { EmployeesActivateDesactivateComponent } from './components/employees-ac
 import { PositionsCreateComponent } from './components/positions-create/positions-create.component';
 import { PositionsUpdateComponent } from './components/positions-update/positions-update.component';
 import { PositionsActivateDesactivateComponent } from './components/positions-activate-desactivate/positions-activate-desactivate.component';
+import { CompaniesComponent } from './components/companies/companies.component';
+import { CompaniesMenuComponent } from './components/companies-menu/companies-menu.component';
+import { CompaniesCreateComponent } from './components/companies-create/companies-create.component';
+import { CompaniesUpdateComponent } from './components/companies-update/companies-update.component';
+import { CompaniesActivateDesactivateComponent } from './components/companies-activate-desactivate/companies-activate-desactivate.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +53,12 @@ import { PositionsActivateDesactivateComponent } from './components/positions-ac
     EmployeesActivateDesactivateComponent,
     PositionsCreateComponent,
     PositionsUpdateComponent,
-    PositionsActivateDesactivateComponent
+    PositionsActivateDesactivateComponent,
+    CompaniesComponent,
+    CompaniesMenuComponent,
+    CompaniesCreateComponent,
+    CompaniesUpdateComponent,
+    CompaniesActivateDesactivateComponent
   ],
   imports: [
     BrowserModule,
