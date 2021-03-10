@@ -15,7 +15,7 @@
 
                             <!-- Tipo de Identificación -->
                             <div class="input-field inputfieldSelect">
-                                <select class="browser-default" [(ngModel)]="newEmployee.identificationType" id="identificationType" name="identificationType">
+                                <select class="browser-default" [(ngModel)]="employee.identificationType" id="identificationType" name="identificationType">
                                     <option value="" disabled selected>Seleccione...</option>
                                     <option value="Cédula de Ciudadanía">Cédula de Ciudadanía</option>
                                     <option value="Cédula de Extranjería">Cédula de Extranjería</option>
@@ -27,25 +27,25 @@
 
                             <!-- Número de Identificaión -->
                             <div class="input-field">
-                                <input [(ngModel)]="newEmployee.identificationNumber" id="identificationNumber" name="identificationNumber" type="text" class="validate">
+                                <input [(ngModel)]="employee.identificationNumber" id="identificationNumber" name="identificationNumber" type="text" class="validate">
                                 <label for="identificationNumber">Número de Identificación:</label>
                             </div>
 
                             <!-- Nombres -->
                             <div class="input-field">
-                                <input [(ngModel)]="newEmployee.names" id="names" name="names" type="text" class="validate">
+                                <input [(ngModel)]="employee.names" id="names" name="names" type="text" class="validate">
                                 <label for="names">Nombres:</label>
                             </div>
 
                             <!-- Apellidos -->
                             <div class="input-field">
-                                <input [(ngModel)]="newEmployee.lastNames" id="lastNames" name="lastNames" type="text" class="validate">
+                                <input [(ngModel)]="employee.lastNames" id="lastNames" name="lastNames" type="text" class="validate">
                                 <label for="lastNames">Apellidos:</label>
                             </div>
 
                             <!-- Departamento -->
                             <div class="input-field inputfieldSelect">
-                                <select class="browser-default" [(ngModel)]="newEmployee.department" id="department" name="department">
+                                <select class="browser-default" [(ngModel)]="employee.department" id="department" name="department">
                                     <option value="" disabled selected>Seleccione...</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -57,7 +57,7 @@
 
                             <!-- Municipio -->
                             <div class="input-field inputfieldSelect">
-                                <select class="browser-default" [(ngModel)]="newEmployee.municipality" id="municipality" name="municipality">
+                                <select class="browser-default" [(ngModel)]="employee.municipality" id="municipality" name="municipality">
                                     <option value="" disabled selected>Seleccione...</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -69,25 +69,25 @@
 
                             <!-- Dirección -->
                             <div class="input-field">
-                                <input [(ngModel)]="newEmployee.address" id="address" name="address" type="text" class="validate">
+                                <input [(ngModel)]="employee.address" id="address" name="address" type="text" class="validate">
                                 <label for="address">Dirección:</label>
                             </div>
 
                             <!-- Teléfono -->
                             <div class="input-field">
-                                <input [(ngModel)]="newEmployee.phone" id="phone" name="phone" type="text" class="validate">
+                                <input [(ngModel)]="employee.phone" id="phone" name="phone" type="text" class="validate">
                                 <label for="phone">Teléfono:</label>
                             </div>
 
                             <!-- Celular -->
                             <div class="input-field">
-                                <input [(ngModel)]="newEmployee.mobile" id="mobile" name="mobile" type="text" class="validate">
+                                <input [(ngModel)]="employee.mobile" id="mobile" name="mobile" type="text" class="validate">
                                 <label for="mobile">Celular:</label>
                             </div>
 
                             <!-- Correo Electrónico -->
                             <div class="input-field">
-                                <input [(ngModel)]="newEmployee.email" id="email" name="email" type="email" class="validate">
+                                <input [(ngModel)]="employee.email" id="email" name="email" type="email" class="validate">
                                 <label for="email">Correo Electrónico:</label>
                             </div>
 
@@ -99,7 +99,7 @@
 
                             <!-- Compañía -->
                             <div class="input-field inputfieldSelect">
-                                <select class="browser-default" [(ngModel)]="newEmployee.company" id="company" name="company">
+                                <select class="browser-default" [(ngModel)]="employee.company" id="company" name="company">
                                     <option value="" disabled selected>Seleccione...</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -111,7 +111,7 @@
 
                             <!-- Sede -->
                             <div class="input-field inputfieldSelect">
-                                <select class="browser-default" [(ngModel)]="newEmployee.venues" id="venues" name="venues">
+                                <select class="browser-default" [(ngModel)]="employee.venues" id="venues" name="venues">
                                     <option value="" disabled selected>Seleccione...</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -123,7 +123,7 @@
 
                             <!-- Cargo -->
                             <div class="input-field inputfieldSelect">
-                                <select class="browser-default" [(ngModel)]="newEmployee.position" id="position" name="position">
+                                <select class="browser-default" [(ngModel)]="employee.position" id="position" name="position">
                                     <option value="" disabled selected>Seleccione...</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -135,7 +135,7 @@
 
                             <!-- EPS -->
                             <div class="input-field inputfieldSelect">
-                                <select class="browser-default" [(ngModel)]="newEmployee.eps" id="eps" name="eps">
+                                <select class="browser-default" [(ngModel)]="employee.eps" id="eps" name="eps">
                                     <option value="" disabled selected>Seleccione...</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -147,7 +147,7 @@
 
                             <!-- ARL -->
                             <div class="input-field inputfieldSelect">
-                                <select class="browser-default" [(ngModel)]="newEmployee.arl" id="arl" name="arl">
+                                <select class="browser-default" [(ngModel)]="employee.arl" id="arl" name="arl">
                                     <option value="" disabled selected>Seleccione...</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -160,25 +160,25 @@
                             <h5>Contacto de Emergencia</h5>
                             <!-- Nombre contacto de Emergencia -->
                             <div class="input-field">
-                                <input [(ngModel)]="newEmployee.emergencyContactName" id="emergencyContactName" name="emergencyContactName" type="text" class="validate">
+                                <input [(ngModel)]="employee.emergencyContactName" id="emergencyContactName" name="emergencyContactName" type="text" class="validate">
                                 <label for="emergencyContactName">Nombre:</label>
                             </div>
 
                             <!-- Teléfono contacto de Emergencia -->
                             <div class="input-field">
-                                <input [(ngModel)]="newEmployee.emergencyContactPhone" id="emergencyContactPhone" name="emergencyContactPhone" type="text" class="validate">
+                                <input [(ngModel)]="employee.emergencyContactPhone" id="emergencyContactPhone" name="emergencyContactPhone" type="text" class="validate">
                                 <label for="emergencyContactPhone">Teléfono:</label>
                             </div>
 
                             <!-- Parentesco contacto de Emergencia -->
                             <div class="input-field">
-                                <input [(ngModel)]="newEmployee.emergencyContactRelationship" id="emergencyContactRelationship" name="emergencyContactRelationship" type="text" class="validate">
+                                <input [(ngModel)]="employee.emergencyContactRelationship" id="emergencyContactRelationship" name="emergencyContactRelationship" type="text" class="validate">
                                 <label for="emergencyContactRelationship">Parentesco:</label>
                             </div>
 
                             <!-- Comentarios -->
                             <div class="input-field">
-                                <textarea [(ngModel)]="newEmployee.coments" id="coments" name="coments" class="materialize-textarea"></textarea>
+                                <textarea [(ngModel)]="employee.coments" id="coments" name="coments" class="materialize-textarea"></textarea>
                                 <label for="coments">Comentarios</label>
                             </div>
 

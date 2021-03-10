@@ -9,10 +9,10 @@ import { NgForm } from '@angular/forms';
 })
 export class EmployeesCreateComponent implements OnInit {
 
-  newEmployee: Employees;
+  employee: Employees;
 
   constructor() {
-    this.newEmployee = new Employees;
+    this.employee = new Employees;
   }
 
   ngOnInit(): void {
