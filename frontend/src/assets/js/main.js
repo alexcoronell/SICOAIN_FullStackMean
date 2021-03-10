@@ -13,7 +13,6 @@ $('document').ready(function() {
         menuAdjunst(widthScreen)
     })
 
-    // Inicialización de los select en los formularios
 })
 
 function menuAdjunst(widthScreen) {

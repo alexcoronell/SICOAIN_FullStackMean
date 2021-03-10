@@ -20,6 +20,35 @@
     background-color: $color__inactive;
 }
 
+.input-field {
+    input {
+        padding-left: 1rem !important;
+    }
+}
+
+.inputfieldSelect {
+    select {
+        background: transparent;
+        border: none;
+        font-size: 14px;
+        height: 30px;
+        padding: 5px;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    select:first-child {
+        opacity: 0.5;
+    }
+}
+
+.labelSelect {
+    transform: translateY(-22px) scale(0.8) !important;
+    color: $main__color !important;
+}
+
 
 @media (max-width: 600px) {
     .formTitle {

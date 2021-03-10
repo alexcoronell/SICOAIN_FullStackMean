@@ -16,14 +16,13 @@
                             <!-- Tipo de Identificación -->
                             <div class="input-field inputfieldSelect">
                                 <select class="browser-default" [(ngModel)]="newEmployee.identificationType" id="identificationType" name="identificationType">
-                                    <option class="opcion0" disabled selected>Tipo de Identificación</option>
+                                    <option value="" disabled selected>Seleccione...</option>
                                     <option value="Cédula de Ciudadanía">Cédula de Ciudadanía</option>
                                     <option value="Cédula de Extranjería">Cédula de Extranjería</option>
                                     <option value="Pasaporte">Pasaporte</option>
                                     <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
                                 </select>
-                                <!-- <input type="text" name="identificationType" id="identificationType"> -->
-                                <label for="identificationType">Tipo de Identificación</label>
+                                <label class="labelSelect" for="identificationType">Tipo de Identificación</label>
                             </div>
 
                             <!-- Número de Identificaión -->
@@ -53,7 +52,7 @@
                                     <option value="3">3</option>
                                     <option value="4">4</option>
                                 </select>
-                                <label for="department">Departamento</label>
+                                <label class="labelSelect" for="department">Departamento</label>
                             </div>
 
                             <!-- Municipio -->
@@ -65,7 +64,7 @@
                                     <option value="3">3</option>
                                     <option value="4">4</option>
                                 </select>
-                                <label for="municipality">Municipio</label>
+                                <label class="labelSelect" for="municipality">Municipio</label>
                             </div>
 
                             <!-- Dirección -->
@@ -107,7 +106,7 @@
                                     <option value="3">3</option>
                                     <option value="4">4</option>
                                 </select>
-                                <label for="company">Compañía</label>
+                                <label class="labelSelect" for="company">Compañía</label>
                             </div>
 
                             <!-- Sede -->
@@ -119,7 +118,7 @@
                                     <option value="3">3</option>
                                     <option value="4">4</option>
                                 </select>
-                                <label for="venues">Sede</label>
+                                <label class="labelSelect" for="venues">Sede</label>
                             </div>
 
                             <!-- Cargo -->
@@ -131,7 +130,7 @@
                                     <option value="3">3</option>
                                     <option value="4">4</option>
                                 </select>
-                                <label for="position">Cargo</label>
+                                <label class="labelSelect" for="position">Cargo</label>
                             </div>
 
                             <!-- EPS -->
@@ -143,7 +142,7 @@
                                     <option value="3">3</option>
                                     <option value="4">4</option>
                                 </select>
-                                <label for="eps">EPS</label>
+                                <label class="labelSelect" for="eps">EPS</label>
                             </div>
 
                             <!-- ARL -->
@@ -155,7 +154,7 @@
                                     <option value="3">3</option>
                                     <option value="4">4</option>
                                 </select>
-                                <label for="arl">ARL</label>
+                                <label class="labelSelect" for="arl">ARL</label>
                             </div>
 
                             <h5>Contacto de Emergencia</h5>
