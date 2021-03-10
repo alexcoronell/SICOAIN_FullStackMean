@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Employees } from '../../models/employees';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-employees-create',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeesCreateComponent implements OnInit {
 
-  constructor() { }
+  newEmployee: Employees;
+
+  constructor() {
+    this.newEmployee = new Employees;
+  }
 
   ngOnInit(): void {
+  }
+
+  createEmployee(form: NgForm) {
+    console.log(form)
+  }
+
+  clearData(form: NgForm) {
+    console.log("funciono");
   }
 
 }

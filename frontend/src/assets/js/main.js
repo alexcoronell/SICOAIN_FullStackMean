@@ -1,5 +1,6 @@
 var widthScreen = $(window).width();
 
+
 $('document').ready(function() {
     var urlActual = $(location).attr('href');
     if (urlActual != 'http://localhost:4200/') {
@@ -11,6 +12,8 @@ $('document').ready(function() {
         widthScreen = $(window).width();
         menuAdjunst(widthScreen)
     })
+
+    // Inicialización de los select en los formularios
 })
 
 function menuAdjunst(widthScreen) {
