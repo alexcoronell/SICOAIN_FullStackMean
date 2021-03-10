@@ -9,10 +9,15 @@ import { UsersPasswordUpdateComponent } from './components/users-password-update
 import { UsersUpdateComponent } from './components/users-update/users-update.component';
 import { UsersActivateDesactivateComponent } from './components/users-activate-desactivate/users-activate-desactivate.component'
 import { UsersComponent } from './components/users/users.component';
+
+// Componentes Empleados y Cargos
 import { EmployeesAndPositionsComponent } from './components/employees-and-positions/employees-and-positions.component';
 import { EmployeesCreateComponent } from './components/employees-create/employees-create.component';
 import { EmployeesUpdateComponent } from './components/employees-update/employees-update.component';
 import { EmployeesActivateDesactivateComponent } from './components/employees-activate-desactivate/employees-activate-desactivate.component';
+import { PositionsCreateComponent } from './components/positions-create/positions-create.component';
+import { PositionsUpdateComponent } from './components/positions-update/positions-update.component';
+import { PositionsActivateDesactivateComponent } from './components/positions-activate-desactivate/positions-activate-desactivate.component';
 
 import { PasswordChangeComponent } from './components/password-change/password-change.component';
 
@@ -60,6 +65,18 @@ const routes: Routes = [
   {
     path: 'employes/activateDesactivate',
     component: EmployeesActivateDesactivateComponent
+  },
+  {
+    path: 'positions/create',
+    component: PositionsCreateComponent
+  },
+  {
+    path: 'positions/update',
+    component: PositionsUpdateComponent
+  },
+  {
+    path: 'positions/activateDesactivate',
+    component: PositionsActivateDesactivateComponent
   },
   {
     path: 'passwordChange',
