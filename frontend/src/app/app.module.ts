@@ -30,6 +30,11 @@ import { CompaniesMenuComponent } from './components/companies-menu/companies-me
 import { CompaniesCreateComponent } from './components/companies-create/companies-create.component';
 import { CompaniesUpdateComponent } from './components/companies-update/companies-update.component';
 import { CompaniesActivateDesactivateComponent } from './components/companies-activate-desactivate/companies-activate-desactivate.component';
+import { VenuesComponent } from './components/venues/venues.component';
+import { VenuesMenuComponent } from './components/venues-menu/venues-menu.component';
+import { VenuesCreateComponent } from './components/venues-create/venues-create.component';
+import { VenuesUpdateComponent } from './components/venues-update/venues-update.component';
+import { VenuesActivateDesactivateComponent } from './components/venues-activate-desactivate/venues-activate-desactivate.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +63,12 @@ import { CompaniesActivateDesactivateComponent } from './components/companies-ac
     CompaniesMenuComponent,
     CompaniesCreateComponent,
     CompaniesUpdateComponent,
-    CompaniesActivateDesactivateComponent
+    CompaniesActivateDesactivateComponent,
+    VenuesComponent,
+    VenuesMenuComponent,
+    VenuesCreateComponent,
+    VenuesUpdateComponent,
+    VenuesActivateDesactivateComponent
   ],
   imports: [
     BrowserModule,
