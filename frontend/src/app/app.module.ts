@@ -40,6 +40,11 @@ import { EpsMenuComponent } from './components/eps-menu/eps-menu.component';
 import { EpsCreateComponent } from './components/eps-create/eps-create.component';
 import { EpsUpdateComponent } from './components/eps-update/eps-update.component';
 import { EpsActivateDesactivateComponent } from './components/eps-activate-desactivate/eps-activate-desactivate.component';
+import { ArlComponent } from './components/arl/arl.component';
+import { ArlMenuComponent } from './components/arl-menu/arl-menu.component';
+import { ArlCreateComponent } from './components/arl-create/arl-create.component';
+import { ArlUpdateComponent } from './components/arl-update/arl-update.component';
+import { ArlActivateDesactivateComponent } from './components/arl-activate-desactivate/arl-activate-desactivate.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +83,12 @@ import { EpsActivateDesactivateComponent } from './components/eps-activate-desac
     EpsMenuComponent,
     EpsCreateComponent,
     EpsUpdateComponent,
-    EpsActivateDesactivateComponent
+    EpsActivateDesactivateComponent,
+    ArlComponent,
+    ArlMenuComponent,
+    ArlCreateComponent,
+    ArlUpdateComponent,
+    ArlActivateDesactivateComponent
   ],
   imports: [
     BrowserModule,
