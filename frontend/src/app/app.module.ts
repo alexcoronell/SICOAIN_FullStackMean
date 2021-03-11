@@ -35,6 +35,11 @@ import { VenuesMenuComponent } from './components/venues-menu/venues-menu.compon
 import { VenuesCreateComponent } from './components/venues-create/venues-create.component';
 import { VenuesUpdateComponent } from './components/venues-update/venues-update.component';
 import { VenuesActivateDesactivateComponent } from './components/venues-activate-desactivate/venues-activate-desactivate.component';
+import { EpsComponent } from './components/eps/eps.component';
+import { EpsMenuComponent } from './components/eps-menu/eps-menu.component';
+import { EpsCreateComponent } from './components/eps-create/eps-create.component';
+import { EpsUpdateComponent } from './components/eps-update/eps-update.component';
+import { EpsActivateDesactivateComponent } from './components/eps-activate-desactivate/eps-activate-desactivate.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +73,12 @@ import { VenuesActivateDesactivateComponent } from './components/venues-activate
     VenuesMenuComponent,
     VenuesCreateComponent,
     VenuesUpdateComponent,
-    VenuesActivateDesactivateComponent
+    VenuesActivateDesactivateComponent,
+    EpsComponent,
+    EpsMenuComponent,
+    EpsCreateComponent,
+    EpsUpdateComponent,
+    EpsActivateDesactivateComponent
   ],
   imports: [
     BrowserModule,
