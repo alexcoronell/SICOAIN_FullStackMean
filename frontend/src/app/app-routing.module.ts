@@ -45,6 +45,15 @@ import { ArlCreateComponent } from './components/arl-create/arl-create.component
 import { ArlUpdateComponent } from './components/arl-update/arl-update.component';
 import { ArlActivateDesactivateComponent } from './components/arl-activate-desactivate/arl-activate-desactivate.component';
 
+// Compomentes Incidentes y Sucesos
+import { RecordsAndEventsComponent } from './components/records-and-events/records-and-events.component';
+import { RecordsCreateComponent } from './components/records-create/records-create.component';
+import { RecordsUpdateComponent } from './components/records-update/records-update.component';
+import { RecordsCancelComponent } from './components/records-cancel/records-cancel.component';
+import { EventsCreateComponent } from './components/events-create/events-create.component';
+import { EventsUpdateComponent } from './components/events-update/events-update.component';
+import { EventsActivateDesactivateComponent } from './components/events-activate-desactivate/events-activate-desactivate.component';
+
 // Componente cambio de contraseña
 import { PasswordChangeComponent } from './components/password-change/password-change.component';
 
@@ -168,6 +177,34 @@ const routes: Routes = [
   {
     path: 'arl/activateDesactivate',
     component: ArlActivateDesactivateComponent
+  },
+  {
+    path: 'recordsAndEvents',
+    component: RecordsAndEventsComponent
+  },
+  {
+    path: 'records/create',
+    component: RecordsCreateComponent
+  },
+  {
+    path: 'records/update',
+    component: RecordsUpdateComponent
+  },
+  {
+    path: 'records/cancel',
+    component: RecordsCancelComponent
+  },
+  {
+    path: 'events/create',
+    component: EventsCreateComponent
+  },
+  {
+    path: 'events/update',
+    component: EventsUpdateComponent
+  },
+  {
+    path: 'events/activateDesactivate',
+    component: EventsActivateDesactivateComponent
   },
   {
     path: 'passwordChange',

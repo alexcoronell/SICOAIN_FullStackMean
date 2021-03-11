@@ -1,1 +1,18 @@
-<p>records-and-events-menu works!</p>
+<nav class="Nav">
+
+    <h6 class="Nav__titleMenu">Menu de Incidentes y Sucesos</h6>
+
+    <ul class="Nav__list">
+        <li class="Nav__list__itemTitle">Administración de Incidentes</li>
+        <li class="Nav__list__item"><a class="Nav__list__item__link" routerLink="/records/create">Creación de Registros</a></li>
+        <li class="Nav__list__item"><a class="Nav__list__item__link" routerLink="/records/update">Edición de Registros</a></li>
+        <li class="Nav__list__item"><a class="Nav__list__item__link" routerLink="/records/cancel">Anulación de Registros</a></li>
+        <li class="Nav__list__itemTitle">Administración de Sucesos</li>
+        <li class="Nav__list__item"><a class="Nav__list__item__link" routerLink="/events/create">Creación de Sucesos</a></li>
+        <li class="Nav__list__item"><a class="Nav__list__item__link" routerLink="/events/update">Edición de Sucesos</a></li>
+        <li class="Nav__list__item"><a class="Nav__list__item__link" routerLink="/events/activateDesactivate">Act/Desact de Sucesos</a></li>
+        <a routerLink="/main" class="btn waves-effect waves-light" type="button">Regresar
+            <i class="material-icons left">arrow_back</i>
+        </a>
+    </ul>
+</nav>
