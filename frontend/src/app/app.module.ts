@@ -45,6 +45,14 @@ import { ArlMenuComponent } from './components/arl-menu/arl-menu.component';
 import { ArlCreateComponent } from './components/arl-create/arl-create.component';
 import { ArlUpdateComponent } from './components/arl-update/arl-update.component';
 import { ArlActivateDesactivateComponent } from './components/arl-activate-desactivate/arl-activate-desactivate.component';
+import { RecordsAndEventsComponent } from './components/records-and-events/records-and-events.component';
+import { RecordsAndEventsMenuComponent } from './components/records-and-events-menu/records-and-events-menu.component';
+import { RecordsCreateComponent } from './components/records-create/records-create.component';
+import { RecordsUpdateComponent } from './components/records-update/records-update.component';
+import { RecordsCancelComponent } from './components/records-cancel/records-cancel.component';
+import { EventsCreateComponent } from './components/events-create/events-create.component';
+import { EventsUpdateComponent } from './components/events-update/events-update.component';
+import { EventsActivateDesactivateComponent } from './components/events-activate-desactivate/events-activate-desactivate.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +96,15 @@ import { ArlActivateDesactivateComponent } from './components/arl-activate-desac
     ArlMenuComponent,
     ArlCreateComponent,
     ArlUpdateComponent,
-    ArlActivateDesactivateComponent
+    ArlActivateDesactivateComponent,
+    RecordsAndEventsComponent,
+    RecordsAndEventsMenuComponent,
+    RecordsCreateComponent,
+    RecordsUpdateComponent,
+    RecordsCancelComponent,
+    EventsCreateComponent,
+    EventsUpdateComponent,
+    EventsActivateDesactivateComponent
   ],
   imports: [
     BrowserModule,
