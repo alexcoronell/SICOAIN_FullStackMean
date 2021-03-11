@@ -39,6 +39,12 @@ import { EpsCreateComponent } from './components/eps-create/eps-create.component
 import { EpsUpdateComponent } from './components/eps-update/eps-update.component';
 import { EpsActivateDesactivateComponent } from './components/eps-activate-desactivate/eps-activate-desactivate.component';
 
+// Componentes Arl
+import { ArlComponent } from './components/arl/arl.component';
+import { ArlCreateComponent } from './components/arl-create/arl-create.component';
+import { ArlUpdateComponent } from './components/arl-update/arl-update.component';
+import { ArlActivateDesactivateComponent } from './components/arl-activate-desactivate/arl-activate-desactivate.component';
+
 // Componente cambio de contraseña
 import { PasswordChangeComponent } from './components/password-change/password-change.component';
 
@@ -146,6 +152,22 @@ const routes: Routes = [
   {
     path: 'eps/activateDesactivate',
     component: EpsActivateDesactivateComponent
+  },
+  {
+    path: 'arl',
+    component: ArlComponent
+  },
+  {
+    path: 'arl/create',
+    component: ArlCreateComponent
+  },
+  {
+    path: 'arl/update',
+    component: ArlUpdateComponent
+  },
+  {
+    path: 'arl/activateDesactivate',
+    component: ArlActivateDesactivateComponent
   },
   {
     path: 'passwordChange',
