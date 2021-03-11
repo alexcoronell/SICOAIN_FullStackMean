@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Venues } from 'src/app/models/venues';
 
 @Component({
   selector: 'app-venues-create',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VenuesCreateComponent implements OnInit {
 
-  constructor() { }
+  venue: Venues;
+
+  constructor() {
+    this.venue = new Venues;
+  }
 
   ngOnInit(): void {
+  }
+
+  createVenue(form: NgForm) {
+    console.log(form);
+  }
+
+  clearData(form?: NgForm) {
+    if (form) {
+      form.reset();
+      this.venue = new Venues;
+    }
   }
 
 }
