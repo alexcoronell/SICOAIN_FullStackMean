@@ -33,6 +33,12 @@ import { VenuesCreateComponent } from './components/venues-create/venues-create.
 import { VenuesUpdateComponent } from './components/venues-update/venues-update.component';
 import { VenuesActivateDesactivateComponent } from './components/venues-activate-desactivate/venues-activate-desactivate.component';
 
+// Componentes EPS
+import { EpsComponent } from './components/eps/eps.component';
+import { EpsCreateComponent } from './components/eps-create/eps-create.component';
+import { EpsUpdateComponent } from './components/eps-update/eps-update.component';
+import { EpsActivateDesactivateComponent } from './components/eps-activate-desactivate/eps-activate-desactivate.component';
+
 // Componente cambio de contraseña
 import { PasswordChangeComponent } from './components/password-change/password-change.component';
 
@@ -124,6 +130,22 @@ const routes: Routes = [
   {
     path: 'venues/activateDesactivate',
     component: VenuesActivateDesactivateComponent
+  },
+  {
+    path: 'eps',
+    component: EpsComponent
+  },
+  {
+    path: 'eps/create',
+    component: EpsCreateComponent
+  },
+  {
+    path: 'eps/update',
+    component: EpsUpdateComponent
+  },
+  {
+    path: 'eps/activateDesactivate',
+    component: EpsActivateDesactivateComponent
   },
   {
     path: 'passwordChange',
