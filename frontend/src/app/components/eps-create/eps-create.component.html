@@ -1,1 +1,60 @@
-<p>eps-create works!</p>
+<div class="components">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m4 l3">
+                <app-venues-menu></app-venues-menu>
+            </div>
+            <div class="col s12 m8 l9">
+                <h3 class="center formTitle">Creación de EPS</h3>
+
+                <form #Form="ngForm" (ngSubmit)="create(Form)">
+
+                    <div class="row">
+                        <div class="col s12 offset-l3 l6">
+
+                            <!-- Name -->
+                            <div class="input-field">
+                                <input [(ngModel)]="eps.name" id="name" name="name" type="text" class="validate">
+                                <label for="name">Nombre:</label>
+                            </div>
+
+                            <!-- Phone -->
+                            <div class="input-field">
+                                <input [(ngModel)]="eps.phone" id="phone" name="phone" type="text" class="validate">
+                                <label for="phone">Teléfono:</label>
+                            </div>
+
+                            <!-- Address -->
+                            <div class="input-field">
+                                <textarea [(ngModel)]="eps.address" id="address" name="address" id="address" class="validate materialize-textarea"></textarea>
+                                <label for="address">Descripción:</label>
+                            </div>
+
+                            <!-- email -->
+                            <div class="input-field">
+                                <input [(ngModel)]="eps.email" id="email" name="email" type="email" class="validate">
+                                <label for="email">Correo Electrónico:</label>
+                            </div>
+
+
+                            <!-- Área Botones -->
+                            <div class="row">
+                                <div class="col s6">
+                                    <button class="btn waves-effect waves-light right" type="submit">Guardar
+                                        <i class="material-icons right">save</i>
+                                    </button>
+                                </div>
+                                <div class="col s6">
+                                    <button (click)="clearData(Form)" class="btn waves-effect waves-light left clearData" type="button">Cancelar
+                                        <i class="material-icons right">clear</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

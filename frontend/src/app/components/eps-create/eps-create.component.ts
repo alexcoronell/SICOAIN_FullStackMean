@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Eps } from '../../models/eps';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-eps-create',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EpsCreateComponent implements OnInit {
 
-  constructor() { }
+  eps: Eps;
+
+  constructor() {
+    this.eps = new Eps;
+  }
 
   ngOnInit(): void {
+  }
+
+  create(form: NgForm) {
+    console.log(form);
+  }
+
+  clearData(form?: NgForm) {
+    if (form) {
+      form.reset();
+      this.eps = new Eps;
+    }
   }
 
 }
