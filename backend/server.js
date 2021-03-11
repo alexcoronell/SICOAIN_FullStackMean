@@ -33,6 +33,7 @@ app.use('/api/epss', require('./routes/epss.routes'));
 app.use('/api/municipalities', require('./routes/municipalities.routes'));
 app.use('/api/positions', require('./routes/positions.routes'));
 app.use('/api/records', require('./routes/records.routes'));
+app.use('/api/events', require('./routes/events.routes'));
 app.use('/api/users', require('./routes/users.routes'));
 app.use('/api/venues', require('./routes/venues.routes'));
 
