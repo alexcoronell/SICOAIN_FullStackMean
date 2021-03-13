@@ -54,6 +54,18 @@ import { EventsCreateComponent } from './components/events-create/events-create.
 import { EventsUpdateComponent } from './components/events-update/events-update.component';
 import { EventsActivateDesactivateComponent } from './components/events-activate-desactivate/events-activate-desactivate.component';
 
+// Componentes de Reportes
+import { ReportsComponent } from './components/reports/reports.component';
+import { ReportUsersComponent } from './components/report-users/report-users.component';
+import { ReportEmployeesComponent } from './components/report-employees/report-employees.component';
+import { ReportPositionsComponent } from './components/report-positions/report-positions.component';
+import { ReportCompaniesComponent } from './components/report-companies/report-companies.component';
+import { ReportVenuesComponent } from './components/report-venues/report-venues.component';
+import { ReportEpsComponent } from './components/report-eps/report-eps.component';
+import { ReportArlComponent } from './components/report-arl/report-arl.component';
+import { ReportRecordsComponent } from './components/report-records/report-records.component';
+import { ReportEventsComponent } from './components/report-events/report-events.component';
+
 // Componente cambio de contraseña
 import { PasswordChangeComponent } from './components/password-change/password-change.component';
 
@@ -205,6 +217,46 @@ const routes: Routes = [
   {
     path: 'events/activateDesactivate',
     component: EventsActivateDesactivateComponent
+  },
+  {
+    path: 'reports',
+    component: ReportsComponent
+  },
+  {
+    path: 'reports/users',
+    component: ReportUsersComponent
+  },
+  {
+    path: 'reports/employees',
+    component: ReportEmployeesComponent
+  },
+  {
+    path: 'reports/positions',
+    component: ReportPositionsComponent
+  },
+  {
+    path: 'reports/companies',
+    component: ReportCompaniesComponent
+  },
+  {
+    path: 'reports/venues',
+    component: ReportVenuesComponent
+  },
+  {
+    path: 'reports/eps',
+    component: ReportEpsComponent
+  },
+  {
+    path: 'reports/arl',
+    component: ReportArlComponent
+  },
+  {
+    path: 'reports/records',
+    component: ReportRecordsComponent
+  },
+  {
+    path: 'reports/events',
+    component: ReportEventsComponent
   },
   {
     path: 'passwordChange',
