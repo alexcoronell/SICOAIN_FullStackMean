@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Events } from '../../models/events';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-events-create',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventsCreateComponent implements OnInit {
 
-  constructor() { }
+  events: Events;
+
+  constructor() {
+    this.events = new Events;
+  }
 
   ngOnInit(): void {
+  }
+
+  create(form: NgForm) {
+    console.log(form);
+    this.clearData();
+  }
+
+  clearData(form?: NgForm) {
+    if (form) {
+      form.reset();
+      this.events = new Events;
+    }
   }
 
 }
