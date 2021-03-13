@@ -4,10 +4,10 @@
             <div class="col s12 m4 l3">
                 <app-users-menu></app-users-menu>
             </div>
-            <div class="col s12 m8 l6">
+            <div class="col s12 m8 offset-l2 l5 offset-xl2 xl4">
                 <h3 class="center formTitle">Creación de Usuarios</h3>
-                <!-- <form (submit)="createUser()"> -->
-                <form #userForm="ngForm" (ngSubmit)="createUser(userForm)">
+
+                <form #Form="ngForm" (ngSubmit)="create(Form)">
                     <!-- User -->
                     <div class="input-field">
                         <input [(ngModel)]="newUser.user" id="user" name="user" type="text" class="validate">
@@ -74,7 +74,7 @@
                             </button>
                         </div>
                         <div class="col s6">
-                            <button (click)="clearData(userForm)" class="btn waves-effect waves-light left clearData" type="button">Cancelar
+                            <button (click)="clearData(Form)" class="btn waves-effect waves-light left clearData" type="button">Cancelar
                                 <i class="material-icons right">clear</i>
                             </button>
                         </div>

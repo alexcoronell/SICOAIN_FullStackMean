@@ -1,4 +1,3 @@
-import { formatCurrency } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Users } from 'src/app/models/users';
 import { UsersService } from '../../services/users.service';
@@ -26,7 +25,7 @@ export class UsersCreateComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  createUser(form: NgForm) {
+  create(form: NgForm) {
     console.log(form.value);
     this.userService.createUser(form.value)
     .subscribe(

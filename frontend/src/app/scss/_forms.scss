@@ -4,6 +4,7 @@
     color: $main__color;
     text-align: center;
     margin: .5rem auto;
+    white-space: nowrap;
 }
 
 
@@ -12,7 +13,6 @@
     bottom: 10vh !important;
     left: 30% !important;
     width: 360px !important;
-    //margin-left: 50% !important;
     overflow: hidden !important;
 }
 
