@@ -1,1 +1,109 @@
-<p>records-create works!</p>
+<div class="components userForms">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m4 l3">
+                <app-records-and-events-menu></app-records-and-events-menu>
+            </div>
+            <div class="col s12 m8 l9">
+                <h3 class="center formTitle">Creación de Registros</h3>
+                <form #Form="ngForm" (ngSubmit)="create(Form)">
+                    <div class="row">
+
+
+                        <div class="col s12 xl6">
+                            <!-- Columna 1 -->
+
+                            <!-- Nombre del empleado -->
+                            <div class="input-field">
+                                <input [(ngModel)]="record.idRecord" id="idRecord" name="idRecord" type="text" class="validate" disabled>
+                                <label for="idRecord">Nro. de Registro:</label>
+                            </div>
+
+                            <!-- Número de Identificación del empelado -->
+                            <div class="input-field inputfieldSelect">
+                                <select class="browser-default" id="identificationNumber" name="identificationNumber">
+                                    <option value="" disabled selected>Seleccione...</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                                <label class="labelSelect" for="identificationNumber">Número de Identificación</label>
+                            </div>
+
+                            <!-- Nombre del empleado -->
+                            <div class="input-field">
+                                <input [(ngModel)]="record.employee" id="employee" name="employee" type="text" class="validate" disabled>
+                                <label for="employee">Empleado:</label>
+                            </div>
+
+                            <!-- Suceso -->
+                            <div class="input-field inputfieldSelect">
+                                <select class="browser-default" [(ngModel)]="record.events" id="events" name="events">
+                                    <option value="" disabled selected>Seleccione...</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                                <label class="labelSelect" for="events">Suceso</label>
+                            </div>
+
+                            <!-- Fecha del incidente -->
+                            <div class="input-field">
+                                <input [(ngModel)]="record.dataIncident" id="dataIncident" name="dataIncident" type="date" class="validate">
+                                <label for="dataIncident">Fecha del Incidente:</label>
+                            </div>
+                        </div> <!-- Fin Columna 1 -->
+
+
+                        <div class="col s12 xl6">
+                            <!-- Columna 2 -->
+                            <div class="input-field">
+                                <textarea [(ngModel)]="record.description" id="description" name="description" class="materialize-textarea"></textarea>
+                                <label for="description">Descripción</label>
+                            </div>
+
+
+                            <!-- Motivo de anulación -->
+                            <div class="input-field" style="display: none;">
+                                <textarea [(ngModel)]="record.reasonForCancellation" id="reasonForCancellation" name="reasonForCancellation" class="materialize-textarea"></textarea>
+                                <label for="reasonForCancellation">Motivo Anulación:</label>
+                            </div>
+
+
+                            <!-- Parentesco contacto de Emergencia -->
+                            <div class="input-field">
+                                <input [(ngModel)]="record.digitalEvidence" id="digitalEvidence" name="digitalEvidence" type="text" class="validate">
+                                <label for="digitalEvidence">Evidencia Digital:</label>
+                            </div>
+
+                            <!-- Comentarios -->
+
+
+                        </div> <!-- Fin Columna 2 -->
+
+
+                        <!-- Área de botones -->
+                        <div class="col s12">
+                            <div class="row">
+                                <div class="col s6">
+                                    <button class="btn waves-effect waves-light right" type="submit">Guardar
+                                        <i class="material-icons right">save</i>
+                                    </button>
+                                </div>
+                                <div class="col s6">
+                                    <button (click)="clearData(Form)" class="btn waves-effect waves-light left clearData" type="button">Cancelar
+                                        <i class="material-icons right">clear</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Fin Área de Botones -->
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

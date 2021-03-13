@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Records } from '../../models/records';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-records-create',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecordsCreateComponent implements OnInit {
 
-  constructor() { }
+  record: Records;
+
+  constructor() {
+    this.record = new Records;
+  }
 
   ngOnInit(): void {
+  }
+
+  create(form: NgForm) {
+    console.log(form);
+  }
+
+  clearData(form?: NgForm) {
+    if (form) {
+      form.reset();
+      this.record = new Records;
+    }
   }
 
 }
