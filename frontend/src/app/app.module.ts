@@ -53,6 +53,8 @@ import { RecordsCancelComponent } from './components/records-cancel/records-canc
 import { EventsCreateComponent } from './components/events-create/events-create.component';
 import { EventsUpdateComponent } from './components/events-update/events-update.component';
 import { EventsActivateDesactivateComponent } from './components/events-activate-desactivate/events-activate-desactivate.component';
+import { ReportsComponent } from './components/reports/reports.component';
+import { ReportsMenuComponent } from './components/reports-menu/reports-menu.component';
 
 @NgModule({
   declarations: [
@@ -104,7 +106,9 @@ import { EventsActivateDesactivateComponent } from './components/events-activate
     RecordsCancelComponent,
     EventsCreateComponent,
     EventsUpdateComponent,
-    EventsActivateDesactivateComponent
+    EventsActivateDesactivateComponent,
+    ReportsComponent,
+    ReportsMenuComponent
   ],
   imports: [
     BrowserModule,
