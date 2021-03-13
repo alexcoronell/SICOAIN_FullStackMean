@@ -55,6 +55,15 @@ import { EventsUpdateComponent } from './components/events-update/events-update.
 import { EventsActivateDesactivateComponent } from './components/events-activate-desactivate/events-activate-desactivate.component';
 import { ReportsComponent } from './components/reports/reports.component';
 import { ReportsMenuComponent } from './components/reports-menu/reports-menu.component';
+import { ReportUsersComponent } from './components/report-users/report-users.component';
+import { ReportEmployeesComponent } from './components/report-employees/report-employees.component';
+import { ReportPositionsComponent } from './components/report-positions/report-positions.component';
+import { ReportCompaniesComponent } from './components/report-companies/report-companies.component';
+import { ReportVenuesComponent } from './components/report-venues/report-venues.component';
+import { ReportEpsComponent } from './components/report-eps/report-eps.component';
+import { ReportArlComponent } from './components/report-arl/report-arl.component';
+import { ReportRecordsComponent } from './components/report-records/report-records.component';
+import { ReportEventsComponent } from './components/report-events/report-events.component';
 
 @NgModule({
   declarations: [
@@ -108,7 +117,16 @@ import { ReportsMenuComponent } from './components/reports-menu/reports-menu.com
     EventsUpdateComponent,
     EventsActivateDesactivateComponent,
     ReportsComponent,
-    ReportsMenuComponent
+    ReportsMenuComponent,
+    ReportUsersComponent,
+    ReportEmployeesComponent,
+    ReportPositionsComponent,
+    ReportCompaniesComponent,
+    ReportVenuesComponent,
+    ReportEpsComponent,
+    ReportArlComponent,
+    ReportRecordsComponent,
+    ReportEventsComponent
   ],
   imports: [
     BrowserModule,
