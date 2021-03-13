@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const Users = require('../models/users');
+const bcrypt = require('bcrypt');
 
 const userCtrl = {};
 
@@ -72,26 +73,31 @@ userCtrl.deleteUser = async (req, res) => {
 
 // login
 userCtrl.loginUser = async (req, res) => {
-    const {
-        user,
-        password
-    } = req.body;
+    const user = req.body.user;
+    const password = req.body.password
+
+
     const userLogin = await Users.findOne({
         user
     })
     if (!userLogin) return res.status(401).send("The user doen't exist");
     if (userLogin.condition == false) return res.status(401).send("Inactive user");
-    if (userLogin.password !== password) return res.status(401).send("Wrong Password");
+    bcrypt.compare(password, userLogin.password)
+        .then(match => {
+            if (match) {
+                const userData = userLogin;
 
-    const userData = userLogin;
-
-    const token = jwt.sign({
-        _id: user._id
-    }, 'secretKey');
-    return res.status(200).json({
-        token,
-        userData
-    });
+                const token = jwt.sign({
+                    _id: user._id
+                }, 'secretKey');
+                return res.status(200).json({
+                    token,
+                    userData
+                })
+            } else {
+                return res.status(401).send("Wrong Password");
+            }
+        })
 }
 
 // Verificación del token
@@ -109,5 +115,6 @@ userCtrl.verifyToken = (req, res, next) => {
     req.userId = payload._id;
     next();
 }
+
 
 module.exports = userCtrl;
