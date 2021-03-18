@@ -7,16 +7,23 @@ import { Users } from '../models/users';
 })
 export class UsersService {
 
+  searchItem: Users;
+  user: Users;
   newUser: Users;
   users: Users[];
   
   private readonly URL_SERVER = "http://localhost:3000/api/users/";
   private readonly URL_NEW_USER = "newUser";
+  private readonly URL_GET_USER = "getUser";
   private readonly URL_UPDATE_USER = "update";
 
   constructor(private http: HttpClient) { }
 
   createUser(newUser: Users) {
-    return this.http.post<any>(this.URL_SERVER + this.URL_NEW_USER, newUser)
+    return this.http.post<any>(this.URL_SERVER + this.URL_NEW_USER, newUser);
+  }
+
+  getUser(searchItem) {
+    return this.http.post<any>(this.URL_SERVER + this.URL_GET_USER, searchItem);
   }
 }

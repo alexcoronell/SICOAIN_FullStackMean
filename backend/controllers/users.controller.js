@@ -9,10 +9,23 @@ userCtrl.getUsers = async (req, res) => {
     res.json(userList);
 }
 
+
+// Obtener usuario
 userCtrl.getUser = async (req, res) => {
-    const user = await Users.findById(req.params.id);
-    res.json(user);
+    
+    const user = req.body.user;
+
+    const userData = await Users.findOne({
+        user
+    });
+
+    if (!userData) return res.status(401).send("The user doen't exist");
+
+    if (userData) return res.status(200).json({userData});
+        
 }
+
+
 
 // Create user
 userCtrl.createUsers = async (req, res) => {
@@ -70,6 +83,8 @@ userCtrl.deleteUser = async (req, res) => {
         'status': 'User deleted'
     })
 }
+
+
 
 // login
 userCtrl.loginUser = async (req, res) => {

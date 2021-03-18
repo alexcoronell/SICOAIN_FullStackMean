@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login.service';
 import { UserDataService } from '../../services/user-data.service';
 
@@ -13,8 +13,8 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   userLogin = {
-    user: '',
-    password: ''
+    user: 'alexcoronell',
+    password: '123'
   }
   userData:any = [];
 

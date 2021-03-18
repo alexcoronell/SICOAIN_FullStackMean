@@ -26,7 +26,6 @@ export class UsersCreateComponent implements OnInit {
   }
 
   create(form: NgForm) {
-    console.log(form.value);
     this.userService.createUser(form.value)
     .subscribe(
       res => {

@@ -54,6 +54,14 @@
     color: $main__color !important;
 }
 
+.errorSearch {
+    font-size: 0.9rem;
+    color: red;
+    position: absolute;
+    display: block;
+    transform: translateY(-1.3rem) !important;
+}
+
 
 @media (max-width: 600px) {
     .formTitle {
