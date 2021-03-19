@@ -16,6 +16,7 @@ export class UsersService {
   private readonly URL_NEW_USER = "newUser";
   private readonly URL_GET_USER = "getUser";
   private readonly URL_UPDATE_USER = "update";
+  private readonly URL_PASSWORD_UPDATE_USER = "passwordUpdate";
 
   constructor(private http: HttpClient) { }
 
@@ -30,4 +31,9 @@ export class UsersService {
   update(user) {
     return this.http.post<any>(this.URL_SERVER + this.URL_UPDATE_USER, user);
   }
+
+  passwordUpdate(user) {
+    return this.http.post<any>(this.URL_SERVER + this.URL_PASSWORD_UPDATE_USER, user);
+  }
+
 }

@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Users } from '../../models/users';
+import { UsersService } from '../../services/users.service';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+
+declare var M: any;
 
 @Component({
   selector: 'app-users-password-update',
@@ -8,32 +13,83 @@ import { NgForm } from '@angular/forms';
 })
 export class UsersPasswordUpdateComponent implements OnInit {
 
+  user: any = {};
+  searchItem: Users;
   showForm: boolean = false;
   showSearchForm: boolean = true;
+  searchValidate: boolean = false;
 
-  constructor() { }
+  constructor(
+    private userService: UsersService,
+    private router: Router
+  ) {
+    this.user = new Users;
+    this.searchItem = new Users;
+  }
 
   ngOnInit(): void {
   }
 
-  searchUser() {
-    console.log('Funciono');
-    this.showForm = true;
-    this.showSearchForm = false;
+  search() {
+    this.searchItem.user = this.searchItem.user.trim();
+    this.userService.getUser(this.searchItem)
+    .subscribe(
+      res => {
+        this.user = res.userData;
+        this.showForm = true;
+        this.showSearchForm = false;
+      },
+      err => {
+        console.log(err.error)
+        console.log(this.searchItem);
+        console.log("Falló");
+        if (err.error == "The user doen't exist") {
+          this.searchValidate = true;
+        setTimeout (() => {
+          this.searchValidate = false;
+      }, 1500);
+        }
+          this.clearSearchForm();
+        }
+    )
   }
 
-  updatePasswordUser(form: NgForm){
-    console.log(form);
-    this.showForm = false;
-    this.showSearchForm = true;
+  passwordUpdate(Form: NgForm){
+    this.userService.passwordUpdate(Form.value)
+    .subscribe(
+      res => {
+        M.toast({
+        html: 'Contraseña actualizada correctamente',
+        displayLength: 1500
+      });
+        setTimeout (() => {
+        this.router.navigate(['/users']);
+    }, 1500);
+    this.clearData(Form);
+    },
+      err => {
+        console.log(err)
+        M.toast({
+          html: 'Contraseña no se pudo actualizar',
+          displayLength: 1500
+        })
+    })
   }
 
-  clearData(form?: NgForm) {
-    if (form) {
-      form.reset();
+  
+  clearData(Form?: NgForm) {
+    if (Form) {
+      Form.reset();
     }
     this.showForm = false;
     this.showSearchForm = true;
+    this.user = new Users;
+    this.clearSearchForm();
   }
 
-}
+  clearSearchForm() {
+    this.searchItem.user = "";
+  }
+  }
+
+

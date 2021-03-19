@@ -78,10 +78,6 @@ export class UsersUpdateComponent implements OnInit {
     })
   }
 
-  create(form: NgForm) {
-    
-  }
-
   clearData(Form?: NgForm) {
     if (Form) {
       Form.reset();

@@ -59,7 +59,6 @@ userCtrl.updateUsers = async (req, res) => {
             analyst: req.body.analyst,
             assistant: req.body.assistant,
             consultant: req.body.consultant,
-            contidion: req.body.condition
         }
     }
 
@@ -72,7 +71,35 @@ userCtrl.updateUsers = async (req, res) => {
     })
 }
 
-userCtrl.updateUserPassword = function() {
+
+// Actualización de contraseña
+userCtrl.passwordUpdate = async (req, res) => {
+    const {
+        id
+    } = req.params;
+    
+    const filter = {
+        "_id": req.body._id
+        }
+
+    const password = req.body.password;
+    var salt = bcrypt.genSaltSync(10);
+    var hash = bcrypt.hashSync(password, salt)
+  
+
+    const update = {
+        $set: {
+            password: hash
+        }
+    }
+
+    await Users.updateOne( filter, update, 
+        {
+       new: true
+    });
+    res.json({
+        'status': 'password updated'
+    })
 
 }
 
