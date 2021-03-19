@@ -54,12 +54,20 @@
     color: $main__color !important;
 }
 
-.errorSearch {
+.errorSearch,
+.errorMessage {
     font-size: 0.9rem;
     color: red;
     position: absolute;
     display: block;
+}
+
+.errorSearch {
     transform: translateY(-1.3rem) !important;
+}
+
+.errorMessage {
+    transform: translate(4rem, -0.7rem) !important;
 }
 
 

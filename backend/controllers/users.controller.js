@@ -29,7 +29,13 @@ userCtrl.getUser = async (req, res) => {
 
 // Create user
 userCtrl.createUsers = async (req, res) => {
-    const newUser = new Users(req.body)
+    const newUser = new Users(req.body);
+    const user = req.body.user;
+    const userData = await Users.findOne({
+        user
+    });
+    if (userData) return res.status(401).send("This username is already in use. Choose another");
+
     await newUser.save();
     const token = jwt.sign({
         _id: newUser._id

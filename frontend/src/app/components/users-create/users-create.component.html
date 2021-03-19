@@ -12,6 +12,7 @@
                     <div class="input-field">
                         <input [(ngModel)]="newUser.user" id="user" name="user" type="text" class="validate">
                         <label for="user">Usuario:</label>
+                        <span *ngIf="errorMessage" class="errorMessage">Este nombre de usuario ya está en uso. Elige otro</span>
                     </div>
 
                     <!-- User Name -->

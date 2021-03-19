@@ -13,6 +13,7 @@ declare var M: any;
 })
 export class UsersCreateComponent implements OnInit {
 
+  errorMessage:boolean =  true;
   newUser: Users;
 
   constructor(
@@ -39,6 +40,10 @@ export class UsersCreateComponent implements OnInit {
     }, 1500);
     },
       err => {
+        this.errorMessage = true;
+        setTimeout (() => {
+          this.errorMessage = false;
+      }, 1500);
         M.toast({
           html: 'Usuario no se pudo guardar',
           displayLength: 1500
