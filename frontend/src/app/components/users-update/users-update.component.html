@@ -21,7 +21,11 @@
 
 
                 <!-- Formulatio de actualización -->
-                <form *ngIf="showForm" #Form="ngForm" (ngSubmit)="updateUser(Form)">
+                <form *ngIf="showForm" #Form="ngForm" (ngSubmit)="update(Form)">
+
+                    <!-- ID de usuario -->
+                    <input [(ngModel)]="user._id" id="_id" name="_id" type="hidden">
+
                     <!-- User -->
                     <div class="input-field">
                         <input [(ngModel)]="user.user" id="user" name="user" type="text" class="validate">
@@ -74,12 +78,7 @@
                         </div>
                     </ul>
 
-                    <!-- Password -->
-                    <div class="input-field">
-                        <input [(ngModel)]="user.password" id="password" name="password" type="password" class="validate">
-                        <label for="password" class="active">Contraseña:</label>
-                    </div>
-
+                    <!-- Área de botoner -->
                     <div class="row">
                         <div class="col s6">
                             <button class="btn waves-effect waves-light right" type="submit">Guardar

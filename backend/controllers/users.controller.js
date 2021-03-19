@@ -39,25 +39,33 @@ userCtrl.createUsers = async (req, res) => {
     });
 }
 
+
+// Actualización de usuario
 userCtrl.updateUsers = async (req, res) => {
     const {
         id
     } = req.params;
-    const user = {
-        user: req.body.user,
-        name: req.body.name,
-        superuser: req.body.superuser,
-        admin: req.body.admin,
-        analyst: req.body.analyst,
-        assistant: req.body.assistant,
-        consultant: req.body.consultant,
-        password: req.body.password,
-        contidion: req.body.condition
+
+    const filter = {
+        "_id": req.body._id
+        }
+
+    const update = {
+        $set: {
+            user: req.body.user,
+            name: req.body.name,
+            superuser: req.body.superuser,
+            admin: req.body.admin,
+            analyst: req.body.analyst,
+            assistant: req.body.assistant,
+            consultant: req.body.consultant,
+            contidion: req.body.condition
+        }
     }
-    await Users.findByIdAndUpdate(id, {
-        $set: user
-    }, {
-        new: false
+
+    await Users.updateOne( filter, update, 
+        {
+       new: true
     });
     res.json({
         'status': 'user updated'

@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Users } from '../../models/users';
 import { UsersService } from '../../services/users.service';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+
+
+declare var M: any;
 
 @Component({
   selector: 'app-users-update',
@@ -18,7 +22,8 @@ export class UsersUpdateComponent implements OnInit {
   searchValidate: boolean = false;
 
   constructor(
-    private userService: UsersService
+    private userService: UsersService,
+    private router: Router
   ) {
     this.user = new Users;
     this.searchItem = new Users;
@@ -33,8 +38,6 @@ export class UsersUpdateComponent implements OnInit {
     .subscribe(
       res => {
         this.user = res.userData;
-        console.log(res.userData);
-        console.log(this.user);
         this.showForm = true;
         this.showSearchForm = false;
       },
@@ -53,18 +56,39 @@ export class UsersUpdateComponent implements OnInit {
     )
   }
 
-  update(form: NgForm){
-    console.log(form);
-    this.showForm = false;
-    this.showSearchForm = true;
+  update(Form: NgForm){
+    this.userService.update(Form.value)
+    .subscribe(
+      res => {
+        M.toast({
+        html: 'Usuario actualizado correctamente',
+        displayLength: 1500
+      });
+        setTimeout (() => {
+        this.router.navigate(['/users']);
+    }, 1500);
+    this.clearData(Form);
+    },
+      err => {
+        console.log(err)
+        M.toast({
+          html: 'Usuario no se pudo actualizar',
+          displayLength: 1500
+        })
+    })
   }
 
-  clearData(form?: NgForm) {
-    if (form) {
-      form.reset();
+  create(form: NgForm) {
+    
+  }
+
+  clearData(Form?: NgForm) {
+    if (Form) {
+      Form.reset();
     }
     this.showForm = false;
     this.showSearchForm = true;
+    this.user = new Users;
     this.clearSearchForm();
   }
 

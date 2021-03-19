@@ -26,4 +26,8 @@ export class UsersService {
   getUser(searchItem) {
     return this.http.post<any>(this.URL_SERVER + this.URL_GET_USER, searchItem);
   }
+
+  update(user) {
+    return this.http.post<any>(this.URL_SERVER + this.URL_UPDATE_USER, user);
+  }
 }
