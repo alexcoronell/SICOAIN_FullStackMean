@@ -4,41 +4,49 @@
             <div class="col s12 m4 l3">
                 <app-users-menu></app-users-menu>
             </div>
-            <div class="col s12 m8 l6">
+            <div class="col s12 m8 offset-l2 l5 offset-xl2 xl4">
                 <h3 class="center formTitle">Act/Desact. de Usuarios</h3>
 
                 <!-- Formulario de búsqueda -->
-                <form *ngIf="showSearchForm" #userSearchForm="ngForm" (ngSubmit)="searchUser()">
+                <form *ngIf="showSearchForm" #SearchForm="ngForm" (submit)="search()">
                     <div class="input-field">
-                        <input id="userSearch" name="userSearch" type="text" class="validate">
-                        <label for="user">Usuario:</label>
+                        <input [(ngModel)]="searchItem.user" id="searchItem" name="searchItem" type="text" class="validate">
+                        <label for="searchItem">Usuario:</label>
                     </div>
+                    <span class="errorSearch" *ngIf="searchValidate">Usuario no encontrado</span>
                     <button class="btn waves-effect waves-light right" type="submit">Buscar
                         <i class="material-icons right">search</i>
                     </button>
                 </form>
 
                 <!-- Formulario activación / desactivación de usuario -->
-                <form *ngIf="showForm" #userForm="ngForm" (ngSubmit)="actDesactUser(userForm)">
+                <form *ngIf="showForm" #Form="ngForm" (ngSubmit)="actDesact(Form)">
+                    <!-- ID de usuario -->
+                    <input [(ngModel)]="user._id" id="_id" name="_id" type="hidden">
+
                     <!-- User -->
                     <div class="input-field">
-                        <input id="user" name="user" type="text" class="validate">
-                        <label for="user">Usuario:</label>
+                        <input [(ngModel)]="user.user" id="user" name="user" type="text" class="validate" disabled>
+                        <label for="user" class="active">Usuario:</label>
                     </div>
 
                     <!-- User Name -->
                     <div class="input-field">
-                        <input id="name" name="name" type="text" class="validate">
-                        <label for="name">Nombre:</label>
+                        <input [(ngModel)]="user.name" id="name" name="name" type="text" class="validate" disabled>
+                        <label for="name" class="active">Nombre:</label>
                     </div>
 
+                    <!-- User Condition -->
+                    <input [(ngModel)]="user.condition" id="condition" name="condition" type="text">
 
+
+                    <!-- Área de Botones -->
                     <div class="row">
                         <div class="col s6">
-                            <button class="btn waves-effect waves-light right inactivate" type="submit">Desactivar
+                            <button *ngIf="user.condition" class="btn waves-effect waves-light right inactivate" type="submit">Desactivar
                                 <i class="material-icons right">save</i>
                             </button>
-                            <button class="btn waves-effect waves-light right activate" type="submit">Activar
+                            <button *ngIf="!user.condition" class="btn waves-effect waves-light right activate" type="submit">Activar
                                 <i class="material-icons right">save</i>
                             </button>
                         </div>
@@ -48,7 +56,11 @@
                             </button>
                         </div>
                     </div>
+
+
                 </form>
+
+
             </div>
         </div>
     </div>

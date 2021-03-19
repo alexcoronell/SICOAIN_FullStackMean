@@ -103,13 +103,39 @@ userCtrl.passwordUpdate = async (req, res) => {
 
 }
 
-userCtrl.inactivateUser = function() {
+userCtrl.actDesact = async (req, res) => {
+    const {
+        id
+    } = req.params;
 
+    const filter = {
+        "_id": req.body._id
+        }
+
+    const oldCondition = req.body.condition;
+    var newCondition;
+
+    if (oldCondition == true) {
+        newCondition = false
+    } else {
+        newCondition = true
+    }
+
+    const update = {
+        $set: {
+            condition: newCondition
+        }
+    }
+
+    await Users.updateOne( filter, update, 
+        {
+       new: true
+    });
+    res.json({
+        'status': 'condition updated'
+    })
 }
 
-userCtrl.activateUser = function() {
-
-}
 
 // Delete user
 userCtrl.deleteUser = async (req, res) => {

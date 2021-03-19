@@ -10,6 +10,7 @@ router.post('/login', users.loginUser);
 router.post('/dataUser', users.getUser);
 router.post('/update', users.updateUsers);
 router.post('/passwordUpdate', users.passwordUpdate);
+router.post('/actDesact', users.actDesact);
 router.delete(':id', users.deleteUser);
 
 module.exports = router;
