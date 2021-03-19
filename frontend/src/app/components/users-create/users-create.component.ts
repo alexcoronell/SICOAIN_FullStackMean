@@ -13,7 +13,7 @@ declare var M: any;
 })
 export class UsersCreateComponent implements OnInit {
 
-  errorMessage:boolean =  true;
+  errorMessage:boolean =  false;
   newUser: Users;
 
   constructor(

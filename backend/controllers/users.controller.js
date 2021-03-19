@@ -88,14 +88,12 @@ userCtrl.passwordUpdate = async (req, res) => {
         "_id": req.body._id
         }
 
-    const password = req.body.password;
-    var salt = bcrypt.genSaltSync(10);
-    var hash = bcrypt.hashSync(password, salt)
-  
+    const newPassword = encryptPassword(req.body.password);
+    
 
     const update = {
         $set: {
-            password: hash
+            password: newPassword
         }
     }
 
@@ -196,6 +194,12 @@ userCtrl.verifyToken = (req, res, next) => {
     const payload = jwt.verify(token, 'secretKey');
     req.userId = payload._id;
     next();
+}
+
+function encryptPassword(password) {
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(password, salt)
+    return hash;
 }
 
 
