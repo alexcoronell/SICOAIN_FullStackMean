@@ -8,52 +8,68 @@ epsCtrl.getEpss = async (req, res) => {
 }
 
 epsCtrl.getEps = async (req, res) => {
-    const eps = await Epss.findById(req.params.id);
-    res.json(eps);
+    const name = req.body.name;
+    const EpsData = await Epss.findOne({
+        name
+    });
+    if (!EpsData) return res.status(401).send("The EPS doen't exist");
+    if (EpsData) return res.status(200).json({
+        EpsData
+    });
 }
 
 epsCtrl.createEpss = async (req, res) => {
-    const eps = new Epss(req.body);
-    await eps.save();
+    const newEps = new Epss(req.body);
+    const name = req.body.name;
+    const EpsData = await Eps.findOne({
+        name
+    });
+    if (EpsData) return res.status(401).send("This EPS is already registered");
+    await newEps.save();
     res.json({
-        'status': 'Eps saved'
+        'status': 'EPS saved'
     });
 }
 
 epsCtrl.updateEpss = async (req, res) => {
-    const {
-        id
-    } = req.params;
-    const eps = {
-        eps: req.body.eps,
-        name: req.body.name,
-        phone: req.body.phone,
-        address: req.body.address,
-        email: req.body.email,
-        contidion: req.body.condition
+    const filter = {
+        "_id": req.body._id
     }
-    await Epss.findByIdAndUpdate(id, {
-        $set: eps
-    }, {
+    const update = {
+        $set: {
+            name: req.body.name,
+            description: req.body.description
+        }
+    }
+    await Epss.updateOne(filter, update, {
         new: false
     });
     res.json({
-        'status': 'Eps updated'
+        'status': 'Position updated'
     })
 }
 
-epsCtrl.inactivateEps = function() {
-
-}
-
-epsCtrl.activateEps = function() {
-
-}
-
-epsCtrl.deleteEpss = async (req, res) => {
-    await Epss.findByIdAndDelete(req.params.id)
+epsCtrl.actDesact = async (req, res) => {
+    const filter = {
+        "_id": req.body._id
+    }
+    const oldCondition = req.body.condition;
+    var newCondition;
+    if (oldCondition == true) {
+        newCondition = false
+    } else {
+        newCondition = true
+    }
+    const update = {
+        $set: {
+            condition: newCondition
+        }
+    }
+    await Epss.updateOne(filter, update, {
+        new: true
+    });
     res.json({
-        'status': 'Eps deleted'
+        'status': 'condition updated'
     })
 }
 
