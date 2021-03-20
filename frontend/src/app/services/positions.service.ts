@@ -26,7 +26,7 @@ export class PositionsService {
     return this.http.post<any>(this.URL_SERVER + this.URL_NEW, newPosition);
   }
 
-  getCompany(searchItem) {
+  getPosition(searchItem) {
     return this.http.post<any>(this.URL_SERVER + this.URL_GET, searchItem);
   }
 
