@@ -8,30 +8,40 @@ positionCtrl.getPositions = async (req, res) => {
 }
 
 positionCtrl.getPosition = async (req, res) => {
-    const position = await Positions.findById(req.params.id);
-    res.json(position);
+    const name = req.body.name;
+    const positionData = await Positions.findOne({
+        name
+    });
+    if (!positionData) return res.status(401).send("The position doen't exist");
+    if (positionData) return res.status(200).json({
+        positionData
+    });
 }
 
 positionCtrl.createPositions = async (req, res) => {
-    const position = new Positions(req.body);
-    await position.save();
+    const newPosition = new Positions(req.body);
+    const name = req.body.name;
+    const positionData = await Positions.findOne({
+        name
+    });
+    if (positionData) return res.status(401).send("This position is already registered");
+    await newPosition.save();
     res.json({
         'status': 'Position saved'
     });
 }
 
 positionCtrl.updatePositions = async (req, res) => {
-    const {
-        id
-    } = req.params;
-    const position = {
-        name: req.body.name,
-        description: req.body.description,
-        contidion: req.body.condition
+    const filter = {
+        "_id": req.body._id
     }
-    await Positions.findByIdAndUpdate(id, {
-        $set: position
-    }, {
+    const update = {
+        $set: {
+            name: req.body.name,
+            description: req.body.description
+        }
+    }
+    await Positions.updateOne(filter, update, {
         new: false
     });
     res.json({
@@ -40,19 +50,29 @@ positionCtrl.updatePositions = async (req, res) => {
 }
 
 
-positionCtrl.inactivateposition = function() {
-
-}
-
-positionCtrl.activateposition = function() {
-
-}
-
-positionCtrl.deletePositions = async (req, res) => {
-    await Positions.findByIdAndDelete(req.params.id)
+positionCtrl.actDesact = async (req, res) => {
+    const filter = {
+        "_id": req.body._id
+    }
+    const oldCondition = req.body.condition;
+    var newCondition;
+    if (oldCondition == true) {
+        newCondition = false
+    } else {
+        newCondition = true
+    }
+    const update = {
+        $set: {
+            condition: newCondition
+        }
+    }
+    await Positions.updateOne(filter, update, {
+        new: true
+    });
     res.json({
-        'status': 'Position deleted'
+        'status': 'condition updated'
     })
 }
+
 
 module.exports = positionCtrl;
