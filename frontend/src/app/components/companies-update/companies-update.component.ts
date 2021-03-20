@@ -62,7 +62,7 @@ export class CompaniesUpdateComponent implements OnInit {
         displayLength: 1500
       });
         setTimeout (() => {
-        this.router.navigate(['/users']);
+        this.router.navigate(['/companies']);
     }, 1500);
     this.clearData(Form);
     },
