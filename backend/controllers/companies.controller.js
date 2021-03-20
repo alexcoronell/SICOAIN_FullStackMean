@@ -10,9 +10,9 @@ companyCtrl.getCompanies = async (req, res) => {
 
 // Get Company
 companyCtrl.getCompany = async (req, res) => {
-    const company = req.body.name;
+    const name = req.body.name;
     const companyData = await Companies.findOne({
-        company
+        name
     });
     if (!companyData) return res.status(401).send("The company doen't exist");
     if (companyData) return res.status(200).json({
@@ -45,7 +45,6 @@ companyCtrl.updateCompanies = async (req, res) => {
             name: req.body.name,
             phone: req.body.phone,
             address: req.body.address,
-            contidion: req.body.condition
         }
     }
     await Companies.updateOne(filter, update, {

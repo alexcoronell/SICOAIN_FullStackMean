@@ -26,7 +26,7 @@ export class CompaniesService {
     return this.http.post<any>(this.URL_SERVER + this.URL_NEW, newCompany);
   }
 
-  getUser(searchItem) {
+  getCompany(searchItem) {
     return this.http.post<any>(this.URL_SERVER + this.URL_GET, searchItem);
   }
 
