@@ -4,16 +4,17 @@
             <div class="col s12 m4 l3">
                 <app-companies-menu></app-companies-menu>
             </div>
-            <div class="col s12 m8 l6">
+            <div class="col s12 m8 offset-l2 l5 offset-xl2 xl4">
                 <h3 class="center formTitle">Creación de Compañías</h3>
 
-                <form #Form="ngForm" (ngSubmit)="createCompany(Form)">
+                <form #Form="ngForm" (ngSubmit)="create(Form)">
 
 
                     <!-- Name -->
                     <div class="input-field">
                         <input [(ngModel)]="company.name" id="name" name="name" type="text" class="validate">
                         <label for="name">Nombre:</label>
+                        <span *ngIf="errorMessage" class="errorMessage">Esta empresa ya se encuentra registrada</span>
                     </div>
 
                     <!-- Phone -->
@@ -27,6 +28,8 @@
                         <textarea [(ngModel)]="company.address" id="address" name="address" id="address" class="validate materialize-textarea"></textarea>
                         <label for="address">Descripción:</label>
                     </div>
+
+                    <input [(ngModel)]="company.condition" type="hidden" name="condition" id="condition" value="true">
 
 
                     <!-- Área Botones -->

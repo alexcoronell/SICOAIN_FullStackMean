@@ -25,7 +25,7 @@ companyCtrl.createCompanies = async (req, res) => {
     const newCompany = new Companies(req.body);
     const name = req.body.name;
     const companyData = await Companies.findOne({
-        company
+        name
     });
     if (companyData) return res.status(401).send("This company is already registered");
     await newCompany.save();
