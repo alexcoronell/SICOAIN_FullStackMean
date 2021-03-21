@@ -9,12 +9,12 @@ epsCtrl.getEpss = async (req, res) => {
 
 epsCtrl.getEps = async (req, res) => {
     const name = req.body.name;
-    const EpsData = await Epss.findOne({
+    const epsData = await Epss.findOne({
         name
     });
-    if (!EpsData) return res.status(401).send("The EPS doen't exist");
-    if (EpsData) return res.status(200).json({
-        EpsData
+    if (!epsData) return res.status(401).send("The EPS doen't exist");
+    if (epsData) return res.status(200).json({
+        epsData
     });
 }
 
@@ -38,7 +38,9 @@ epsCtrl.updateEpss = async (req, res) => {
     const update = {
         $set: {
             name: req.body.name,
-            description: req.body.description
+            phone: req.body.phone,
+            address: req.body.address,
+            email: req.body.email
         }
     }
     await Epss.updateOne(filter, update, {

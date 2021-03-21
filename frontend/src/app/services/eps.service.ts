@@ -8,9 +8,9 @@ import { Eps } from '../models/eps';
 export class EpsService {
 
   searchItem: Eps;
-  Eps: Eps;
+  eps: Eps;
   newEps: Eps;
-  Epss: Eps[];
+  epss: Eps[];
 
   private readonly URL_SERVER = "http://localhost:3000/api/epss/";
   private readonly URL_NEW = "create";
@@ -30,11 +30,11 @@ export class EpsService {
     return this.http.post<any>(this.URL_SERVER + this.URL_GET, searchItem);
   }
 
-  update(Eps) {
-    return this.http.post<any>(this.URL_SERVER + this.URL_UPDATE, Eps);
+  update(eps) {
+    return this.http.post<any>(this.URL_SERVER + this.URL_UPDATE, eps);
   }
 
-  actDesact(Eps) {
-    return this.http.post<any>(this.URL_SERVER + this.URL_ACT_DESACT, Eps);
+  actDesact(eps) {
+    return this.http.post<any>(this.URL_SERVER + this.URL_ACT_DESACT, eps);
   }
 }
