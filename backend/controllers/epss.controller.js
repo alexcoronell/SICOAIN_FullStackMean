@@ -21,7 +21,7 @@ epsCtrl.getEps = async (req, res) => {
 epsCtrl.createEpss = async (req, res) => {
     const newEps = new Epss(req.body);
     const name = req.body.name;
-    const EpsData = await Eps.findOne({
+    const EpsData = await Epss.findOne({
         name
     });
     if (EpsData) return res.status(401).send("This EPS is already registered");
