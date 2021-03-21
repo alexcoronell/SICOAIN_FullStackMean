@@ -12,7 +12,7 @@ epsCtrl.getEps = async (req, res) => {
     const epsData = await Epss.findOne({
         name
     });
-    if (!epsData) return res.status(401).send("The EPS doen't exist");
+    if (!epsData) return res.status(401).send("The EPS doesn't exist");
     if (epsData) return res.status(200).json({
         epsData
     });

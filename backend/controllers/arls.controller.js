@@ -12,7 +12,7 @@ arlCtrl.getArl = async (req, res) => {
     const arlData = await Arls.findOne({
         name
     });
-    if (!arlData) return res.status(401).send("The ARL doen't exist");
+    if (!arlData) return res.status(401).send("The ARL doens't exist");
     if (arlData) return res.status(200).json({
         arlData
     });

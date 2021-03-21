@@ -12,7 +12,7 @@ positionCtrl.getPosition = async (req, res) => {
     const positionData = await Positions.findOne({
         name
     });
-    if (!positionData) return res.status(401).send("The position doen't exist");
+    if (!positionData) return res.status(401).send("The position doesn't exist");
     if (positionData) return res.status(200).json({
         positionData
     });

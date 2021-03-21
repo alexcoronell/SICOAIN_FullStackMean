@@ -14,7 +14,7 @@ companyCtrl.getCompany = async (req, res) => {
     const companyData = await Companies.findOne({
         name
     });
-    if (!companyData) return res.status(401).send("The company doen't exist");
+    if (!companyData) return res.status(401).send("The company doesn't exist");
     if (companyData) return res.status(200).json({
         companyData
     });

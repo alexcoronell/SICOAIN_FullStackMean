@@ -19,7 +19,7 @@ userCtrl.getUser = async (req, res) => {
         user
     });
 
-    if (!userData) return res.status(401).send("The user doen't exist");
+    if (!userData) return res.status(401).send("The user doesn't exist");
 
     if (userData) return res.status(200).json({
         userData
