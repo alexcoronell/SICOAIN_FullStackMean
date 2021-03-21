@@ -8,29 +8,39 @@ eventCtrl.getEvents = async (req, res) => {
 }
 
 eventCtrl.getEvent = async (req, res) => {
-    const event = await Events.findById(req.params.id);
-    res.json(event);
+    const name = req.body.name;
+    const eventData = await Events.findOne({
+        name
+    });
+    if (!eventData) return res.status(401).send("The Event doesn't exist");
+    if (eventData) return res.status(200).json({
+        eventData
+    });
 }
 
 eventCtrl.createEvents = async (req, res) => {
-    const event = new Events(req.body);
-    await event.save();
+    const newEvent = new Events(req.body);
+    const name = req.body.name;
+    const eventData = await Events.findOne({
+        name
+    });
+    if (eventData) return res.status(401).send("This Event is already registered");
+    await newEvent.save();
     res.json({
         'status': 'Event saved'
     });
 }
 
 eventCtrl.updateEvents = async (req, res) => {
-    const {
-        id
-    } = req.params;
-    const event = {
-        name: req.body.name,
-        contidion: req.body.condition
+    const filter = {
+        "_id": req.body._id
     }
-    await Events.findByIdAndUpdate(id, {
-        $set: event
-    }, {
+    const update = {
+        $set: {
+            name: req.body.name
+        }
+    }
+    await Events.updateOne(filter, update, {
         new: false
     });
     res.json({
@@ -38,18 +48,27 @@ eventCtrl.updateEvents = async (req, res) => {
     })
 }
 
-eventCtrl.activateEvent = function() {
-
-}
-
-eventCtrl.inactivateEvent = function() {
-
-}
-
-eventCtrl.deleteEvents = async (req, res) => {
-    await Events.findByIdAndDelete(req.params.id)
+eventCtrl.actDesact = async (req, res) => {
+    const filter = {
+        "_id": req.body._id
+    }
+    const oldCondition = req.body.condition;
+    var newCondition;
+    if (oldCondition == true) {
+        newCondition = false
+    } else {
+        newCondition = true
+    }
+    const update = {
+        $set: {
+            condition: newCondition
+        }
+    }
+    await Events.updateOne(filter, update, {
+        new: true
+    });
     res.json({
-        'status': 'Event deleted'
+        'status': 'condition updated'
     })
 }
 
