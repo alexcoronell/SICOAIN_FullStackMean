@@ -4,57 +4,52 @@
             <div class="col s12 m4 l3">
                 <app-venues-menu></app-venues-menu>
             </div>
-            <div class="col s12 m8 l9">
+            <div class="col s12 m8 offset-l2 l5 offset-xl2 xl4">
                 <h3 class="center formTitle">Act/Desact. de EPS</h3>
 
                 <!-- Formulario de búsqueda -->
-                <div class="row">
-                    <div class="col s12 offset-l3 l6">
-                        <form *ngIf="showSearchForm" #SearchForm="ngForm" (ngSubmit)="search()">
-                            <div class="input-field">
-                                <input id="Search" name="Search" type="text" class="validate">
-                                <label for="Search">EPS:</label>
-                            </div>
-                            <button class="btn waves-effect waves-light right" type="submit">Buscar
-                                <i class="material-icons right">search</i>
-                            </button>
-                        </form>
+                <form *ngIf="showSearchForm" #SearchForm="ngForm" (ngSubmit)="search()">
+                    <div class="input-field">
+                        <input [(ngModel)]="searchItem.name" id="searchItem" name="searchItem" type="text" class="validate" autofocus>
+                        <label for="Search">Buscar EPS:</label>
                     </div>
-                </div>
+                    <span class="errorSearch" *ngIf="searchValidate">EPS no encontrada</span>
+                    <button class="btn waves-effect waves-light right" type="submit">Buscar
+                        <i class="material-icons right">search</i>
+                    </button>
+                </form>
 
                 <!-- Formulario de edición -->
-                <form *ngIf="showForm" #Form="ngForm" (ngSubmit)="activateDesactivate(Form)">
+                <form *ngIf="showForm" #Form="ngForm" (ngSubmit)="actDesact(Form)">
 
-                    <div class="row">
-                        <div class="col s12 offset-l3 l6">
+                    <!-- ID  -->
+                    <input [(ngModel)]="eps._id" id="_id" name="_id" type="hidden">
 
-                            <!-- Name -->
-                            <div class="input-field">
-                                <input [(ngModel)]="eps.name" id="name" name="name" type="text" class="validate">
-                                <label for="name">Nombre:</label>
-                            </div>
-
-
-                            <!-- Área de botones -->
-                            <div class="row">
-                                <div class="col s6">
-                                    <button class="btn waves-effect waves-light right inactivate" type="submit">Desactivar
-                                        <i class="material-icons right">save</i>
-                                    </button>
-                                    <button class="btn waves-effect waves-light right activate" type="submit">Activar
-                                        <i class="material-icons right">save</i>
-                                    </button>
-                                </div>
-                                <div class="col s6">
-                                    <button (click)="clearData(Form)" class="btn waves-effect waves-light left cleanerButtom" type="button">Cancelar
-                                        <i class="material-icons right">clear</i>
-                                    </button>
-                                </div>
-                            </div>
-
-                        </div>
+                    <!-- Name -->
+                    <div class="input-field">
+                        <input [(ngModel)]="eps.name" id="name" name="name" type="text" class="validate" disabled>
+                        <label class="active" for="name">Nombre:</label>
                     </div>
 
+                    <!-- Condition -->
+                    <input [(ngModel)]="eps.condition" id="condition" name="condition" type="hidden">
+
+                    <!-- Área de Botones -->
+                    <div class="row">
+                        <div class="col s6">
+                            <button *ngIf="eps.condition" class="btn waves-effect waves-light right inactivate" type="submit">Desactivar
+                                <i class="material-icons right">save</i>
+                            </button>
+                            <button *ngIf="!eps.condition" class="btn waves-effect waves-light right activate" type="submit">Activar
+                                <i class="material-icons right">save</i>
+                            </button>
+                        </div>
+                        <div class="col s6">
+                            <button (click)="clearData(Form)" class="btn waves-effect waves-light left cleanerButtom" type="button">Cancelar
+                                <i class="material-icons right">clear</i>
+                            </button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
