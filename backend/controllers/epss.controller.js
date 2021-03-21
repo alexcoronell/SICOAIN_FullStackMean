@@ -47,7 +47,7 @@ epsCtrl.updateEpss = async (req, res) => {
         new: false
     });
     res.json({
-        'status': 'Position updated'
+        'status': 'EPS updated'
     })
 }
 
