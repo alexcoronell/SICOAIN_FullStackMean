@@ -3,10 +3,10 @@ const router = express.Router();
 
 const arls = require('../controllers/arls.controller');
 
-router.get('/', arls.getArls);
-router.post('/', arls.createArls);
-router.get('/:id', arls.getArl);
-router.put('/:id', arls.updateArls);
-router.delete('/:id', arls.deleteArls);
+router.post('/getArl', arls.getArl);
+router.post('/getArls', arls.getArls);
+router.post('/create', arls.createArls);
+router.post('/update', arls.updateArls);
+router.post('/actDesact', arls.actDesact);
 
 module.exports = router;

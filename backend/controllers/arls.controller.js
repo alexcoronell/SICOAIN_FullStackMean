@@ -8,52 +8,70 @@ arlCtrl.getArls = async (req, res) => {
 }
 
 arlCtrl.getArl = async (req, res) => {
-    const arl = await Arls.findById(req.params.id);
-    res.json(arl);
+    const name = req.body.name;
+    const arlData = await Arls.findOne({
+        name
+    });
+    if (!arlData) return res.status(401).send("The ARL doen't exist");
+    if (arlData) return res.status(200).json({
+        arlData
+    });
 }
 
 arlCtrl.createArls = async (req, res) => {
-    const arl = new Arls(req.body);
-    await arl.save();
+    const newArl = new Arls(req.body);
+    const name = req.body.name;
+    const arlData = await Arls.findOne({
+        name
+    });
+    if (arlData) return res.status(401).send("This ARL is already registered");
+    await newArl.save();
     res.json({
-        'status': 'Arl saved'
+        'status': 'ARL saved'
     });
 }
 
 arlCtrl.updateArls = async (req, res) => {
-    const {
-        id
-    } = req.params;
-    const arl = {
-        Arl: req.body.Arl,
-        name: req.body.name,
-        phone: req.body.phone,
-        address: req.body.address,
-        email: req.body.email,
-        contidion: req.body.condition
+    const filter = {
+        "_id": req.body._id
     }
-    await Arls.findByIdAndUpdate(id, {
-        $set: arl
-    }, {
+    const update = {
+        $set: {
+            name: req.body.name,
+            phone: req.body.phone,
+            address: req.body.address,
+            email: req.body.email
+        }
+    }
+    await Arls.updateOne(filter, update, {
         new: false
     });
     res.json({
-        'status': 'Arl updated'
+        'status': 'ARL updated'
     })
 }
 
-arlCtrl.inactivateArls = function() {
-
-}
-
-arlCtrl.activateArls = function() {
-
-}
-
-arlCtrl.deleteArls = async (req, res) => {
-    await Arls.findByIdAndDelete(req.params.id)
+arlCtrl.actDesact = async (req, res) => {
+    const filter = {
+        "_id": req.body._id
+    }
+    const oldCondition = req.body.condition;
+    var newCondition;
+    if (oldCondition == true) {
+        newCondition = false
+    } else {
+        newCondition = true
+    }
+    const update = {
+        $set: {
+            condition: newCondition
+        }
+    }
+    await Arls.updateOne(filter, update, {
+        new: true
+    });
     res.json({
-        'status': 'Arl deleted'
+        'status': 'condition updated'
     })
 }
 
