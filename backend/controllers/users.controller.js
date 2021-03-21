@@ -12,7 +12,7 @@ userCtrl.getUsers = async (req, res) => {
 
 // Obtener usuario
 userCtrl.getUser = async (req, res) => {
-    
+
     const user = req.body.user;
 
     const userData = await Users.findOne({
@@ -21,8 +21,10 @@ userCtrl.getUser = async (req, res) => {
 
     if (!userData) return res.status(401).send("The user doen't exist");
 
-    if (userData) return res.status(200).json({userData});
-        
+    if (userData) return res.status(200).json({
+        userData
+    });
+
 }
 
 
@@ -54,7 +56,7 @@ userCtrl.updateUsers = async (req, res) => {
 
     const filter = {
         "_id": req.body._id
-        }
+    }
 
     const update = {
         $set: {
@@ -68,9 +70,8 @@ userCtrl.updateUsers = async (req, res) => {
         }
     }
 
-    await Users.updateOne( filter, update, 
-        {
-       new: true
+    await Users.updateOne(filter, update, {
+        new: true
     });
     res.json({
         'status': 'user updated'
@@ -83,13 +84,16 @@ userCtrl.passwordUpdate = async (req, res) => {
     const {
         id
     } = req.params;
-    
+
     const filter = {
         "_id": req.body._id
-        }
+    }
+
+    const oldPassword = req.body.password;
+    if (oldPassword == '') return res.status(401).send("You must write a new password");
 
     const newPassword = encryptPassword(req.body.password);
-    
+
 
     const update = {
         $set: {
@@ -97,9 +101,8 @@ userCtrl.passwordUpdate = async (req, res) => {
         }
     }
 
-    await Users.updateOne( filter, update, 
-        {
-       new: true
+    await Users.updateOne(filter, update, {
+        new: true
     });
     res.json({
         'status': 'password updated'
@@ -114,7 +117,7 @@ userCtrl.actDesact = async (req, res) => {
 
     const filter = {
         "_id": req.body._id
-        }
+    }
 
     const oldCondition = req.body.condition;
     var newCondition;
@@ -131,9 +134,8 @@ userCtrl.actDesact = async (req, res) => {
         }
     }
 
-    await Users.updateOne( filter, update, 
-        {
-       new: true
+    await Users.updateOne(filter, update, {
+        new: true
     });
     res.json({
         'status': 'condition updated'

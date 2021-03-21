@@ -38,6 +38,7 @@ export class UsersPasswordUpdateComponent implements OnInit {
         this.user = res.userData;
         this.showForm = true;
         this.showSearchForm = false;
+        this.user.password = ''; 
       },
       err => {
         console.log(err.error)
@@ -70,7 +71,7 @@ export class UsersPasswordUpdateComponent implements OnInit {
       err => {
         console.log(err)
         M.toast({
-          html: 'Contraseña no se pudo actualizar',
+          html: 'Contraseña no se pudo actualizar, debe colocar una nueva contraseña',
           displayLength: 1500
         })
     })
