@@ -14,7 +14,7 @@ export class DepartmentsService {
 
   constructor(private http: HttpClient) { }
 
-  getCompanies() {
+  getDepartments() {
     return this.http.get<Departments[]>(this.URL_SERVER);
   }
 
