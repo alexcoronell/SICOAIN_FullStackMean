@@ -5,7 +5,7 @@ const {
 } = mongoose;
 
 const municipalitiesSchema = new Schema({
-    name: {
+    nombre: {
         type: String,
         required: true
     },

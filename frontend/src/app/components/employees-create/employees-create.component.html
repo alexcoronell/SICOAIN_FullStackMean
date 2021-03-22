@@ -47,24 +47,18 @@
                             <div class="input-field inputfieldSelect">
                                 <select class="browser-default" [(ngModel)]="employee.department" id="department" name="department">
                                     <option value="" disabled selected>Seleccione...</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
+                                    <option *ngFor="let department of departments" value="{{ department._id }}">{{ department.name }}</option>
                                 </select>
-                                <label class="labelSelect" for="department">Departamento</label>
+                                <label class="active labelSelect" for="department">Departamento</label>
                             </div>
 
                             <!-- Municipio -->
                             <div class="input-field inputfieldSelect">
                                 <select class="browser-default" [(ngModel)]="employee.municipality" id="municipality" name="municipality">
                                     <option value="" disabled selected>Seleccione...</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
+                                    <option *ngFor="let municipality of municipalities" value="{{ municipality._id }}">{{ municipality.nombre }}</option>
                                 </select>
-                                <label class="labelSelect" for="municipality">Municipio</label>
+                                <label class="active labelSelect" for="municipality">Municipio</label>
                             </div>
 
                             <!-- Dirección -->

@@ -11,6 +11,8 @@ export class MunicipalitiesService {
   municipalities: Municipalities[]
 
   private readonly URL_SERVER = "http://localhost:3000/api/municipalities/";
+  private readonly URL_FILTER = 'filter';
+
 
   constructor(private http: HttpClient) { }
 
@@ -19,6 +21,8 @@ export class MunicipalitiesService {
   }
 
   getMunicipalitiesDepartment(department) {
-    return this.http.post<Municipalities[]>(this.URL_SERVER, department);
+    return this.http.get<Municipalities[]>(this.URL_SERVER + this.URL_FILTER + department);
   }
+
+  
 }

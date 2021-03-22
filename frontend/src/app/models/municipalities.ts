@@ -1,14 +1,14 @@
 export class Municipalities {
     constructor(
         _id = '',
-        name = '',
-        department = ''
+        nombre = '',
+        idDepartment = ''
     ){
         this._id = _id,
-        this.name = name
-        this.department = department
+        this.nombre = nombre
+        this.idDepartment = idDepartment
     }
     _id: string;
-    name: string;
-    department: string
+    nombre: string;
+    idDepartment: string
 }
