@@ -3,7 +3,7 @@
 .formTitle {
     color: $main__color;
     text-align: center;
-    margin: .5rem auto;
+    margin: .5rem auto 2rem auto;
     white-space: nowrap;
 }
 
@@ -50,8 +50,9 @@
     }
 }
 
-.labelSelect {
-    transform: translateY(-22px) scale(0.8) !important;
+.labelSelect,
+.active {
+    //transform: translateY(-22px) scale(0.8) !important;
     color: $main__color !important;
 }
 
