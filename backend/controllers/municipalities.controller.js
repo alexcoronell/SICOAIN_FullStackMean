@@ -3,13 +3,13 @@ const Municipalities = require('../models/municipalities');
 const municipalityCtrl = {};
 
 municipalityCtrl.getMunicipalities = async (req, res) => {
-    const municipalityList = await Municipalities.find();
-    res.json(municipalityList);
+    const municipalities = await Municipalities.find();
+    res.json(municipalities);
 }
 
-municipalityCtrl.getMunicipality = async (req, res) => {
-    const municipality = await Municipalities.findById(req.params.id);
-    res.json(municipality);
+municipalityCtrl.getMunicipalitiesDepartment = async (req, res) => {
+    const municipalityList = await Municipalities.find();
+    res.json(municipalityList);
 }
 
 module.exports = municipalityCtrl;
