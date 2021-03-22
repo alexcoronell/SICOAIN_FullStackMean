@@ -35,7 +35,7 @@ const employeesSchema = new Schema({
     },
     phone: {
         type: String,
-        required: true
+        required: false
     },
     mobile: {
         type: String,
@@ -43,19 +43,19 @@ const employeesSchema = new Schema({
     },
     email: {
         type: String,
-        required: true
+        required: false
     },
     company: {
         type: String,
-        required: true
+        required: false
     },
     venues: {
         type: String,
-        required: true
+        required: false
     },
     position: {
         type: String,
-        required: true
+        required: false
     },
     eps: {
         type: String,
@@ -67,19 +67,19 @@ const employeesSchema = new Schema({
     },
     emergencyContactName: {
         type: String,
-        required: true
+        required: false
     },
     emergencyContactPhone: {
         type: String,
-        required: true
+        required: false
     },
     emergencyContactRelationship: {
         type: String,
-        required: true
+        required: false
     },
     coments: {
         type: String,
-        required: true
+        required: false
     },
     condition: {
         type: Boolean,
