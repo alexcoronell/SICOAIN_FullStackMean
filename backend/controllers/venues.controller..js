@@ -8,33 +8,43 @@ venuesCtrl.getVenues = async (req, res) => {
 }
 
 venuesCtrl.getCampus = async (req, res) => {
-    const Campus = await Venues.findById(req.params.id);
-    res.json(Campus);
+    const name = req.body.name;
+    const campusData = await Venues.findOne({
+        name
+    });
+    if (!campusData) return res.status(401).send("The Campus doesn't exist");
+    if (campusData) return res.status(200).json({
+        campusData
+    });
 }
 
 venuesCtrl.createVenues = async (req, res) => {
-    const venues = new Venues(req.body);
-    await venues.save();
+    const newCapus = new Venues(req.body);
+    const name = req.body.name;
+    const campusData = await Venues.findOne({
+        name
+    });
+    if (campusData) return res.status(401).send("This Campus is already registered");
+    await newCapus.save();
     res.json({
         'status': 'Campus saved'
     });
 }
 
 venuesCtrl.updateVenues = async (req, res) => {
-    const {
-        id
-    } = req.params;
-    const venues = {
-        company: req.body.company,
-        name: req.body.name,
-        phone: req.body.phone,
-        address: req.body.address,
-        notes: req.body.notes,
-        contidion: req.body.condition
+    const filter = {
+        "_id": req.body._id
     }
-    await Venues.findByIdAndUpdate(id, {
-        $set: venues
-    }, {
+    const update = {
+        $set: {
+            company: req.body.company,
+            name: req.body.name,
+            phone: req.body.phone,
+            address: req.body.address,
+            notes: req.body.notes
+        }
+    }
+    await Venues.updateOne(filter, update, {
         new: false
     });
     res.json({
@@ -42,18 +52,27 @@ venuesCtrl.updateVenues = async (req, res) => {
     })
 }
 
-venuesCtrl.inactivateVenues = function() {
-
-}
-
-venuesCtrl.activateVenues = function() {
-
-}
-
-venuesCtrl.deleteVenues = async (req, res) => {
-    await Venues.findByIdAndDelete(req.params.id)
+venuesCtrl.actDesact = async (req, res) => {
+    const filter = {
+        "_id": req.body._id
+    }
+    const oldCondition = req.body.condition;
+    var newCondition;
+    if (oldCondition == true) {
+        newCondition = false
+    } else {
+        newCondition = true
+    }
+    const update = {
+        $set: {
+            condition: newCondition
+        }
+    }
+    await Venues.updateOne(filter, update, {
+        new: true
+    });
     res.json({
-        'status': 'Campus deleted'
+        'status': 'condition updated'
     })
 }
 

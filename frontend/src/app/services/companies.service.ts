@@ -21,6 +21,9 @@ export class CompaniesService {
 
   constructor(private http: HttpClient) { }
 
+  getCompanies() {
+    return this.http.get<Companies[]>(this.URL_SERVER + this.URL_GET_ALL);
+  }
 
   create(newCompany: Companies) {
     return this.http.post<any>(this.URL_SERVER + this.URL_NEW, newCompany);

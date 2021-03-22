@@ -3,10 +3,11 @@ const router = express.Router();
 
 const venues = require('../controllers/venues.controller.');
 
-router.get('/', venues.getVenues);
-router.post('/', venues.createVenues);
-router.get('/:id', venues.getCampus);
-router.put('/:id', venues.updateVenues);
-router.delete('/:id', venues.deleteVenues);
+router.post('/getCampus', venues.getCampus);
+router.post('/getVenues', venues.getVenues);
+router.post('/create', venues.createVenues);
+router.post('/update', venues.updateVenues);
+router.post('/actDesact', venues.actDesact);
+
 
 module.exports = router;

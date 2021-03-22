@@ -4,8 +4,8 @@ const companyCtrl = {};
 
 // Get All Companies
 companyCtrl.getCompanies = async (req, res) => {
-    const CompanyList = await Companies.find();
-    res.json(CompanyList);
+    const companies = await Companies.find();
+    res.json(companies);
 }
 
 // Get Company

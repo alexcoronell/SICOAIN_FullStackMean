@@ -4,66 +4,60 @@
             <div class="col s12 m4 l3">
                 <app-venues-menu></app-venues-menu>
             </div>
-            <div class="col s12 m8 l9">
+            <div class="col s12 m8 offset-l2 l5 offset-xl2 xl4">
                 <h3 class="center formTitle">Creación de Sedes</h3>
 
-                <form #Form="ngForm" (ngSubmit)="createVenue(Form)">
+                <form #Form="ngForm" (ngSubmit)="create(Form)">
 
-                    <div class="row">
-                        <div class="col s12 offset-l3 l6">
-                            <!-- Departamento -->
-                            <div class="input-field inputfieldSelect">
-                                <select class="browser-default" [(ngModel)]="venue.company" id="company" name="company">
-                                    <option value="" disabled selected>Seleccione...</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                </select>
-                                <label class="labelSelect" for="company">Compañía</label>
-                            </div>
-
-                            <!-- Name -->
-                            <div class="input-field">
-                                <input [(ngModel)]="venue.name" id="name" name="name" type="text" class="validate">
-                                <label for="name">Nombre:</label>
-                            </div>
-
-                            <!-- Phone -->
-                            <div class="input-field">
-                                <input [(ngModel)]="venue.phone" id="phone" name="phone" type="text" class="validate">
-                                <label for="phone">Teléfono:</label>
-                            </div>
-
-                            <!-- Address -->
-                            <div class="input-field">
-                                <textarea [(ngModel)]="venue.address" id="address" name="address" id="address" class="validate materialize-textarea"></textarea>
-                                <label for="address">Descripción:</label>
-                            </div>
-
-                            <!-- Notes -->
-                            <div class="input-field">
-                                <textarea [(ngModel)]="venue.notes" id="notes" name="notes" id="notes" class="validate materialize-textarea"></textarea>
-                                <label for="notes">Notas:</label>
-                            </div>
-
-
-                            <!-- Área Botones -->
-                            <div class="row">
-                                <div class="col s6">
-                                    <button class="btn waves-effect waves-light right" type="submit">Guardar
-                                        <i class="material-icons right">save</i>
-                                    </button>
-                                </div>
-                                <div class="col s6">
-                                    <button (click)="clearData(Form)" class="btn waves-effect waves-light left clearData" type="button">Cancelar
-                                        <i class="material-icons right">clear</i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                    <!-- Departamento -->
+                    <div class="input-field inputfieldSelect">
+                        <select class="browser-default" [(ngModel)]="campus.company" id="company" name="company">
+                            <option value="" disabled selected>Seleccione...</option>
+                            <option *ngFor="let company of companies" value="{{ company._id }}">{{ company.name }}</option>
+                        </select>
+                        <label class="labelSelect" for="company">Compañía</label>
                     </div>
 
+                    <!-- Name -->
+                    <div class="input-field">
+                        <input [(ngModel)]="campus.name" id="name" name="name" type="text" class="validate">
+                        <label for="name">Nombre:</label>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="input-field">
+                        <input [(ngModel)]="campus.phone" id="phone" name="phone" type="text" class="validate">
+                        <label for="phone">Teléfono:</label>
+                    </div>
+
+                    <!-- Address -->
+                    <div class="input-field">
+                        <textarea [(ngModel)]="campus.address" id="address" name="address" id="address" class="validate materialize-textarea"></textarea>
+                        <label for="address">Descripción:</label>
+                    </div>
+
+                    <!-- Notes -->
+                    <div class="input-field">
+                        <textarea [(ngModel)]="campus.notes" id="notes" name="notes" id="notes" class="validate materialize-textarea"></textarea>
+                        <label for="notes">Notas:</label>
+                    </div>
+
+                    <!-- Condition -->
+                    <input [(ngModel)]="campus.condition" id="condition" name="condition" type="hidden">
+
+                    <!-- Área Botones -->
+                    <div class="row">
+                        <div class="col s6">
+                            <button class="btn waves-effect waves-light right" type="submit">Guardar
+                                <i class="material-icons right">save</i>
+                            </button>
+                        </div>
+                        <div class="col s6">
+                            <button (click)="clearData(Form)" class="btn waves-effect waves-light left clearData" type="button">Cancelar
+                                <i class="material-icons right">clear</i>
+                            </button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
