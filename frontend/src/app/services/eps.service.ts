@@ -21,13 +21,16 @@ export class EpsService {
 
   constructor(private http: HttpClient) { }
 
-
-  create(newEps: Eps) {
-    return this.http.post<any>(this.URL_SERVER + this.URL_NEW, newEps);
+  getEpss() {
+    return this.http.get<Eps[]>(this.URL_SERVER + this.URL_GET_ALL);
   }
 
   getEps(searchItem) {
     return this.http.post<any>(this.URL_SERVER + this.URL_GET, searchItem);
+  }
+
+  create(newEps: Eps) {
+    return this.http.post<any>(this.URL_SERVER + this.URL_NEW, newEps);
   }
 
   update(eps) {

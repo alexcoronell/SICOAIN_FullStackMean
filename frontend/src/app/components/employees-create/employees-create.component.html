@@ -122,12 +122,9 @@
                             <div class="input-field inputfieldSelect">
                                 <select class="browser-default" [(ngModel)]="employee.eps" id="eps" name="eps">
                                     <option value="" disabled selected>Seleccione...</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
+                                    <option *ngFor="let eps of epss" value="{{ eps._id }}">{{ eps.name }}</option>
                                 </select>
-                                <label class="labelSelect" for="eps">EPS</label>
+                                <label class="active labelSelect" for="eps">EPS</label>
                             </div>
 
                             <!-- ARL -->

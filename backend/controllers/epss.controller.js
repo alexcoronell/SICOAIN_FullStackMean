@@ -3,8 +3,10 @@ const Epss = require('../models/epss');
 const epsCtrl = {};
 
 epsCtrl.getEpss = async (req, res) => {
-    const epsList = await Epss.find();
-    res.json(epsList);
+    const epss = await Epss.find().sort({
+        "name": 1
+    });
+    res.json(epss);
 }
 
 epsCtrl.getEps = async (req, res) => {
