@@ -95,12 +95,9 @@
                             <div class="input-field inputfieldSelect">
                                 <select class="browser-default" [(ngModel)]="employee.company" id="company" name="company">
                                     <option value="" disabled selected>Seleccione...</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
+                                    <option *ngFor="let company of companies" value="{{ company._id }}">{{ company.name }}</option>
                                 </select>
-                                <label class="labelSelect" for="company">Compañía</label>
+                                <label class="active labelSelect" for="company">Compañía</label>
                             </div>
 
                             <!-- Sede -->

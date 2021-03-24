@@ -9,6 +9,8 @@ import { Departments } from '../../models/departments';
 import { DepartmentsService } from '../../services/departments.service';
 import { Municipalities } from '../../models/municipalities';
 import { MunicipalitiesService } from '../../services/municipalities.service';
+import { Companies } from '../../models/companies';
+import { CompaniesService } from '../../services/companies.service';
 
 declare var M: any;
 
@@ -26,6 +28,8 @@ export class EmployeesCreateComponent implements OnInit {
   departments: Departments[];
   municipality: Municipalities;
   municipalities: Municipalities[];
+  company: Companies;
+  companies: Companies[];
 
   currentDepartment: string;
 
@@ -33,11 +37,13 @@ export class EmployeesCreateComponent implements OnInit {
     private employeesService: EmployeesService,
     private departmentsService: DepartmentsService,
     private municipalitiesService: MunicipalitiesService,
+    private companiesServices: CompaniesService,
     private router: Router
   ) {
     this.employee = new Employees;
     this.department = new Departments;
     this.municipality = new Municipalities;
+    this.company = new Companies;
   }
 
   ngOnInit(): void {
@@ -45,6 +51,7 @@ export class EmployeesCreateComponent implements OnInit {
     this.getDepartments();
     this.currentDepartment = this.department._id;
     this.loadMunicipalities();
+    this.getCompanies();
   }
 
   createEmployee(form: NgForm) {
@@ -87,6 +94,20 @@ export class EmployeesCreateComponent implements OnInit {
       .subscribe(
         res => {
           this.municipalities = res as Municipalities[];
+        },
+        err => {
+          console.log(err.error);
+          }
+      )
+  }
+
+  getCompanies() {
+    console.log("Get Companies");
+    this.companiesServices.getCompanies()
+      .subscribe(
+        res => {
+          this.companies = res as Companies[];
+          console.log(this.companies);
         },
         err => {
           console.log(err.error);

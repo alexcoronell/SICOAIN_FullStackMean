@@ -4,7 +4,9 @@ const companyCtrl = {};
 
 // Get All Companies
 companyCtrl.getCompanies = async (req, res) => {
-    const companies = await Companies.find();
+    const companies = await Companies.find().sort({
+        "name": 1
+    });
     res.json(companies);
 }
 
