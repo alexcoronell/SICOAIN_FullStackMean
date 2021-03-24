@@ -3,8 +3,10 @@ const Venues = require('../models/venues');
 const venuesCtrl = {};
 
 venuesCtrl.getVenues = async (req, res) => {
-    const venuesList = await Venues.find();
-    res.json(venuesList);
+    const venues = await Venues.find().sort({
+        "name": 1
+    });
+    res.json(venues);
 }
 
 venuesCtrl.getCampus = async (req, res) => {

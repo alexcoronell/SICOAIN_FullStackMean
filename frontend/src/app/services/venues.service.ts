@@ -23,6 +23,10 @@ export class VenuesService {
     private http: HttpClient
   ) { }
 
+  getVenues() {
+    return this.http.get<Venues[]>(this.URL_SERVER + this.URL_GET_ALL);
+  }
+
   create(newCampus: Venues) {
     return this.http.post<any>(this.URL_SERVER + this.URL_NEW, newCampus);
   }
