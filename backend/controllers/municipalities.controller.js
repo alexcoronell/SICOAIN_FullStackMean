@@ -3,7 +3,9 @@ const Municipalities = require('../models/municipalities');
 const municipalityCtrl = {};
 
 municipalityCtrl.getMunicipalities = async (req, res) => {
-    const municipalities = await Municipalities.find();
+    const municipalities = await Municipalities.find().sort({
+        "nombre": 1
+    });
     res.json(municipalities);
 }
 
