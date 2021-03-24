@@ -3,8 +3,10 @@ const Arls = require('../models/arls');
 const arlCtrl = {};
 
 arlCtrl.getArls = async (req, res) => {
-    const ArlList = await Arls.find();
-    res.json(ArlList);
+    const arls = await Arls.find().sort({
+        "name": 1
+    });
+    res.json(arls);
 }
 
 arlCtrl.getArl = async (req, res) => {

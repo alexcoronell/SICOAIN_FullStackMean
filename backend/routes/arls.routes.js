@@ -4,7 +4,7 @@ const router = express.Router();
 const arls = require('../controllers/arls.controller');
 
 router.post('/getArl', arls.getArl);
-router.post('/getArls', arls.getArls);
+router.get('/getArls', arls.getArls);
 router.post('/create', arls.createArls);
 router.post('/update', arls.updateArls);
 router.post('/actDesact', arls.actDesact);

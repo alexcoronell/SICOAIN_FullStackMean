@@ -24,12 +24,16 @@ export class ArlService {
     private http: HttpClient
   ) { }
 
-  create(newArl: Arl) {
-    return this.http.post<any>(this.URL_SERVER + this.URL_NEW, newArl);
+  getArls() {
+    return this.http.get<Arl[]>(this.URL_SERVER + this.URL_GET_ALL);
   }
 
   getArl(searchItem) {
     return this.http.post<any>(this.URL_SERVER + this.URL_GET, searchItem);
+  }
+
+  create(newArl: Arl) {
+    return this.http.post<any>(this.URL_SERVER + this.URL_NEW, newArl);
   }
 
   update(arl) {

@@ -17,6 +17,8 @@ import { Positions } from '../../models/positions';
 import { PositionsService } from '../../services/positions.service';
 import { Eps } from '../../models/eps';
 import { EpsService } from '../../services/eps.service';
+import { Arl } from '../../models/arl';
+import { ArlService } from '../../services/arl.service';
 
 declare var M: any;
 
@@ -42,6 +44,8 @@ export class EmployeesCreateComponent implements OnInit {
   positions: Positions[];
   eps: Eps;
   epss: Eps[];
+  arl: Arl;
+  arls: Arl[];
 
   currentDepartment: string;
 
@@ -53,6 +57,7 @@ export class EmployeesCreateComponent implements OnInit {
     private venuesServices: VenuesService,
     private positionsService: PositionsService,
     private epsService: EpsService,
+    private arlService: ArlService,
     private router: Router
   ) {
     this.employee = new Employees;
@@ -62,6 +67,7 @@ export class EmployeesCreateComponent implements OnInit {
     this.campus = new Venues;
     this.position = new Positions;
     this.eps = new Eps;
+    this.arl = new Arl;
   }
 
   ngOnInit(): void {
@@ -73,6 +79,7 @@ export class EmployeesCreateComponent implements OnInit {
     this.getVenues();
     this.getPositions();
     this.getEpss();
+    this.getArls();
   }
 
   createEmployee(form: NgForm) {
@@ -164,6 +171,18 @@ export class EmployeesCreateComponent implements OnInit {
       .subscribe(
         res => {
           this.epss = res as Eps[];
+        },
+        err => {
+          console.log(err.error);
+          }
+      )
+  }
+
+  getArls() {
+    this.arlService.getArls()
+      .subscribe(
+        res => {
+          this.arls = res as Arl[];
         },
         err => {
           console.log(err.error);
