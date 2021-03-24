@@ -9,12 +9,13 @@
 
                 <!-- Formulario de búsqueda -->
                 <div class="row">
-                    <div class="col s12 offset-l3 l6">
-                        <form *ngIf="showSearchForm" #employeerSearchForm="ngForm" (ngSubmit)="searchEmployee()">
+                    <div class="col s12 m8 offset-l2 l5 offset-xl4 xl4">
+                        <form *ngIf="showSearchForm" #SearchForm="ngForm" (ngSubmit)="search()">
                             <div class="input-field">
-                                <input id="searchEmployee" name="searchEmployee" type="text" class="validate">
-                                <label for="searchEmployee">Número de identificación:</label>
+                                <input [(ngModel)]="searchItem.identificationNumber" id="searchItem" name="searchItem" type="text" class="validate" autofocus>
+                                <label for="Search">Buscar Número de cédula:</label>
                             </div>
+                            <span class="errorSearch" *ngIf="searchValidate">Empleado no encontrado</span>
                             <button class="btn waves-effect waves-light right" type="submit">Buscar
                                 <i class="material-icons right">search</i>
                             </button>
@@ -23,12 +24,15 @@
                 </div>
 
                 <!-- Formulario de actualización de empleados -->
-                <form *ngIf="showForm" #employeeForm="ngForm" (ngSubmit)="updateEmployee(employeeForm)">
+                <form *ngIf="showForm" #Form="ngForm" (ngSubmit)="update(Form)">
                     <div class="row">
 
 
                         <div class="col s12 xl6">
                             <!-- Columna 1 -->
+
+                            <!-- ID  -->
+                            <input [(ngModel)]="employee._id" id="_id" name="_id" type="hidden">
 
                             <!-- Tipo de Identificación -->
                             <div class="input-field inputfieldSelect">
@@ -39,73 +43,67 @@
                                     <option value="Pasaporte">Pasaporte</option>
                                     <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
                                 </select>
-                                <label class="labelSelect" for="identificationType">Tipo de Identificación</label>
+                                <label class="active labelSelect" for="identificationType">Tipo de Identificación</label>
                             </div>
 
                             <!-- Número de Identificaión -->
                             <div class="input-field">
                                 <input [(ngModel)]="employee.identificationNumber" id="identificationNumber" name="identificationNumber" type="text" class="validate">
-                                <label for="identificationNumber">Número de Identificación:</label>
+                                <label class="active labelSelect" for="identificationNumber">Número de Identificación:</label>
                             </div>
 
                             <!-- Nombres -->
                             <div class="input-field">
                                 <input [(ngModel)]="employee.names" id="names" name="names" type="text" class="validate">
-                                <label for="names">Nombres:</label>
+                                <label class="active labelSelect" for="names">Nombres:</label>
                             </div>
 
                             <!-- Apellidos -->
                             <div class="input-field">
                                 <input [(ngModel)]="employee.lastNames" id="lastNames" name="lastNames" type="text" class="validate">
-                                <label for="lastNames">Apellidos:</label>
+                                <label class="active labelSelect" for="lastNames">Apellidos:</label>
                             </div>
 
                             <!-- Departamento -->
                             <div class="input-field inputfieldSelect">
                                 <select class="browser-default" [(ngModel)]="employee.department" id="department" name="department">
                                     <option value="" disabled selected>Seleccione...</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
+                                    <option *ngFor="let department of departments" value="{{ department._id }}">{{ department.name }}</option>
                                 </select>
-                                <label class="labelSelect" for="department">Departamento</label>
+                                <label class="active labelSelect" for="department">Departamento</label>
                             </div>
 
                             <!-- Municipio -->
                             <div class="input-field inputfieldSelect">
                                 <select class="browser-default" [(ngModel)]="employee.municipality" id="municipality" name="municipality">
                                     <option value="" disabled selected>Seleccione...</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
+                                    <option *ngFor="let municipality of municipalities" value="{{ municipality._id }}">{{ municipality.nombre }}</option>
                                 </select>
-                                <label class="labelSelect" for="municipality">Municipio</label>
+                                <label class="active labelSelect" for="municipality">Municipio</label>
                             </div>
 
                             <!-- Dirección -->
                             <div class="input-field">
                                 <input [(ngModel)]="employee.address" id="address" name="address" type="text" class="validate">
-                                <label for="address">Dirección:</label>
+                                <label class="active labelSelect" for="address">Dirección:</label>
                             </div>
 
                             <!-- Teléfono -->
                             <div class="input-field">
                                 <input [(ngModel)]="employee.phone" id="phone" name="phone" type="text" class="validate">
-                                <label for="phone">Teléfono:</label>
+                                <label class="active labelSelect" for="phone">Teléfono:</label>
                             </div>
 
                             <!-- Celular -->
                             <div class="input-field">
                                 <input [(ngModel)]="employee.mobile" id="mobile" name="mobile" type="text" class="validate">
-                                <label for="mobile">Celular:</label>
+                                <label class="active labelSelect" for="mobile">Celular:</label>
                             </div>
 
                             <!-- Correo Electrónico -->
                             <div class="input-field">
                                 <input [(ngModel)]="employee.email" id="email" name="email" type="email" class="validate">
-                                <label for="email">Correo Electrónico:</label>
+                                <label class="active labelSelect" for="email">Correo Electrónico:</label>
                             </div>
 
 
@@ -118,85 +116,71 @@
                             <div class="input-field inputfieldSelect">
                                 <select class="browser-default" [(ngModel)]="employee.company" id="company" name="company">
                                     <option value="" disabled selected>Seleccione...</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
+                                    <option *ngFor="let company of companies" value="{{ company._id }}">{{ company.name }}</option>
                                 </select>
-                                <label class="labelSelect" for="company">Compañía</label>
+                                <label class="active labelSelect" for="company">Compañía</label>
                             </div>
 
                             <!-- Sede -->
                             <div class="input-field inputfieldSelect">
                                 <select class="browser-default" [(ngModel)]="employee.venues" id="venues" name="venues">
                                     <option value="" disabled selected>Seleccione...</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
+                                    <option *ngFor="let campus of venues" value="{{ campus._id }}">{{ campus.name }}</option>
                                 </select>
-                                <label class="labelSelect" for="venues">Sede</label>
+                                <label class="active labelSelect" for="venues">Sede</label>
                             </div>
 
                             <!-- Cargo -->
                             <div class="input-field inputfieldSelect">
                                 <select class="browser-default" [(ngModel)]="employee.position" id="position" name="position">
                                     <option value="" disabled selected>Seleccione...</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
+                                    <option *ngFor="let position of positions" value="{{ position._id }}">{{ position.name }}</option>
                                 </select>
-                                <label class="labelSelect" for="position">Cargo</label>
+                                <label class="active labelSelect" for="position">Cargo</label>
                             </div>
 
                             <!-- EPS -->
                             <div class="input-field inputfieldSelect">
                                 <select class="browser-default" [(ngModel)]="employee.eps" id="eps" name="eps">
                                     <option value="" disabled selected>Seleccione...</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
+                                    <option *ngFor="let eps of epss" value="{{ eps._id }}">{{ eps.name }}</option>
                                 </select>
-                                <label class="labelSelect" for="eps">EPS</label>
+                                <label class="active labelSelect" for="eps">EPS</label>
                             </div>
 
                             <!-- ARL -->
                             <div class="input-field inputfieldSelect">
                                 <select class="browser-default" [(ngModel)]="employee.arl" id="arl" name="arl">
                                     <option value="" disabled selected>Seleccione...</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
+                                    <option *ngFor="let arl of arls" value="{{ arl._id }}">{{ arl.name }}</option>
                                 </select>
-                                <label class="labelSelect" for="arl">ARL</label>
+                                <label class="active labelSelect" for="arl">ARL</label>
                             </div>
+
 
                             <h5>Contacto de Emergencia</h5>
                             <!-- Nombre contacto de Emergencia -->
                             <div class="input-field">
                                 <input [(ngModel)]="employee.emergencyContactName" id="emergencyContactName" name="emergencyContactName" type="text" class="validate">
-                                <label for="emergencyContactName">Nombre:</label>
+                                <label class="active labelSelect" for="emergencyContactName">Nombre:</label>
                             </div>
 
                             <!-- Teléfono contacto de Emergencia -->
                             <div class="input-field">
                                 <input [(ngModel)]="employee.emergencyContactPhone" id="emergencyContactPhone" name="emergencyContactPhone" type="text" class="validate">
-                                <label for="emergencyContactPhone">Teléfono:</label>
+                                <label class="active labelSelect" for="emergencyContactPhone">Teléfono:</label>
                             </div>
 
                             <!-- Parentesco contacto de Emergencia -->
                             <div class="input-field">
                                 <input [(ngModel)]="employee.emergencyContactRelationship" id="emergencyContactRelationship" name="emergencyContactRelationship" type="text" class="validate">
-                                <label for="emergencyContactRelationship">Parentesco:</label>
+                                <label class="active labelSelect" for="emergencyContactRelationship">Parentesco:</label>
                             </div>
 
                             <!-- Comentarios -->
                             <div class="input-field">
                                 <textarea [(ngModel)]="employee.coments" id="coments" name="coments" class="materialize-textarea"></textarea>
-                                <label for="coments">Comentarios</label>
+                                <label class="active labelSelect" for="coments">Comentarios</label>
                             </div>
 
                         </div> <!-- Fin Columna 2 -->
@@ -211,7 +195,7 @@
                                     </button>
                                 </div>
                                 <div class="col s6">
-                                    <button (click)="clearData(employeeForm)" class="btn waves-effect waves-light left clearData" type="button">Cancelar
+                                    <button (click)="clearData(Form)" class="btn waves-effect waves-light left clearData" type="button">Cancelar
                                         <i class="material-icons right">clear</i>
                                     </button>
                                 </div>
