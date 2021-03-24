@@ -6,7 +6,7 @@
             </div>
             <div class="col s12 m8 l9">
                 <h3 class="center formTitle">Creación de Empleados</h3>
-                <form #employeeForm="ngForm" (ngSubmit)="createEmployee(employeeForm)">
+                <form #Form="ngForm" (ngSubmit)="create(Form)">
                     <div class="row">
 
 
@@ -161,6 +161,9 @@
                                 <label for="coments">Comentarios</label>
                             </div>
 
+                            <!-- Condition -->
+                            <input [(ngModel)]="employee.condition" id="condition" name="condition" type="hidden">
+
                         </div> <!-- Fin Columna 2 -->
 
 
@@ -173,7 +176,7 @@
                                     </button>
                                 </div>
                                 <div class="col s6">
-                                    <button (click)="clearData(employeeForm)" class="btn waves-effect waves-light left clearData" type="button">Cancelar
+                                    <button (click)="clearData(Form)" class="btn waves-effect waves-light left clearData" type="button">Cancelar
                                         <i class="material-icons right">clear</i>
                                     </button>
                                 </div>

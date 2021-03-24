@@ -24,7 +24,7 @@ EmployeeCtrl.createEmployees = async (req, res) => {
     const employeeData = await Employees.findOne({
         identificationNumber
     });
-    if (identificationNumber) return res.status(401).send("This Employee is already registered");
+    if (employeeData) return res.status(401).send("This Employee is already registered");
     await newEmployee.save();
     res.json({
         'status': 'Employee saved'

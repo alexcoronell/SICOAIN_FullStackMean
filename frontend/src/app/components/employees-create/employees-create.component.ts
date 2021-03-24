@@ -82,8 +82,29 @@ export class EmployeesCreateComponent implements OnInit {
     this.getArls();
   }
 
-  createEmployee(form: NgForm) {
-    console.log(form)
+  create(Form: NgForm) {
+    this.employeesService.create(Form.value)
+    .subscribe(
+      res => {
+      this.clearData(Form);
+      M.toast({
+        html: 'Empleado creado satisfactoriamente',
+        displayLength: 1500
+      });
+      setTimeout (() => {
+        this.router.navigate(['/employesAndPositions']);
+    }, 1500);
+    },
+      err => {
+        this.errorMessage = true;
+        setTimeout (() => {
+          this.errorMessage = false;
+      }, 1500);
+        M.toast({
+          html: 'Empleado no se pudo guardar',
+          displayLength: 1500
+        })
+    })
   }
 
   clearData(Form?: NgForm) {
@@ -134,7 +155,6 @@ export class EmployeesCreateComponent implements OnInit {
       .subscribe(
         res => {
           this.companies = res as Companies[];
-          console.log(this.companies);
         },
         err => {
           console.log(err.error);
