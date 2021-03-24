@@ -22,7 +22,7 @@
                                     <option value="Pasaporte">Pasaporte</option>
                                     <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
                                 </select>
-                                <label class="labelSelect" for="identificationType">Tipo de Identificación</label>
+                                <label class="active labelSelect" for="identificationType">Tipo de Identificación</label>
                             </div>
 
                             <!-- Número de Identificaión -->
@@ -113,12 +113,9 @@
                             <div class="input-field inputfieldSelect">
                                 <select class="browser-default" [(ngModel)]="employee.position" id="position" name="position">
                                     <option value="" disabled selected>Seleccione...</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
+                                    <option *ngFor="let position of positions" value="{{ position._id }}">{{ position.name }}</option>
                                 </select>
-                                <label class="labelSelect" for="position">Cargo</label>
+                                <label class="active labelSelect" for="position">Cargo</label>
                             </div>
 
                             <!-- EPS -->

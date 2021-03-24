@@ -3,8 +3,10 @@ const Positions = require('../models/positions');
 const positionCtrl = {};
 
 positionCtrl.getPositions = async (req, res) => {
-    const positionList = await Positions.find();
-    res.json(positionList);
+    const positions = await Positions.find().sort({
+        "name": 1
+    });
+    res.json(positions);
 }
 
 positionCtrl.getPosition = async (req, res) => {

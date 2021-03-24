@@ -21,13 +21,16 @@ export class PositionsService {
 
   constructor(private http: HttpClient) { }
 
-
-  create(newPosition: Positions) {
-    return this.http.post<any>(this.URL_SERVER + this.URL_NEW, newPosition);
+  getPositions() {
+    return this.http.get<Positions[]>(this.URL_SERVER + this.URL_GET_ALL);
   }
 
   getPosition(searchItem) {
     return this.http.post<any>(this.URL_SERVER + this.URL_GET, searchItem);
+  }
+
+  create(newPosition: Positions) {
+    return this.http.post<any>(this.URL_SERVER + this.URL_NEW, newPosition);
   }
 
   update(position) {
