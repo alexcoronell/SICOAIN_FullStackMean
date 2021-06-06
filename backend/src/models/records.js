@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 
-const {
-    Schema
-} = mongoose;
+const {Schema} = mongoose;
 
 const recordSchema = new Schema({
     idRecord: {
@@ -29,7 +27,7 @@ const recordSchema = new Schema({
         type: String,
         required: true
     },
-    digitalEvidence: {
+    filename: {
         type: String,
         required: false
     },

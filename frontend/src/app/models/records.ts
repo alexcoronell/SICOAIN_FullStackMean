@@ -8,7 +8,7 @@ export class Records {
         dateRecord = '',
         dataIncident = '',
         description = '',
-        digitalEvidence = '',
+        filename = '',
         reasonForCancellation = '',
         condition = true
     ){
@@ -19,11 +19,11 @@ export class Records {
         this.dateRecord = dateRecord,
         this.dataIncident = dataIncident,
         this.description = description,
-        this.digitalEvidence = digitalEvidence,
+        this.filename = filename,
         this.reasonForCancellation = reasonForCancellation,
         this.condition = condition
     }
-    
+
     _id: string;
     idRecord: String;
     employee: String;
@@ -31,8 +31,8 @@ export class Records {
     dateRecord: String;
     dataIncident: String;
     description: String;
-    digitalEvidence: String;
+    filename: String;
     reasonForCancellation: String;
     condition: Boolean;
-    
+
 }
