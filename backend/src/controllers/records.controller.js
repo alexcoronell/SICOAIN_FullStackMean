@@ -21,9 +21,44 @@ recordCtrl.getRecordNumber = async (req, res) => {
 };
 
 recordCtrl.createRecords = async (req, res) => {
-    const newRecord = new Records(req.body);
-    await newRecord.save();
-    res.json({'status': 'New record saved'});
+    const saveRecord = async () => {
+        if (req.body.filename !== '') {
+            const filenameUrl = randomDocName();
+            console.log(randomDocName);
+            const findrecords = await Records.find({filename: filenameUrl});
+            if (findrecords.length > 0) {
+                saveRecord();
+            } else {
+                const recordTempPath = req.file.path; // Ruta actual del archivo
+                const ext = path.extname(req.file.originalname).toLowerCase(); // Se obtiene extensión del archivo
+                const targetPath = path.resolve(`src/public/upload/records/${filenameUrl}${ext}`); // Se indica ruta y nombre final del archivo
+                if (ext === '.png' || ext === '.jpg' || ext === '.jpeg' || ext === '.bmp' || ext === '.pdf') {
+                    await fs.rename(recordTempPath, targetPath);
+                    const newRecord = new Records({
+                        idRecord: req.body.idRecord,
+                        identificationNumber: req.body.identificationNumber,
+                        employee: req.body.employee,
+                        employeeName: req.body.employeeName,
+                        event: req.body.event,
+                        dateRecord: req.body.identificationNumber,
+                        dataIncident: req.body.dataIncident,
+                        description: req.body.description,
+                        filename: filenameUrl + ext
+                    });
+                    await newRecord.save();
+                    res.json({'status': 'New record saved'});
+                } else {
+                    await fs.unlink(recordTempPath);
+                    res.status(500).json({error: 'Only images and pdf are allowed'})
+                }
+            }
+        } else {
+            const newRecord = new Records(req.body);
+            await newRecord.save();
+            res.json({'status': 'New record saved'});
+        }
+    };
+    saveRecord();
 };
 
 recordCtrl.updateRecords = async (req, res) => {

@@ -68,7 +68,7 @@
 
                             <!-- Evidencia digital -->
                             <div class="input-field">
-                                <input [(ngModel)]="record.filename" id="filename" name="filename" type="text" class="validate">
+                                <input [(ngModel)]="record.filename" (change)="captureFile($event)" id="filename" name="filename" type="file" class="validate" disabled>
                                 <label for="filename">Evidencia Digital:</label>
                             </div>
 

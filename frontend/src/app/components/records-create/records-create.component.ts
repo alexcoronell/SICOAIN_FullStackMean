@@ -22,6 +22,8 @@ export class RecordsCreateComponent implements OnInit {
   record: Records;
   errorMessage:boolean = false;
 
+  fileUpload:any;
+
   employees: Employees[];
   employee: Employees;
   events: Events[];
@@ -45,7 +47,6 @@ export class RecordsCreateComponent implements OnInit {
   }
 
   create(Form: NgForm) {
-    console.log(Form.value);
     this.recordsService.create(Form.value)
     .subscribe(
       res => {
@@ -71,10 +72,17 @@ export class RecordsCreateComponent implements OnInit {
   }
 
   clearData(form?: NgForm) {
+
     if (form) {
       form.reset();
       this.record = new Records;
     }
+  }
+
+  captureFile (e): any {
+    const file = e.target.files[0];
+    console.log(file);
+    this.fileUpload = file;
   }
 
   getRecordNumber () {

@@ -23,7 +23,7 @@ app.use(morgan('dev'));
 app.use(multer({
     dest: path.join(__dirname, '../public/uploads/temp')
 }).single('doc'));
-app.use(express.urlencoded({extended: false})) // Permite recibir las imágenes que vienen del formulario
+app.use(express.urlencoded({extended: false})) // Permite recibir las imágenes y documentos que vienen del formulario
 app.use(express.json());
 
 
