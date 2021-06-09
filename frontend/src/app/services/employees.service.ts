@@ -14,7 +14,7 @@ export class EmployeesService {
 
   private readonly URL_SERVER = "http://localhost:3000/api/employees/";
   private readonly URL_NEW = "create";
-  private readonly URL_GET = "getEmployee";
+  private readonly URL_GET = "getEmployee/";
   private readonly URL_GET_ALL = "getEmployees";
   private readonly URL_UPDATE = "update";
   private readonly URL_ACT_DESACT = "actDesact";
@@ -24,7 +24,7 @@ export class EmployeesService {
   ) { }
 
   getEmployees() {
-    return this.http.get<Employees[]>(this.URL_SERVER + this.URL_GET);
+    return this.http.get<Employees[]>(this.URL_SERVER + this.URL_GET_ALL);
   }
 
   create(newEmployee: Employees) {
@@ -32,7 +32,7 @@ export class EmployeesService {
   }
 
   getEmployee(searchItem) {
-    return this.http.post<any>(this.URL_SERVER + this.URL_GET, searchItem);
+    return this.http.get<any>(this.URL_SERVER + this.URL_GET + searchItem);
   }
 
   update(employee) {

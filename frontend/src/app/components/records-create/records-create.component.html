@@ -13,40 +13,37 @@
                         <div class="col s12 xl6">
                             <!-- Columna 1 -->
 
-                            <!-- Nombre del empleado -->
+                            <!-- Número de registro -->
                             <div class="input-field">
-                                <input [(ngModel)]="record.idRecord" id="idRecord" name="idRecord" type="text" class="validate" disabled>
+                                <input [(ngModel)]="currentRecord" id="idRecord" name="idRecord" type="text" class="validate" disabled>
                                 <label for="idRecord">Nro. de Registro:</label>
                             </div>
 
-                            <!-- Número de Identificación del empelado -->
+                            <!-- Número de Identificación del empleado -->
                             <div class="input-field inputfieldSelect">
-                                <select class="browser-default" id="identificationNumber" name="identificationNumber">
-                                    <option value="" disabled selected>Seleccione...</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                </select>
-                                <label class="labelSelect" for="identificationNumber">Número de Identificación</label>
-                            </div>
+                              <select [(ngModel)]="record.employee" (change)="getEmployee(record.employee)" class="browser-default" id="employee" name="employee">
+                                  <option value="" disabled selected>Seleccione...</option>
+                                  <option *ngFor="let employee of employees" value="{{ employee._id }}">{{ employee.identificationNumber }}</option>
+                              </select>
+                              <label class="active labelSelect" for="employee">Número de Identificación</label>
+                          </div>
 
                             <!-- Nombre del empleado -->
                             <div class="input-field">
-                                <input [(ngModel)]="record.employee" id="employee" name="employee" type="text" class="validate" disabled>
+                                <input [(ngModel)]="record.employeeName" id="employeeName" name="employeeName" type="text" class="validate" disabled>
                                 <label for="employee">Empleado:</label>
                             </div>
 
                             <!-- Suceso -->
                             <div class="input-field inputfieldSelect">
-                                <select class="browser-default" [(ngModel)]="record.events" id="events" name="events">
+                                <select class="browser-default" [(ngModel)]="record.event" id="event" name="event">
                                     <option value="" disabled selected>Seleccione...</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                     <option value="4">4</option>
                                 </select>
-                                <label class="labelSelect" for="events">Suceso</label>
+                                <label class="labelSelect" for="event">Suceso</label>
                             </div>
 
                             <!-- Fecha del incidente -->
@@ -74,8 +71,8 @@
 
                             <!-- Parentesco contacto de Emergencia -->
                             <div class="input-field">
-                                <input [(ngModel)]="record.digitalEvidence" id="digitalEvidence" name="digitalEvidence" type="text" class="validate">
-                                <label for="digitalEvidence">Evidencia Digital:</label>
+                                <input [(ngModel)]="record.filename" id="filename" name="filename" type="file" class="validate">
+                                <label for="filename">Evidencia Digital:</label>
                             </div>
 
                             <!-- Comentarios -->

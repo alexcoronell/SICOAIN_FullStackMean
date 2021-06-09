@@ -11,13 +11,17 @@ const recordSchema = new Schema({
         type: String,
         required: true
     },
+    employeeName: {
+        type: String,
+        required: true
+    },
     event: {
         type: String,
         required: true
     },
-    dateRecord: {
-        type: String,
-        required: true
+    timestamp: {
+        type: Date,
+        default: Date.now
     },
     dataIncident: {
         type: String,

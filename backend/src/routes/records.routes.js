@@ -3,10 +3,11 @@ const router = express.Router();
 
 const records = require('../controllers/records.controller');
 
-router.get('/', records.getRecords);
-router.post('/', records.createRecords);
+router.get('/getRecords', records.getRecords);
+router.get('/getRecordNumber', records.getRecordNumber);
+router.post('/createRecords', records.createRecords);
 router.get('/:id', records.getRecord);
-router.put('/:id', records.updateRecords);
-router.delete('/:id', records.deleteRecords);
+router.post('/:id', records.updateRecords);
+router.post('/:id', records.cancelRecords);
 
 module.exports = router;

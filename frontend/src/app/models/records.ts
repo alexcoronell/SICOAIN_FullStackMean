@@ -4,7 +4,8 @@ export class Records {
         _id = '',
         idRecord = '',
         employee = '',
-        events = '',
+        employeeName = '',
+        event = '',
         dateRecord = '',
         dataIncident = '',
         description = '',
@@ -15,7 +16,8 @@ export class Records {
         this._id = _id
         this.idRecord = idRecord
         this.employee = employee,
-        this.events = events,
+        this.employeeName = employeeName,
+        this.event = event,
         this.dateRecord = dateRecord,
         this.dataIncident = dataIncident,
         this.description = description,
@@ -27,7 +29,8 @@ export class Records {
     _id: string;
     idRecord: String;
     employee: String;
-    events: String;
+    employeeName: String;
+    event: String;
     dateRecord: String;
     dataIncident: String;
     description: String;

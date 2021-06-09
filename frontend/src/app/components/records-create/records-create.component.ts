@@ -1,6 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Records } from '../../models/records';
 import { NgForm } from '@angular/forms';
+import { Records } from './../../models/records';
+import { RecordsService } from './../../services/records.service';
+
+// Servicios y modelos de campos adicionales
+import { EmployeesService } from 'src/app/services/employees.service';
+import { Employees } from './../../models/employees';
+import { Events } from './../../models/events';
+import { EventsService } from './../../services/events.service';
+
 
 @Component({
   selector: 'app-records-create',
@@ -10,12 +18,25 @@ import { NgForm } from '@angular/forms';
 export class RecordsCreateComponent implements OnInit {
 
   record: Records;
+  currentRecord: Number;
+  errorMessage:boolean = false;
 
-  constructor() {
+  employees: Employees[];
+  employee: Employees;
+  event: Events[];
+
+  constructor(
+    private recordsService: RecordsService,
+    private employeesService: EmployeesService,
+    private eventsService: EventsService
+  ) {
     this.record = new Records;
+    this.employee = new Employees;
   }
 
   ngOnInit(): void {
+    this.getRecordNumber();
+    this.getEmployees();
   }
 
   create(form: NgForm) {
@@ -27,6 +48,43 @@ export class RecordsCreateComponent implements OnInit {
       form.reset();
       this.record = new Records;
     }
+  }
+
+  getRecordNumber () {
+    this.recordsService.getRecordNumber()
+      .subscribe(
+        res => {
+          this.currentRecord = res + 1;
+        },
+        err => {
+          console.error(err.error);
+          }
+      )
+  }
+
+  getEmployees = () => {
+    this.employeesService.getEmployees()
+      .subscribe(
+        res => {
+          this.employees = res as Employees[];
+        },
+        err => {
+          console.error(err.error);
+        }
+      )
+  }
+
+  getEmployee = (e) => {
+    this.employeesService.getEmployee(e)
+      .subscribe(
+        res => {
+          this.employee = res.employeeData as Employees;
+          this.record.employeeName = this.employee.names + ' ' + this.employee.lastNames;
+        },
+        err => {
+          console.error(err.error);
+        }
+      )
   }
 
 }

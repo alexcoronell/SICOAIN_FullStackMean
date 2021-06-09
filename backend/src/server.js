@@ -1,17 +1,18 @@
 const express = require('express');
 const morgan = require('morgan');
+const multer = require('multer');
+const path = require('path');
 const app = express();
 const cors = require('cors');
-
-const {
-    mongoose
-} = require('./database');
+const errorHandler = require('errorhandler');
+const {mongoose} = require('./database');
 
 
 /****** 
  * SETTINGS
  ******/
-app.set('port', process.env.PORT || 3000); // Si no existe un puerto establecido por el SO o el server toma el puerto 3000
+app.set('port', process.env.PORT || 3000);
+// Si no existe un puerto establecido por el SO o el server toma el puerto 3000
 
 
 /****** 
@@ -19,6 +20,10 @@ app.set('port', process.env.PORT || 3000); // Si no existe un puerto establecido
  ******/
 app.use(cors());
 app.use(morgan('dev'));
+app.use(multer({
+    dest: path.join(__dirname, '../public/uploads/temp')
+}).single('doc'));
+app.use(express.urlencoded({extended: false})) // Permite recibir las imágenes que vienen del formulario
 app.use(express.json());
 
 
@@ -37,6 +42,18 @@ app.use('/api/recordCounter', require('./routes/recordCounter.routes'));
 app.use('/api/events', require('./routes/events.routes'));
 app.use('/api/users', require('./routes/users.routes'));
 app.use('/api/venues', require('./routes/venues.routes'));
+
+/****** 
+ * STATIC FILES
+******/
+app.use('/public', express.static(path.join(__dirname, '../public')));
+
+/****** 
+ * ERRORHANDLERS
+******/
+if ('development' === app.get('env')) {
+    app.use(errorHandler);
+}
 
 /****** 
  * STARTING SERVER
