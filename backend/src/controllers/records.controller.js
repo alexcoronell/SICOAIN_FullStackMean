@@ -20,8 +20,7 @@ recordCtrl.getRecordNumber = async (req, res) => {
     res.json(record);
 };
 
-recordCtrl.createRecords = async (req, res) => {
-    const saveRecord = async () => {
+recordCtrl.createRecords = async (req, res) => { /* const saveRecord = async () => {
         if (req.body.filename !== '') {
             const filenameUrl = randomDocName();
             console.log(randomDocName);
@@ -58,7 +57,10 @@ recordCtrl.createRecords = async (req, res) => {
             res.json({'status': 'New record saved'});
         }
     };
-    saveRecord();
+    saveRecord(); */
+    const newRecord = new Records(req.body);
+    await newRecord.save();
+    res.json({'status': 'New record saved'});
 };
 
 recordCtrl.updateRecords = async (req, res) => {
