@@ -7,6 +7,7 @@ const recordCtrl = {};
 
 recordCtrl.getRecords = async (req, res) => {
     const recordList = await Records.find();
+    console.log(recordList);
     res.json(recordList);
 };
 
@@ -70,7 +71,7 @@ recordCtrl.updateRecords = async (req, res) => {
         employee: req.body.employee,
         dataIncident: req.body.dataIncident,
         description: req.body.description,
-        digitalEvidence: req.body.digitalEvidence,
+        filename: req.body.filename,
         reasonForCancellation: req.body.reasonForCancellation,
         contidion: req.body.condition
     }

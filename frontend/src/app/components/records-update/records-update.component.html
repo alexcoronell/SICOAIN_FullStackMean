@@ -13,8 +13,11 @@
                     <div class="col s12 offset-l3 l6">
                         <form *ngIf="showSearchForm" #SearchForm="ngForm" (ngSubmit)="search()">
                             <div class="input-field">
-                                <input id="Search" name="Search" type="text" class="validate">
-                                <label for="Search">Número de registro:</label>
+                              <select class="browser-default" id="search" name="search">
+                                <option value="" disabled selected>Seleccione...</option>
+                                <option *ngFor="let record of records" value="{{ record._id }}">{{ record.idRecord }}</option>
+                              </select>
+                                <label for="search">Número de registro:</label>
                             </div>
                             <button class="btn waves-effect waves-light right" type="submit">Buscar
                                 <i class="material-icons right">search</i>
@@ -37,7 +40,7 @@
                                 <label for="idRecord">Nro. de Registro:</label>
                             </div>
 
-                            <!-- Número de Identificación del empelado -->
+                            <!-- Número de Identificación del empleado -->
                             <div class="input-field inputfieldSelect">
                                 <select class="browser-default" id="identificationNumber" name="identificationNumber">
                                     <option value="" disabled selected>Seleccione...</option>

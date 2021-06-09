@@ -27,7 +27,7 @@ export class RecordsService {
   ) { }
 
   getRecords() {
-    return this.http.get<Records[]>(this.URL_SERVER + this.URL_GET);
+    return this.http.get<Records[]>(this.URL_SERVER + this.URL_GET_ALL);
   }
 
   getRecordNumber() {
