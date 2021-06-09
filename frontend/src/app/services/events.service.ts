@@ -14,7 +14,7 @@ export class EventsService {
 
   private readonly URL_SERVER = "http://localhost:3000/api/events/";
   private readonly URL_NEW = "create";
-  private readonly URL_GET = "getEvent";
+  private readonly URL_GET = "getEvent/";
   private readonly URL_GET_ALL = "getEvents";
   private readonly URL_UPDATE = "update";
   private readonly URL_ACT_DESACT = "actDesact";
@@ -29,8 +29,13 @@ export class EventsService {
   }
 
   getEvent(searchItem) {
-    return this.http.post<any>(this.URL_SERVER + this.URL_GET, searchItem);
+    return this.http.get<any>(this.URL_SERVER + this.URL_GET + searchItem);
   }
+
+  getEvents() {
+    return this.http.get<Events[]>(this.URL_SERVER + this.URL_GET_ALL);
+  }
+
 
   update(event) {
     return this.http.post<any>(this.URL_SERVER + this.URL_UPDATE, event);

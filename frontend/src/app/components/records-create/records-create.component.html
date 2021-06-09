@@ -36,12 +36,9 @@
 
                             <!-- Suceso -->
                             <div class="input-field inputfieldSelect">
-                                <select class="browser-default" [(ngModel)]="record.event" id="event" name="event">
+                                <select class="browser-default" [(ngModel)]="record.event" (change)="getEvent(record.event)"  id="event" name="event">
                                     <option value="" disabled selected>Seleccione...</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
+                                    <option *ngFor="let event of events" value="{{ event._id }}">{{ event.name }}</option>
                                 </select>
                                 <label class="labelSelect" for="event">Suceso</label>
                             </div>

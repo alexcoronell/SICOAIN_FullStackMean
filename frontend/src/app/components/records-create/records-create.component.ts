@@ -23,7 +23,8 @@ export class RecordsCreateComponent implements OnInit {
 
   employees: Employees[];
   employee: Employees;
-  event: Events[];
+  events: Events[];
+  event: Events;
 
   constructor(
     private recordsService: RecordsService,
@@ -32,11 +33,13 @@ export class RecordsCreateComponent implements OnInit {
   ) {
     this.record = new Records;
     this.employee = new Employees;
+    this.event = new Events;
   }
 
   ngOnInit(): void {
     this.getRecordNumber();
     this.getEmployees();
+    this.getEvents();
   }
 
   create(form: NgForm) {
@@ -62,6 +65,7 @@ export class RecordsCreateComponent implements OnInit {
       )
   }
 
+  // Obtener todos los empleados
   getEmployees = () => {
     this.employeesService.getEmployees()
       .subscribe(
@@ -74,11 +78,39 @@ export class RecordsCreateComponent implements OnInit {
       )
   }
 
+  // Obtener empleado seleccionado
   getEmployee = (e) => {
     this.employeesService.getEmployee(e)
       .subscribe(
         res => {
           this.employee = res.employeeData as Employees;
+          this.record.employeeName = this.employee.names + ' ' + this.employee.lastNames;
+        },
+        err => {
+          console.error(err.error);
+        }
+      )
+  }
+
+  // Obtener todos los sucesos
+  getEvents = () => {
+    this.eventsService.getEvents()
+      .subscribe(
+        res => {
+          this.events = res as Events[];
+        },
+        err => {
+          console.error(err.error);
+        }
+      )
+  }
+
+  // Obtener empleado seleccionado
+  getEvent = (e) => {
+    this.eventsService.getEvent(e)
+      .subscribe(
+        res => {
+          this.event = res.eventData as Events;
           this.record.employeeName = this.employee.names + ' ' + this.employee.lastNames;
         },
         err => {

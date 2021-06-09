@@ -9,15 +9,16 @@ EmployeeCtrl.getEmployees = async (req, res) => {
 
 EmployeeCtrl.getEmployee = async (req, res) => {
     const {id} = req.params;
-    console.log(id);
     const employeeData = await Employees.findOne({_id: id});
     if (! employeeData) 
         return res.status(401).send("The Employee doesn't exist");
     
 
+
     if (employeeData) 
         return res.status(200).json({employeeData});
     
+
 };
 
 EmployeeCtrl.createEmployees = async (req, res) => {
