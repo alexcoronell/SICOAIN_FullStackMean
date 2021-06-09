@@ -23,7 +23,7 @@ const recordSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    dataIncident: {
+    dateIncident: {
         type: String,
         required: true
     },

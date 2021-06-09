@@ -7,7 +7,7 @@ export class Records {
         employeeName = '',
         event = '',
         dateRecord = '',
-        dataIncident = '',
+        dateIncident = '',
         description = '',
         filename = '',
         reasonForCancellation = '',
@@ -19,7 +19,7 @@ export class Records {
         this.employeeName = employeeName,
         this.event = event,
         this.dateRecord = dateRecord,
-        this.dataIncident = dataIncident,
+        this.dateIncident = dateIncident,
         this.description = description,
         this.filename = filename,
         this.reasonForCancellation = reasonForCancellation,
@@ -32,7 +32,7 @@ export class Records {
     employeeName: String;
     event: String;
     dateRecord: String;
-    dataIncident: String;
+    dateIncident: String;
     description: String;
     filename: String;
     reasonForCancellation: String;

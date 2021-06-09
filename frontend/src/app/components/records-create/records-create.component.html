@@ -15,9 +15,9 @@
 
                             <!-- Número de registro -->
                             <div class="input-field">
-                                <input [(ngModel)]="currentRecord" id="idRecord" name="idRecord" type="text" class="validate" disabled>
-                                <label for="idRecord">Nro. de Registro:</label>
-                            </div>
+                              <input [(ngModel)]="record.idRecord" id="idRecord" name="idRecord" class="validate">
+                              <label for="idRecord">Nro. de Registro:</label>
+                          </div>
 
                             <!-- Número de Identificación del empleado -->
                             <div class="input-field inputfieldSelect">
@@ -30,9 +30,9 @@
 
                             <!-- Nombre del empleado -->
                             <div class="input-field">
-                                <input [(ngModel)]="record.employeeName" id="employeeName" name="employeeName" type="text" class="validate" disabled>
-                                <label for="employee">Empleado:</label>
-                            </div>
+                              <input [(ngModel)]="record.employeeName" id="employeeName" name="employeeName" class="validate">
+                              <label for="employeeName">Empleado:</label>
+                          </div>
 
                             <!-- Suceso -->
                             <div class="input-field inputfieldSelect">
@@ -45,7 +45,7 @@
 
                             <!-- Fecha del incidente -->
                             <div class="input-field">
-                                <input [(ngModel)]="record.dataIncident" id="dataIncident" name="dataIncident" type="date" class="validate">
+                                <input [(ngModel)]="record.dateIncident" id="dateIncident" name="dateIncident" type="date" class="validate">
                                 <label for="dataIncident">Fecha del Incidente:</label>
                             </div>
                         </div> <!-- Fin Columna 1 -->
@@ -66,13 +66,14 @@
                             </div>
 
 
-                            <!-- Parentesco contacto de Emergencia -->
+                            <!-- Evidencia digital -->
                             <div class="input-field">
-                                <input [(ngModel)]="record.filename" id="filename" name="filename" type="file" class="validate">
+                                <input [(ngModel)]="record.filename" id="filename" name="filename" type="text" class="validate">
                                 <label for="filename">Evidencia Digital:</label>
                             </div>
 
-                            <!-- Comentarios -->
+                            <!-- Condition -->
+                            <input [(ngModel)]="record.condition" id="condition" name="condition" type="hidden">
 
 
                         </div> <!-- Fin Columna 2 -->
