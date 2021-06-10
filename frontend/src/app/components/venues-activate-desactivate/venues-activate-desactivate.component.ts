@@ -15,7 +15,8 @@ declare var M: any;
 })
 export class VenuesActivateDesactivateComponent implements OnInit {
 
-  campus: any = {};
+  campus: Venues;
+  venues: Venues[];
   searchItem: Venues;
   company: Companies;
   companies: Companies[]
@@ -35,6 +36,7 @@ export class VenuesActivateDesactivateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getVenues();
   }
 
   search() {
@@ -66,6 +68,19 @@ export class VenuesActivateDesactivateComponent implements OnInit {
       .subscribe(
         res => {
           this.companies = res as Companies[];
+          console.log(this.companies);
+        },
+        err => {
+          console.log(err.error);
+          }
+      )
+  }
+
+  getVenues() {
+    this.venuesService.getVenues()
+      .subscribe(
+        res => {
+          this.venues = res as Venues[];
           console.log(this.companies);
         },
         err => {

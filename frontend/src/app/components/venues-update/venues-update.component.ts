@@ -15,7 +15,8 @@ declare var M: any;
 })
 export class VenuesUpdateComponent implements OnInit {
 
-  campus: any = {};
+  campus: Venues;
+  venues: Venues[];
   company: Companies;
   companies: Companies[]
   searchItem: Venues;
@@ -36,6 +37,7 @@ export class VenuesUpdateComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.getVenues();
   }
 
   search() {
@@ -67,6 +69,19 @@ export class VenuesUpdateComponent implements OnInit {
       .subscribe(
         res => {
           this.companies = res as Companies[];
+          console.log(this.companies);
+        },
+        err => {
+          console.log(err.error);
+          }
+      )
+  };
+
+  getVenues() {
+    this.venuesService.getVenues()
+      .subscribe(
+        res => {
+          this.venues = res as Venues[];
           console.log(this.companies);
         },
         err => {
