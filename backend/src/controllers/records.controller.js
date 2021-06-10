@@ -90,8 +90,17 @@ recordCtrl.updateRecords = async (req, res) => {
 };
 
 recordCtrl.cancelRecords = async (req, res) => {
-    await Records.findByIdAndDelete(req.params.id)
-    res.json({'status': 'Record deleted'})
+    const filter = {
+        "_id": req.body._id
+    }
+    const update = {
+        $set: {
+            reasonForCancellation: req.body.reasonForCancellation,
+            condition: false
+        }
+    }
+    await Records.updateOne(filter, update, {new: false});
+    res.json({'status': 'Record anulated'})
 };
 
 module.exports = recordCtrl;

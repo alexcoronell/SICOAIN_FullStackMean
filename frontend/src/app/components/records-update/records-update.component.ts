@@ -79,8 +79,8 @@ export class RecordsUpdateComponent implements OnInit {
   }
 
 
+  // Edición de registro
   update(Form: NgForm){
-    console.log(Form.value);
     this.recordsService.update(Form.value)
     .subscribe(
       res => {
@@ -170,10 +170,12 @@ export class RecordsUpdateComponent implements OnInit {
   }
 
 
+  // Limpieza del formulario de búsqueda
   clearSearchForm() {
     this.searchItem.idRecord = "";
   }
 
+  // Limpieza de formulario princial
   clearData(form?: NgForm) {
     if (form) {
       form.reset();

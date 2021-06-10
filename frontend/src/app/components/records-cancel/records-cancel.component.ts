@@ -10,6 +10,8 @@ import { Employees } from './../../models/employees';
 import { Events } from './../../models/events';
 import { EventsService } from './../../services/events.service';
 
+declare var M: any;
+
 @Component({
   selector: 'app-records-cancel',
   templateUrl: './records-cancel.component.html',
@@ -47,6 +49,8 @@ export class RecordsCancelComponent implements OnInit {
 
   ngOnInit(): void {
     this.getRecords();
+    this.getEmployees();
+    this.getEvents();
   }
 
    // Búsqueda y carga de registro
@@ -87,15 +91,90 @@ export class RecordsCancelComponent implements OnInit {
       )
   }
 
-  update(form: NgForm) {
-    console.log(form);
-    this.clearData();
+  // Anulación de registro
+  cancel(Form: NgForm){
+    console.log(Form.value);
+    this.recordsService.cancel(Form.value)
+    .subscribe(
+      res => {
+        M.toast({
+        html: 'Registro anulado correctamente',
+        displayLength: 1500
+      });
+        setTimeout (() => {
+        this.router.navigate(['/recordsAndEvents']);
+    }, 1500);
+    this.clearData(Form);
+    },
+      err => {
+        console.log(err)
+        M.toast({
+          html: 'Registro no se pudo anular',
+          displayLength: 1500
+        })
+    })
   }
 
+  // Obtener todos los empleados
+  getEmployees = () => {
+    this.employeesService.getEmployees()
+      .subscribe(
+        res => {
+          this.employees = res as Employees[];
+        },
+        err => {
+          console.error(err.error);
+        }
+      )
+  }
+
+    // Obtener empleado seleccionado
+    getEmployee = (e) => {
+      this.employeesService.getEmployee(e)
+        .subscribe(
+          res => {
+            this.employee = res.employeeData as Employees;
+            this.record.employeeName = this.employee.names + ' ' + this.employee.lastNames;
+          },
+          err => {
+            console.error(err.error);
+          }
+        )
+    }
+
+    // Obtener todos los sucesos
+  getEvents = () => {
+    this.eventsService.getEvents()
+      .subscribe(
+        res => {
+          this.events = res as Events[];
+        },
+        err => {
+          console.error(err.error);
+        }
+      )
+  }
+
+  // Obtener suceso seleccionado
+  getEvent = (e) => {
+    this.eventsService.getEvent(e)
+      .subscribe(
+        res => {
+          this.event = res.eventData as Events;
+          this.record.employeeName = this.employee.names + ' ' + this.employee.lastNames;
+        },
+        err => {
+          console.error(err.error);
+        }
+      )
+  }
+
+  // Limpieza de formulario de búsqueda
   clearSearchForm() {
     this.searchItem.idRecord = "";
   }
 
+  // Limpieza de formulario principal
   clearData(form?: NgForm) {
     if (form) {
       form.reset();

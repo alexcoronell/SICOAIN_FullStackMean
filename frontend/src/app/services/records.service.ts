@@ -20,7 +20,7 @@ export class RecordsService {
   private readonly URL_GET_COUNT = "getRecordNumber";
   private readonly URL_GET_ALL = "getRecords";
   private readonly URL_UPDATE = "update";
-  private readonly URL_ACT_DESACT = "actDesact";
+  private readonly URL_CANCEL = "cancel";
 
   constructor(
     private http: HttpClient
@@ -47,6 +47,6 @@ export class RecordsService {
   }
 
   cancel(record) {
-    return this.http.post<any>(this.URL_SERVER + this.URL_ACT_DESACT, record);
+    return this.http.post<any>(this.URL_SERVER + this.URL_CANCEL, record);
   }
 }
