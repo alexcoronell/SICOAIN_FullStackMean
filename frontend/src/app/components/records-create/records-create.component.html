@@ -16,7 +16,7 @@
                             <!-- Número de registro -->
                             <div class="input-field">
                               <input [(ngModel)]="record.idRecord" id="idRecord" name="idRecord" class="validate">
-                              <label for="idRecord">Nro. de Registro:</label>
+                              <label class="active labelSelect" for="idRecord">Nro. de Registro:</label>
                           </div>
 
                             <!-- Número de Identificación del empleado -->
@@ -30,8 +30,8 @@
 
                             <!-- Nombre del empleado -->
                             <div class="input-field">
-                              <input [(ngModel)]="record.employeeName" id="employeeName" name="employeeName" class="validate">
-                              <label for="employeeName">Empleado:</label>
+                              <input [(ngModel)]="record.employeeName" id="employeeName" name="employeeName" class="validate" readonly>
+                              <label class="active labelSelect"  for="employeeName">Empleado:</label>
                           </div>
 
                             <!-- Suceso -->
@@ -40,7 +40,7 @@
                                     <option value="" disabled selected>Seleccione...</option>
                                     <option *ngFor="let event of events" value="{{ event._id }}">{{ event.name }}</option>
                                 </select>
-                                <label class="labelSelect" for="event">Suceso</label>
+                                <label class="active labelSelect"  for="event">Suceso</label>
                             </div>
 
                             <!-- Fecha del incidente -->
@@ -69,7 +69,7 @@
                             <!-- Evidencia digital -->
                             <div class="input-field">
                                 <input [(ngModel)]="record.filename" (change)="captureFile($event)" id="filename" name="filename" type="file" class="validate" disabled>
-                                <label for="filename">Evidencia Digital:</label>
+                                <label class="active labelSelect"  for="filename">Evidencia Digital:</label>
                             </div>
 
                             <!-- Condition -->

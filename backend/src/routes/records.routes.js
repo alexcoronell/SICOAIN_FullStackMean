@@ -7,7 +7,7 @@ router.get('/getRecords', records.getRecords);
 router.get('/getRecordNumber', records.getRecordNumber);
 router.post('/createRecords', records.createRecords);
 router.post('/getRecord', records.getRecord);
-router.post('/:id', records.updateRecords);
-router.post('/:id', records.cancelRecords);
+router.post('/update', records.updateRecords);
+router.post('/cancel', records.cancelRecords);
 
 module.exports = router;

@@ -28,15 +28,15 @@
                 </div>
 
                 <!-- Formulario de edición -->
-                <form *ngIf="showForm" #Form="ngForm" (ngSubmit)="create(Form)">
+                <form *ngIf="showForm" #Form="ngForm" (ngSubmit)="update(Form)">
                     <div class="row">
 
 
                         <div class="col s12 xl6">
                             <!-- Columna 1 -->
 
-                            <!-- ID de usuario -->
-                            <input [(ngModel)]="record._id" id="_id" name="_id" type="text">
+                            <!-- ID de registro -->
+                            <input [(ngModel)]="record._id" id="_id" name="_id" type="hidden">
 
                             <!-- Nombre del empleado -->
                             <div class="input-field">
@@ -55,7 +55,7 @@
 
                             <!-- Nombre del empleado -->
                             <div class="input-field">
-                              <input [(ngModel)]="record.employeeName" id="employeeName" name="employeeName" class="validate" disabled>
+                              <input [(ngModel)]="record.employeeName" id="employeeName" name="employeeName" class="validate" readonly>
                               <label class="active labelSelect" for="employeeName">Empleado:</label>
                             </div>
 
@@ -96,9 +96,6 @@
                                 <input [(ngModel)]="record.filename" id="filename" name="filename" type="text" class="validate" disabled>
                                 <label for="digitalEvidence">Evidencia Digital:</label>
                             </div>
-
-                            <!-- Condition -->
-                            <input [(ngModel)]="record.condition" id="condition" name="condition" type="hidden">
 
 
                         </div> <!-- Fin Columna 2 -->

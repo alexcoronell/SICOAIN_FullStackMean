@@ -16,9 +16,13 @@ recordCtrl.getRecord = async (req, res) => {
     if (! recordData) 
         return res.status(401).send("The record doesn't exist");
     
+
+
     if (recordData) 
         return res.status(200).json({recordData});
     
+
+
 };
 
 recordCtrl.getRecordNumber = async (req, res) => {
@@ -70,23 +74,20 @@ recordCtrl.createRecords = async (req, res) => { /* const saveRecord = async () 
 };
 
 recordCtrl.updateRecords = async (req, res) => {
-    const {id} = req.params;
-    const record = {
-        idRecord: req.body.idRecord,
-        employee: req.body.employee,
-        dataIncident: req.body.dataIncident,
-        description: req.body.description,
-        filename: req.body.filename,
-        reasonForCancellation: req.body.reasonForCancellation,
-        contidion: req.body.condition
+    const filter = {
+        "_id": req.body._id
     }
-    await Records.findByIdAndUpdate(id, {
-        $set: record
-    }, {new: false});
-    res.json({'status': 'record updated'})
+    const update = {
+        $set: {
+            employee: req.body.employee,
+            employeeName: req.body.employeeName,
+            dateIncident: req.body.dateIncident,
+            description: req.body.description
+        }
+    }
+    await Records.updateOne(filter, update, {new: false});
+    res.json({'status': 'Record updated'})
 };
-
-recordCtrl.inactivaterecord = function () {}
 
 recordCtrl.cancelRecords = async (req, res) => {
     await Records.findByIdAndDelete(req.params.id)

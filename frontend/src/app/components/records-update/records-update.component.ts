@@ -60,6 +60,7 @@ export class RecordsUpdateComponent implements OnInit {
     .subscribe(
       res => {
         this.record = res.recordData;
+        this.clearSearchForm();
         this.showForm = true;
         this.showSearchForm = false;
       },
@@ -75,6 +76,30 @@ export class RecordsUpdateComponent implements OnInit {
           this.clearSearchForm();
         }
     )
+  }
+
+
+  update(Form: NgForm){
+    console.log(Form.value);
+    this.recordsService.update(Form.value)
+    .subscribe(
+      res => {
+        M.toast({
+        html: 'Registro actualizado correctamente',
+        displayLength: 1500
+      });
+        setTimeout (() => {
+        this.router.navigate(['/recordsAndEvents']);
+    }, 1500);
+    this.clearData(Form);
+    },
+      err => {
+        console.log(err)
+        M.toast({
+          html: 'Registro no se pudo actualizar',
+          displayLength: 1500
+        })
+    })
   }
 
   // Obtener todos los registros
@@ -96,7 +121,6 @@ export class RecordsUpdateComponent implements OnInit {
       .subscribe(
         res => {
           this.employees = res as Employees[];
-          console.log(this.employees);
         },
         err => {
           console.error(err.error);
@@ -145,10 +169,6 @@ export class RecordsUpdateComponent implements OnInit {
       )
   }
 
-  update(form: NgForm) {
-    console.log(form);
-    this.clearData();
-  }
 
   clearSearchForm() {
     this.searchItem.idRecord = "";
@@ -159,6 +179,7 @@ export class RecordsUpdateComponent implements OnInit {
       form.reset();
       this.record = new Records;
     }
+    this.clearSearchForm()
     this.showForm = false;
     this.showSearchForm = true;
   }
