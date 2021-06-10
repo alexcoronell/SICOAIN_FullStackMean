@@ -13,14 +13,15 @@ declare var M: any;
 })
 export class PositionsActivateDesactivateComponent implements OnInit {
 
-  position: any = {};
+  position: Positions;
+  positions: Positions[];
   searchItem: Positions;
   showForm: boolean = false;
   showSearchForm: boolean = true;
   searchValidate: boolean = false;
 
   constructor(
-    private poitionsService: PositionsService,
+    private positionsService: PositionsService,
     private router: Router
   ) {
     this.position = new Positions;
@@ -28,19 +29,22 @@ export class PositionsActivateDesactivateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getPositions();
   }
 
-  search() {
+  // Búsqueda y carga de registro
+  search(SearchForm: NgForm) {
     this.searchItem.name = this.searchItem.name.trim();
-    this.poitionsService.getPosition(this.searchItem)
+    this.positionsService.getPosition(this.searchItem)
     .subscribe(
       res => {
         this.position = res.positionData;
+        this.clearSearchForm();
         this.showForm = true;
         this.showSearchForm = false;
       },
       err => {
-        if (err.error == "The position doen't exist") {
+        if (err.error == "The Position doen't exist") {
           this.searchValidate = true;
         setTimeout (() => {
           this.searchValidate = false;
@@ -51,10 +55,24 @@ export class PositionsActivateDesactivateComponent implements OnInit {
           this.clearSearchForm();
         }
     )
-  }
+  };
+
+// Obtener todos los cargos
+getPositions = () => {
+  this.positionsService.getPositions()
+    .subscribe(
+      res => {
+        this.positions = res as Positions[];
+        console.log(this.position);
+      },
+      err => {
+        console.error(err.error);
+      }
+    )
+}
 
   actDesact(Form: NgForm){
-    this.poitionsService.actDesact(Form.value)
+    this.positionsService.actDesact(Form.value)
     .subscribe(
       res => {
         M.toast({

@@ -16,13 +16,11 @@ positionCtrl.getPosition = async (req, res) => {
     const name = req.body.name;
     const positionData = await Positions.findOne({name});
     if (! positionData) 
-        return res.status(401).send("The position doesn't exist");
+        return res.status(401).send("The Position doesn't exist");
     
-
     if (positionData) 
         return res.status(200).json({positionData});
     
-
 };
 
 positionCtrl.createPositions = async (req, res) => {
@@ -32,6 +30,7 @@ positionCtrl.createPositions = async (req, res) => {
     if (positionData) 
         return res.status(401).send("This position is already registered");
     
+
 
     await newPosition.save();
     res.json({'status': 'Position saved'});
