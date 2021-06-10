@@ -13,8 +13,9 @@ EmployeeCtrl.getActiveEmployees = async (req, res) => {
 };
 
 EmployeeCtrl.getEmployee = async (req, res) => {
-    const {id} = req.params;
-    const employeeData = await Employees.findOne({_id: id});
+    console.log('Funciono backend');
+    const identificationNumber = req.body.identificationNumber;
+    const employeeData = await Employees.findOne({identificationNumber});
     if (! employeeData) 
         return res.status(401).send("The Employee doesn't exist");
     

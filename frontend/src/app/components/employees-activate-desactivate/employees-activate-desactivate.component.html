@@ -7,21 +7,24 @@
             <div class="col s12 m8 l9">
                 <h3 class="center formTitle">Act/Desact. de Empleados</h3>
 
-                <!-- Formulario de búsqueda -->
-                <div class="row">
-                    <div class="col s12 m8 offset-l2 l5 offset-xl4 xl4">
-                        <form *ngIf="showSearchForm" #SearchForm="ngForm" (ngSubmit)="search()">
-                            <div class="input-field">
-                                <input [(ngModel)]="searchItem.identificationNumber" id="searchItem" name="searchItem" type="text" class="validate" autofocus>
-                                <label for="Search">Buscar Número de cédula:</label>
-                            </div>
-                            <span class="errorSearch" *ngIf="searchValidate">Empleado no encontrado</span>
-                            <button class="btn waves-effect waves-light right" type="submit">Buscar
-                                <i class="material-icons right">search</i>
-                            </button>
-                        </form>
-                    </div>
-                </div>
+                 <!-- Formulario de búsqueda -->
+                 <div class="row">
+                  <div class="col s12 offset-l3 l6">
+                    <form *ngIf="showSearchForm" #SearchForm="ngForm" (ngSubmit)="search()">
+                      <div class="input-field">
+                          <select [(ngModel)]="searchItem.identificationNumber" id="searchItem" name="searchItem" class="browser-default">
+                            <option value="" disabled selected>Seleccione...</option>
+                            <option *ngFor="let employee of employees" value="{{ employee.identificationNumber }}">{{ employee.identificationNumber }}</option>
+                          </select>
+                          <label class="active labelSelect" for="searchItem">Buscar Número de identificación:</label>
+                      </div>
+                      <span class="errorSearch" *ngIf="searchValidate">Empleado no encontrado</span>
+                      <button class="btn waves-effect waves-light right" type="submit">Buscar
+                          <i class="material-icons right">search</i>
+                      </button>
+                  </form>
+                  </div>
+              </div>
 
                 <!-- Formulario de actualización de empleados -->
                 <form *ngIf="showForm" #Form="ngForm" (ngSubmit)="actDesact(Form)">

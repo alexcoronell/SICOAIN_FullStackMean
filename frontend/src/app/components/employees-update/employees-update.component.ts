@@ -30,6 +30,7 @@ declare var M: any;
 export class EmployeesUpdateComponent implements OnInit {
 
   employee: Employees;
+  employees: Employees[]
   errorMessage: boolean = false
 
   department: Departments;
@@ -76,6 +77,7 @@ export class EmployeesUpdateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getEmployees();
     this.department = new Departments;
     this.getDepartments();
     this.currentDepartment = this.department._id;
@@ -87,16 +89,18 @@ export class EmployeesUpdateComponent implements OnInit {
     this.getArls();
   }
 
-  search() {
+  // Búsqueda y carga de registro
+  search(SearchForm: NgForm) {
     this.employeesService.getEmployee(this.searchItem)
     .subscribe(
       res => {
         this.employee = res.employeeData;
+        this.clearSearchForm();
         this.showForm = true;
         this.showSearchForm = false;
       },
       err => {
-        if (err.error == "The Employee doen't exist") {
+        if (err.error == "The employee doen't exist") {
           this.searchValidate = true;
         setTimeout (() => {
           this.searchValidate = false;
@@ -107,6 +111,19 @@ export class EmployeesUpdateComponent implements OnInit {
           this.clearSearchForm();
         }
     )
+  }
+
+  // Obtener todos los empleados
+  getEmployees = () => {
+    this.employeesService.getEmployees()
+      .subscribe(
+        res => {
+          this.employees = res as Employees[];
+        },
+        err => {
+          console.error(err.error);
+        }
+      )
   }
 
   update(Form: NgForm){

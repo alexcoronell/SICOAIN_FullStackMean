@@ -14,6 +14,7 @@ declare var M: any;
 export class EmployeesActivateDesactivateComponent implements OnInit {
 
   employee: Employees;
+  employees: Employees[];
   searchItem: Employees;
   errorMessage: boolean = false
   showForm: boolean = false;
@@ -29,18 +30,21 @@ export class EmployeesActivateDesactivateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getEmployees();
   }
 
-  search() {
+  // Búsqueda y carga de empleado
+  search(SearchForm: NgForm) {
     this.employeesService.getEmployee(this.searchItem)
     .subscribe(
       res => {
         this.employee = res.employeeData;
+        this.clearSearchForm();
         this.showForm = true;
         this.showSearchForm = false;
       },
       err => {
-        if (err.error == "The Employee doen't exist") {
+        if (err.error == "The employee doen't exist") {
           this.searchValidate = true;
         setTimeout (() => {
           this.searchValidate = false;
@@ -51,6 +55,19 @@ export class EmployeesActivateDesactivateComponent implements OnInit {
           this.clearSearchForm();
         }
     )
+  }
+
+  // Obtener todos los empleados
+  getEmployees = () => {
+    this.employeesService.getEmployees()
+      .subscribe(
+        res => {
+          this.employees = res as Employees[];
+        },
+        err => {
+          console.error(err.error);
+        }
+      )
   }
 
   actDesact(Form: NgForm){
@@ -80,6 +97,9 @@ export class EmployeesActivateDesactivateComponent implements OnInit {
       Form.reset();
       this.employee = new Employees;
     }
+    this.showForm = false;
+    this.showSearchForm = true;
+
   }
 
   clearSearchForm() {
