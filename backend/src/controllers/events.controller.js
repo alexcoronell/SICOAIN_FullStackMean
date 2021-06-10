@@ -7,6 +7,11 @@ eventCtrl.getEvents = async (req, res) => {
     res.json(eventList);
 };
 
+eventCtrl.getActiveEvents = async (req, res) => {
+    const eventList = await Events.find({condition: true}).sort({"name": 1});
+    res.json(eventList);
+};
+
 eventCtrl.getEvent = async (req, res) => {
     const {id} = req.params;
     const eventData = await Events.findOne({_id: id});

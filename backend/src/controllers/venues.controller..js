@@ -3,35 +3,36 @@ const Venues = require('../models/venues');
 const venuesCtrl = {};
 
 venuesCtrl.getVenues = async (req, res) => {
-    const venues = await Venues.find().sort({
-        "name": 1
-    });
+    const venues = await Venues.find().sort({"name": 1});
     res.json(venues);
-}
+};
+
+venuesCtrl.getActiveVenues = async (req, res) => {
+    const venues = await Venues.find({condition: true}).sort({"name": 1});
+    res.json(venues);
+};
 
 venuesCtrl.getCampus = async (req, res) => {
     const name = req.body.name;
-    const campusData = await Venues.findOne({
-        name
-    });
-    if (!campusData) return res.status(401).send("The Campus doesn't exist");
-    if (campusData) return res.status(200).json({
-        campusData
-    });
-}
+    const campusData = await Venues.findOne({name});
+    if (! campusData) 
+        return res.status(401).send("The Campus doesn't exist");
+    
+    if (campusData) 
+        return res.status(200).json({campusData});
+    
+};
 
 venuesCtrl.createVenues = async (req, res) => {
     const newCapus = new Venues(req.body);
     const name = req.body.name;
-    const campusData = await Venues.findOne({
-        name
-    });
-    if (campusData) return res.status(401).send("This Campus is already registered");
+    const campusData = await Venues.findOne({name});
+    if (campusData) 
+        return res.status(401).send("This Campus is already registered");
+    
     await newCapus.save();
-    res.json({
-        'status': 'Campus saved'
-    });
-}
+    res.json({'status': 'Campus saved'});
+};
 
 venuesCtrl.updateVenues = async (req, res) => {
     const filter = {
@@ -46,13 +47,9 @@ venuesCtrl.updateVenues = async (req, res) => {
             notes: req.body.notes
         }
     }
-    await Venues.updateOne(filter, update, {
-        new: false
-    });
-    res.json({
-        'status': 'Campus updated'
-    })
-}
+    await Venues.updateOne(filter, update, {new: false});
+    res.json({'status': 'Campus updated'})
+};
 
 venuesCtrl.actDesact = async (req, res) => {
     const filter = {
@@ -70,12 +67,8 @@ venuesCtrl.actDesact = async (req, res) => {
             condition: newCondition
         }
     }
-    await Venues.updateOne(filter, update, {
-        new: true
-    });
-    res.json({
-        'status': 'condition updated'
-    })
-}
+    await Venues.updateOne(filter, update, {new: true});
+    res.json({'status': 'condition updated'})
+};
 
 module.exports = venuesCtrl;

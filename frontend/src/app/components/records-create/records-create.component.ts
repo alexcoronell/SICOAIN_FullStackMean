@@ -42,7 +42,7 @@ export class RecordsCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.getRecordNumber();
-    this.getEmployees();
+    this.getActiveEmployees();
     this.getEvents();
   }
 
@@ -97,9 +97,9 @@ export class RecordsCreateComponent implements OnInit {
       )
   }
 
-  // Obtener todos los empleados
-  getEmployees = () => {
-    this.employeesService.getEmployees()
+  // Obtener todos los empleados activos
+  getActiveEmployees = () => {
+    this.employeesService.getActiveEmployees()
       .subscribe(
         res => {
           this.employees = res as Employees[];

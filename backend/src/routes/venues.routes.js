@@ -5,6 +5,7 @@ const venues = require('../controllers/venues.controller.');
 
 router.post('/getCampus', venues.getCampus);
 router.get('/getVenues', venues.getVenues);
+router.get('/getActiveVenues', venues.getActiveVenues);
 router.post('/create', venues.createVenues);
 router.post('/update', venues.updateVenues);
 router.post('/actDesact', venues.actDesact);
