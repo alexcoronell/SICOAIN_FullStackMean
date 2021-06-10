@@ -89,7 +89,7 @@ export class EmployeesUpdateComponent implements OnInit {
     this.getArls();
   }
 
-  // Búsqueda y carga de registro
+  // Búsqueda y carga de empleado
   search(SearchForm: NgForm) {
     this.employeesService.getEmployee(this.searchItem)
     .subscribe(
