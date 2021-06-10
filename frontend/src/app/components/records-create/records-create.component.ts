@@ -137,7 +137,7 @@ export class RecordsCreateComponent implements OnInit {
       )
   }
 
-  // Obtener empleado seleccionado
+  // Obtener suceso seleccionado
   getEvent = (e) => {
     this.eventsService.getEvent(e)
       .subscribe(

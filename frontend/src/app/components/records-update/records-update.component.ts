@@ -50,8 +50,10 @@ export class RecordsUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.getRecords();
     this.getEmployees();
+    this.getEvents();
   }
 
+  // Búsqueda y carga de registro
   search(SearchForm: NgForm) {
     this.searchItem.idRecord = this.searchItem.idRecord.trim();
     this.recordsService.getRecord(this.searchItem)
@@ -75,6 +77,7 @@ export class RecordsUpdateComponent implements OnInit {
     )
   }
 
+  // Obtener todos los registros
   getRecords() {
     this.recordsService.getRecords()
       .subscribe(
@@ -114,6 +117,33 @@ export class RecordsUpdateComponent implements OnInit {
           }
         )
     }
+
+    // Obtener todos los sucesos
+  getEvents = () => {
+    this.eventsService.getEvents()
+      .subscribe(
+        res => {
+          this.events = res as Events[];
+        },
+        err => {
+          console.error(err.error);
+        }
+      )
+  }
+
+  // Obtener suceso seleccionado
+  getEvent = (e) => {
+    this.eventsService.getEvent(e)
+      .subscribe(
+        res => {
+          this.event = res.eventData as Events;
+          this.record.employeeName = this.employee.names + ' ' + this.employee.lastNames;
+        },
+        err => {
+          console.error(err.error);
+        }
+      )
+  }
 
   update(form: NgForm) {
     console.log(form);
