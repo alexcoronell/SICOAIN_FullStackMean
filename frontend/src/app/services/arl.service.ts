@@ -17,6 +17,7 @@ export class ArlService {
   private readonly URL_NEW = "create";
   private readonly URL_GET = "getArl";
   private readonly URL_GET_ALL = "getArls";
+  private readonly URL_GET_ACTIVE = "getActiveArls";
   private readonly URL_UPDATE = "update";
   private readonly URL_ACT_DESACT = "actDesact";
 
@@ -26,6 +27,10 @@ export class ArlService {
 
   getArls() {
     return this.http.get<Arl[]>(this.URL_SERVER + this.URL_GET_ALL);
+  }
+
+  getActiveArls() {
+    return this.http.get<Arl[]>(this.URL_SERVER + this.URL_GET_ACTIVE);
   }
 
   getArl(searchItem) {

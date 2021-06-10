@@ -16,6 +16,7 @@ export class CompaniesService {
   private readonly URL_NEW = "create";
   private readonly URL_GET = "getCompany";
   private readonly URL_GET_ALL = "getCompanies";
+  private readonly URL_GET_ACTIVE = "getActiveCompanies";
   private readonly URL_UPDATE = "update";
   private readonly URL_ACT_DESACT = "actDesact";
 
@@ -23,6 +24,10 @@ export class CompaniesService {
 
   getCompanies() {
     return this.http.get<Companies[]>(this.URL_SERVER + this.URL_GET_ALL);
+  }
+
+  getActiveCompanies() {
+    return this.http.get<Companies[]>(this.URL_SERVER + this.URL_GET_ACTIVE);
   }
 
   create(newCompany: Companies) {

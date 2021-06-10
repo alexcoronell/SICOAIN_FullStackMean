@@ -16,6 +16,7 @@ export class VenuesService {
   private readonly URL_NEW = "create";
   private readonly URL_GET = "getCampus";
   private readonly URL_GET_ALL = "getVenues";
+  private readonly URL_GET_ACTIVE = "getActiveVenues";
   private readonly URL_UPDATE = "update";
   private readonly URL_ACT_DESACT = "actDesact";
 
@@ -25,6 +26,10 @@ export class VenuesService {
 
   getVenues() {
     return this.http.get<Venues[]>(this.URL_SERVER + this.URL_GET_ALL);
+  }
+
+  getActiveVenues() {
+    return this.http.get<Venues[]>(this.URL_SERVER + this.URL_GET_ACTIVE);
   }
 
   create(newCampus: Venues) {

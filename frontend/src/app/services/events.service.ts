@@ -16,6 +16,7 @@ export class EventsService {
   private readonly URL_NEW = "create";
   private readonly URL_GET = "getEvent/";
   private readonly URL_GET_ALL = "getEvents";
+  private readonly URL_GET_ACTIVE = "getActiveEvents";
   private readonly URL_UPDATE = "update";
   private readonly URL_ACT_DESACT = "actDesact";
 
@@ -34,6 +35,10 @@ export class EventsService {
 
   getEvents() {
     return this.http.get<Events[]>(this.URL_SERVER + this.URL_GET_ALL);
+  }
+
+  getActiveEvents() {
+    return this.http.get<Events[]>(this.URL_SERVER + this.URL_GET_ACTIVE);
   }
 
 

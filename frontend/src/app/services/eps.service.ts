@@ -16,6 +16,7 @@ export class EpsService {
   private readonly URL_NEW = "create";
   private readonly URL_GET = "getEps";
   private readonly URL_GET_ALL = "getEpss";
+  private readonly URL_GET_ACTIVE = "getActiveEpss";
   private readonly URL_UPDATE = "update";
   private readonly URL_ACT_DESACT = "actDesact";
 
@@ -23,6 +24,10 @@ export class EpsService {
 
   getEpss() {
     return this.http.get<Eps[]>(this.URL_SERVER + this.URL_GET_ALL);
+  }
+
+  getActiveEpss() {
+    return this.http.get<Eps[]>(this.URL_SERVER + this.URL_GET_ACTIVE);
   }
 
   getEps(searchItem) {

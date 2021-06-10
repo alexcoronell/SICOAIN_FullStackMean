@@ -16,6 +16,7 @@ export class PositionsService {
   private readonly URL_NEW = "create";
   private readonly URL_GET = "getPosition";
   private readonly URL_GET_ALL = "getPositions";
+  private readonly URL_GET_ACTIVE = "getActivePositions";
   private readonly URL_UPDATE = "update";
   private readonly URL_ACT_DESACT = "actDesact";
 
@@ -23,6 +24,10 @@ export class PositionsService {
 
   getPositions() {
     return this.http.get<Positions[]>(this.URL_SERVER + this.URL_GET_ALL);
+  }
+
+  getActivePositions() {
+    return this.http.get<Positions[]>(this.URL_SERVER + this.URL_GET_ACTIVE);
   }
 
   getPosition(searchItem) {
