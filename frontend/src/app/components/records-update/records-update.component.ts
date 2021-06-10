@@ -48,7 +48,7 @@ export class RecordsUpdateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getRecords();
+    this.getActiveRecords();
     this.getEmployees();
     this.getEvents();
   }
@@ -102,9 +102,9 @@ export class RecordsUpdateComponent implements OnInit {
     })
   }
 
-  // Obtener todos los registros
-  getRecords() {
-    this.recordsService.getRecords()
+  // Obtener todos los registros activos
+  getActiveRecords() {
+    this.recordsService.getActiveRecords()
       .subscribe(
         res => {
           this.records = res as Records[];

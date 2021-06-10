@@ -19,6 +19,7 @@ export class RecordsService {
   private readonly URL_GET = "getRecord";
   private readonly URL_GET_COUNT = "getRecordNumber";
   private readonly URL_GET_ALL = "getRecords";
+  private readonly URL_GET_ACTIVE = "getActiveRecords";
   private readonly URL_UPDATE = "update";
   private readonly URL_CANCEL = "cancel";
 
@@ -28,6 +29,10 @@ export class RecordsService {
 
   getRecords() {
     return this.http.get<Records[]>(this.URL_SERVER + this.URL_GET_ALL);
+  }
+
+  getActiveRecords() {
+    return this.http.get<Records[]>(this.URL_SERVER + this.URL_GET_ACTIVE);
   }
 
   getRecordNumber() {

@@ -10,6 +10,11 @@ recordCtrl.getRecords = async (req, res) => {
     res.json(recordList);
 };
 
+recordCtrl.getActiveRecords = async (req, res) => {
+    const recordList = await Records.find({condition: true});
+    res.json(recordList);
+};
+
 recordCtrl.getRecord = async (req, res) => {
     const idRecord = req.body.idRecord;
     const recordData = await Records.findOne({idRecord});
