@@ -13,7 +13,8 @@ declare var M: any;
 })
 export class EpsUpdateComponent implements OnInit {
 
-  eps: any = {};
+  eps: Eps;
+  epss: Eps[];
   showForm: boolean = false;
   showSearchForm: boolean = true;
   searchItem: Eps;
@@ -28,6 +29,7 @@ export class EpsUpdateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getEpss();
   }
 
   search() {
@@ -51,6 +53,18 @@ export class EpsUpdateComponent implements OnInit {
           this.clearSearchForm();
         }
     )
+  }
+
+  getEpss() {
+    this.epsService.getEpss()
+      .subscribe(
+        res => {
+          this.epss = res as Eps[];
+        },
+        err => {
+          console.log(err.error);
+          }
+      )
   }
 
   update(Form: NgForm){
