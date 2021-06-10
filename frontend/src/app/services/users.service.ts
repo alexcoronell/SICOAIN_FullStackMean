@@ -11,15 +11,25 @@ export class UsersService {
   user: Users;
   newUser: Users;
   users: Users[];
-  
+
   private readonly URL_SERVER = "http://localhost:3000/api/users/";
   private readonly URL_NEW_USER = "newUser";
   private readonly URL_GET_USER = "getUser";
+  private readonly URL_GET_ALL = "getUsers";
+  private readonly URL_GET_ACTIVE = "getActiveUsers";
   private readonly URL_UPDATE_USER = "update";
   private readonly URL_PASSWORD_UPDATE_USER = "passwordUpdate";
   private readonly URL_ACT_DESACT_USER = "actDesact";
 
   constructor(private http: HttpClient) { }
+
+  getUsers() {
+    return this.http.get<Users[]>(this.URL_SERVER + this.URL_GET_ALL);
+  }
+
+  getActiveUsers() {
+    return this.http.get<Users[]>(this.URL_SERVER + this.URL_GET_ACTIVE);
+  }
 
   createUser(newUser: Users) {
     return this.http.post<any>(this.URL_SERVER + this.URL_NEW_USER, newUser);

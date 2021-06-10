@@ -15,7 +15,8 @@ declare var M: any;
 export class UsersUpdateComponent implements OnInit {
 
 
-  user: any = {};
+  user: Users;
+  users: Users[];
   searchItem: Users;
   showForm: boolean = false;
   showSearchForm: boolean = true;
@@ -30,10 +31,23 @@ export class UsersUpdateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getUsers();
+  }
+
+  // Obtener todos los empleados
+  getUsers = () => {
+    this.userService.getUsers()
+      .subscribe(
+        res => {
+          this.users = res as Users[];
+        },
+        err => {
+          console.error(err.error);
+        }
+      )
   }
 
   search() {
-    this.searchItem.user = this.searchItem.user.trim();
     this.userService.getUser(this.searchItem)
     .subscribe(
       res => {
@@ -44,7 +58,6 @@ export class UsersUpdateComponent implements OnInit {
       err => {
         console.log(err.error)
         console.log(this.searchItem);
-        console.log("Falló");
         if (err.error == "The user doen't exist") {
           this.searchValidate = true;
         setTimeout (() => {

@@ -13,7 +13,8 @@ declare var M: any;
 })
 export class UsersPasswordUpdateComponent implements OnInit {
 
-  user: any = {};
+  user: Users;
+  users: Users[];
   searchItem: Users;
   showForm: boolean = false;
   showSearchForm: boolean = true;
@@ -28,22 +29,33 @@ export class UsersPasswordUpdateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getActiveUsers();
+  }
+
+  // Obtener todos los empleados activos
+  getActiveUsers = () => {
+    this.userService.getActiveUsers()
+      .subscribe(
+        res => {
+          this.users = res as Users[];
+        },
+        err => {
+          console.error(err.error);
+        }
+      )
   }
 
   search() {
-    this.searchItem.user = this.searchItem.user.trim();
     this.userService.getUser(this.searchItem)
     .subscribe(
       res => {
         this.user = res.userData;
         this.showForm = true;
         this.showSearchForm = false;
-        this.user.password = ''; 
       },
       err => {
         console.log(err.error)
         console.log(this.searchItem);
-        console.log("Falló");
         if (err.error == "The user doen't exist") {
           this.searchValidate = true;
         setTimeout (() => {
@@ -77,7 +89,7 @@ export class UsersPasswordUpdateComponent implements OnInit {
     })
   }
 
-  
+
   clearData(Form?: NgForm) {
     if (Form) {
       Form.reset();
