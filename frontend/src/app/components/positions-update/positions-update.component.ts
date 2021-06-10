@@ -63,7 +63,6 @@ getPositions = () => {
     .subscribe(
       res => {
         this.positions = res as Positions[];
-        console.log(this.position);
       },
       err => {
         console.error(err.error);

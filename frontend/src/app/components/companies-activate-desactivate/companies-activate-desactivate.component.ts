@@ -13,7 +13,8 @@ declare var M: any;
 })
 export class CompaniesActivateDesactivateComponent implements OnInit {
 
-  company: any = {};
+  company: Companies;
+  companies: Companies[];
   showForm: boolean = false;
   showSearchForm: boolean = true;
   searchItem: Companies;
@@ -28,6 +29,7 @@ export class CompaniesActivateDesactivateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getCompanies();
   }
 
   search() {
@@ -50,6 +52,18 @@ export class CompaniesActivateDesactivateComponent implements OnInit {
         }
           this.clearSearchForm();
         }
+    )
+  }
+
+  getCompanies() {
+    this.companiesService.getCompanies()
+    .subscribe(
+      res => {
+        this.companies = res as Companies[];
+      },
+      err => {
+        console.error(err.error);
+      }
     )
   }
 
