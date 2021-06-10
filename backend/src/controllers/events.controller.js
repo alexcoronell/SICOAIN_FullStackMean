@@ -13,17 +13,15 @@ eventCtrl.getActiveEvents = async (req, res) => {
 };
 
 eventCtrl.getEvent = async (req, res) => {
-    const {id} = req.params;
-    const eventData = await Events.findOne({_id: id});
+    const name = req.body.name;
+    const eventData = await Events.findOne({name});
     if (! eventData) 
         return res.status(401).send("The Event doesn't exist");
     
 
-
     if (eventData) 
         return res.status(200).json({eventData});
     
-
 
 };
 

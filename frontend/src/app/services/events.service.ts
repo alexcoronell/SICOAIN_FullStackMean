@@ -30,7 +30,7 @@ export class EventsService {
   }
 
   getEvent(searchItem) {
-    return this.http.get<any>(this.URL_SERVER + this.URL_GET + searchItem);
+    return this.http.post<any>(this.URL_SERVER + this.URL_GET, searchItem);
   }
 
   getEvents() {
@@ -40,7 +40,6 @@ export class EventsService {
   getActiveEvents() {
     return this.http.get<Events[]>(this.URL_SERVER + this.URL_GET_ACTIVE);
   }
-
 
   update(event) {
     return this.http.post<any>(this.URL_SERVER + this.URL_UPDATE, event);

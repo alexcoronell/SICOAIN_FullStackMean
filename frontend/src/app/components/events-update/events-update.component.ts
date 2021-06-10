@@ -13,7 +13,8 @@ declare var M: any;
 })
 export class EventsUpdateComponent implements OnInit {
 
-  events: Events;
+  event: Events;
+  events: Events[];
   searchItem: Events;
   showForm: boolean = false;
   showSearchForm: boolean = true;
@@ -23,11 +24,12 @@ export class EventsUpdateComponent implements OnInit {
     private eventsService: EventsService,
     private router: Router
   ) {
-    this.events = new Events;
+    this.event = new Events;
     this.searchItem = new Events;
   }
 
   ngOnInit(): void {
+    this.getEvents();
   }
 
   search() {
@@ -35,12 +37,12 @@ export class EventsUpdateComponent implements OnInit {
     this.eventsService.getEvent(this.searchItem)
     .subscribe(
       res => {
-        this.events = res.eventData;
+        this.event = res.eventData;
         this.showForm = true;
         this.showSearchForm = false;
       },
       err => {
-        if (err.error == "The Event doesn't exist") {
+        if (err.error == "The Event doen't exist") {
           this.searchValidate = true;
         setTimeout (() => {
           this.searchValidate = false;
@@ -51,6 +53,19 @@ export class EventsUpdateComponent implements OnInit {
           this.clearSearchForm();
         }
     )
+  }
+
+  // Obtener todos los sucesos
+  getEvents = () => {
+    this.eventsService.getEvents()
+      .subscribe(
+        res => {
+          this.events = res as Events[];
+        },
+        err => {
+          console.error(err.error);
+        }
+      )
   }
 
   update(Form: NgForm){
@@ -78,7 +93,7 @@ export class EventsUpdateComponent implements OnInit {
   clearData(Form?: NgForm) {
     if (Form) {
       Form.reset();
-      this.events = new Events;
+      this.event = new Events;
     }
     this.clearSearchForm();
     this.showForm = false;

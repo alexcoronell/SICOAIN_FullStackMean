@@ -13,7 +13,8 @@ declare var M: any;
 })
 export class EventsActivateDesactivateComponent implements OnInit {
 
-  events: Events;
+  event: Events;
+  events: Events[];
   searchItem: Events;
   showForm: boolean = false;
   showSearchForm: boolean = true;
@@ -23,11 +24,12 @@ export class EventsActivateDesactivateComponent implements OnInit {
     private eventsService: EventsService,
     private router: Router
   ) {
-    this.events = new Events;
+    this.event = new Events;
     this.searchItem = new Events;
   }
 
   ngOnInit(): void {
+    this.getEvents();
   }
 
   search() {
@@ -35,7 +37,7 @@ export class EventsActivateDesactivateComponent implements OnInit {
     this.eventsService.getEvent(this.searchItem)
     .subscribe(
       res => {
-        this.events = res.eventData;
+        this.event = res.eventData;
         this.showForm = true;
         this.showSearchForm = false;
       },
@@ -52,6 +54,19 @@ export class EventsActivateDesactivateComponent implements OnInit {
         }
     )
   }
+
+    // Obtener todos los sucesos
+    getEvents = () => {
+      this.eventsService.getEvents()
+        .subscribe(
+          res => {
+            this.events = res as Events[];
+          },
+          err => {
+            console.error(err.error);
+          }
+        )
+    }
 
   actDesact(Form: NgForm){
     this.eventsService.actDesact(Form.value)
@@ -78,7 +93,7 @@ export class EventsActivateDesactivateComponent implements OnInit {
   clearData(Form?: NgForm) {
     if (Form) {
       Form.reset();
-      this.events = new Events;
+      this.event = new Events;
     }
     this.clearSearchForm();
     this.showForm = false;
