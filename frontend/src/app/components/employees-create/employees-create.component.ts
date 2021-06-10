@@ -75,11 +75,11 @@ export class EmployeesCreateComponent implements OnInit {
     this.getDepartments();
     this.currentDepartment = this.department._id;
     this.loadMunicipalities();
-    this.getCompanies();
-    this.getVenues();
-    this.getPositions();
-    this.getEpss();
-    this.getArls();
+    this.getActiveCompanies();
+    this.getActiveVenues();
+    this.getActivePositions();
+    this.getActiveEpss();
+    this.getActiveArls();
   }
 
   create(Form: NgForm) {
@@ -150,8 +150,8 @@ export class EmployeesCreateComponent implements OnInit {
       )
   }
 
-  getCompanies() {
-    this.companiesServices.getCompanies()
+  getActiveCompanies() {
+    this.companiesServices.getActiveCompanies()
       .subscribe(
         res => {
           this.companies = res as Companies[];
@@ -162,8 +162,8 @@ export class EmployeesCreateComponent implements OnInit {
       )
   }
 
-  getVenues() {
-    this.venuesServices.getVenues()
+  getActiveVenues() {
+    this.venuesServices.getActiveVenues()
       .subscribe(
         res => {
           this.venues = res as Venues[];
@@ -174,8 +174,8 @@ export class EmployeesCreateComponent implements OnInit {
       )
   }
 
-  getPositions() {
-    this.positionsService.getPositions()
+  getActivePositions() {
+    this.positionsService.getActivePositions()
       .subscribe(
         res => {
           this.positions = res as Positions[];
@@ -186,8 +186,8 @@ export class EmployeesCreateComponent implements OnInit {
       )
   }
 
-  getEpss() {
-    this.epsService.getEpss()
+  getActiveEpss() {
+    this.epsService.getActiveEpss()
       .subscribe(
         res => {
           this.epss = res as Eps[];
@@ -198,8 +198,8 @@ export class EmployeesCreateComponent implements OnInit {
       )
   }
 
-  getArls() {
-    this.arlService.getArls()
+  getActiveArls() {
+    this.arlService.getActiveArls()
       .subscribe(
         res => {
           this.arls = res as Arl[];
