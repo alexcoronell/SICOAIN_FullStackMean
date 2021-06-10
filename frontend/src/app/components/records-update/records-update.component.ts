@@ -21,7 +21,9 @@ export class RecordsUpdateComponent implements OnInit {
 
   record: Records;
   records: Records[];
+  searchItem: Records;
   errorMessage:boolean = false;
+  searchValidate: boolean = false;
 
   fileUpload:any;
 
@@ -42,19 +44,37 @@ export class RecordsUpdateComponent implements OnInit {
     this.record = new Records;
     this.employee = new Employees;
     this.event = new Events;
+    this.searchItem = new Records;
   }
 
   ngOnInit(): void {
     this.getRecords();
   }
 
-  search() {
-    this.showForm = true;
-    this.showSearchForm = false;
+  search(SearchForm: NgForm) {
+    this.searchItem.idRecord = this.searchItem.idRecord.trim();
+    this.recordsService.getRecord(this.searchItem)
+    .subscribe(
+      res => {
+        this.record = res.recordData;
+        this.showForm = true;
+        this.showSearchForm = false;
+      },
+      err => {
+        if (err.error == "The record doen't exist") {
+          this.searchValidate = true;
+        setTimeout (() => {
+          this.searchValidate = false;
+      }, 1500);
+        } else {
+          console.log(err.error);
+        }
+          this.clearSearchForm();
+        }
+    )
   }
 
   getRecords() {
-    console.log('getRecords');
     this.recordsService.getRecords()
       .subscribe(
         res => {
@@ -69,6 +89,10 @@ export class RecordsUpdateComponent implements OnInit {
   update(form: NgForm) {
     console.log(form);
     this.clearData();
+  }
+
+  clearSearchForm() {
+    this.searchItem.idRecord = "";
   }
 
   clearData(form?: NgForm) {

@@ -7,13 +7,21 @@ const recordCtrl = {};
 
 recordCtrl.getRecords = async (req, res) => {
     const recordList = await Records.find();
-    console.log(recordList);
     res.json(recordList);
 };
 
 recordCtrl.getRecord = async (req, res) => {
-    const recordCount = await Records.findById(req.params.id);
-    res.json(recordCount);
+    const idRecord = req.body.idRecord;
+    const recordData = await Records.findOne({idRecord});
+    if (! recordData) 
+        return res.status(401).send("The record doesn't exist");
+    
+
+    if (recordData) 
+        return res.status(200).json({recordData});
+    
+    console.log({recordData});
+
 };
 
 recordCtrl.getRecordNumber = async (req, res) => {
