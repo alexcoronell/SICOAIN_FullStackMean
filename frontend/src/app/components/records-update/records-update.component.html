@@ -35,6 +35,9 @@
                         <div class="col s12 xl6">
                             <!-- Columna 1 -->
 
+                            <!-- ID de usuario -->
+                            <input [(ngModel)]="record._id" id="_id" name="_id" type="text">
+
                             <!-- Nombre del empleado -->
                             <div class="input-field">
                                 <input [(ngModel)]="record.idRecord" id="idRecord" name="idRecord" type="text" class="validate" disabled>
@@ -88,13 +91,14 @@
                             </div>
 
 
-                            <!-- Parentesco contacto de Emergencia -->
+                            <!-- Evidencia digital -->
                             <div class="input-field">
-                                <input [(ngModel)]="record.filename" id="digitalEvidence" name="digitalEvidence" type="text" class="validate">
+                                <input [(ngModel)]="record.filename" id="filename" name="filename" type="text" class="validate" disabled>
                                 <label for="digitalEvidence">Evidencia Digital:</label>
                             </div>
 
-                            <!-- Comentarios -->
+                            <!-- Condition -->
+                            <input [(ngModel)]="record.condition" id="condition" name="condition" type="hidden">
 
 
                         </div> <!-- Fin Columna 2 -->
