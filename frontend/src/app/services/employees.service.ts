@@ -16,6 +16,7 @@ export class EmployeesService {
   private readonly URL_NEW = "create";
   private readonly URL_GET = "getEmployee/";
   private readonly URL_GET_ALL = "getEmployees";
+  private readonly URL_GET_ACTIVE = "getActiveEmployees";
   private readonly URL_UPDATE = "update";
   private readonly URL_ACT_DESACT = "actDesact";
 
@@ -25,6 +26,10 @@ export class EmployeesService {
 
   getEmployees() {
     return this.http.get<Employees[]>(this.URL_SERVER + this.URL_GET_ALL);
+  }
+
+  getActiveEmployees() {
+    return this.http.get<Employees[]>(this.URL_SERVER + this.URL_GET_ACTIVE);
   }
 
   create(newEmployee: Employees) {

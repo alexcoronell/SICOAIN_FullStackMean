@@ -7,6 +7,11 @@ EmployeeCtrl.getEmployees = async (req, res) => {
     res.json(employeeList);
 };
 
+EmployeeCtrl.getActiveEmployees = async (req, res) => {
+    const employeeList = await Employees.find({"condition": true}).sort({"identificationNumber": 1});
+    res.json(employeeList);
+};
+
 EmployeeCtrl.getEmployee = async (req, res) => {
     const {id} = req.params;
     const employeeData = await Employees.findOne({_id: id});
@@ -18,6 +23,7 @@ EmployeeCtrl.getEmployee = async (req, res) => {
     if (employeeData) 
         return res.status(200).json({employeeData});
     
+
 
 };
 
