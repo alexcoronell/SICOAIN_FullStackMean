@@ -14,6 +14,7 @@ declare var M: any;
 export class ArlActivateDesactivateComponent implements OnInit {
 
   arl: Arl;
+  arls: Arl[];
   searchItem: Arl;
   showForm: boolean = false;
   showSearchForm: boolean = true;
@@ -28,6 +29,7 @@ export class ArlActivateDesactivateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getArls();
   }
 
   search() {
@@ -51,6 +53,18 @@ export class ArlActivateDesactivateComponent implements OnInit {
           this.clearSearchForm();
         }
     )
+  }
+
+  getArls() {
+    this.arlService.getArls()
+      .subscribe(
+        res => {
+          this.arls = res as Arl[];
+        },
+        err => {
+          console.log(err.error);
+          }
+      )
   }
 
   actDesact(Form: NgForm){
