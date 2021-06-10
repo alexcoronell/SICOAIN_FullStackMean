@@ -93,7 +93,6 @@ export class RecordsCancelComponent implements OnInit {
 
   // Anulación de registro
   cancel(Form: NgForm){
-    console.log(Form.value);
     this.recordsService.cancel(Form.value)
     .subscribe(
       res => {

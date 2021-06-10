@@ -40,13 +40,13 @@
 
                             <!-- Número de registro -->
                             <div class="input-field">
-                                <input [(ngModel)]="record.idRecord" id="idRecord" name="idRecord" type="text" class="validate" readonly>
+                                <input [(ngModel)]="record.idRecord" id="idRecord" name="idRecord" type="text" class="validate" disabled>
                                 <label class="labelSelect active" for="idRecord">Nro. de Registro:</label>
                             </div>
 
                              <!-- Número de Identificación del empleado -->
                              <div class="input-field inputfieldSelect">
-                              <select class="browser-default" (change)="getEmployee(record.employee)" [(ngModel)]="record.employee" id="employee" name="employee" readonly>
+                              <select class="browser-default" (change)="getEmployee(record.employee)" [(ngModel)]="record.employee" id="employee" name="employee" disabled>
                                   <option value="" disabled selected>Seleccione...</option>
                                   <option *ngFor="let employee of employees" value="{{ employee._id }}">{{ employee.identificationNumber }}</option>
                               </select>
@@ -55,13 +55,13 @@
 
                             <!-- Nombre del empleado -->
                             <div class="input-field">
-                              <input [(ngModel)]="record.employeeName" id="employeeName" name="employeeName" class="validate" readonly>
+                              <input [(ngModel)]="record.employeeName" id="employeeName" name="employeeName" class="validate" disabled>
                               <label class="active labelSelect" for="employeeName">Empleado:</label>
                             </div>
 
                             <!-- Suceso -->
                             <div class="input-field inputfieldSelect">
-                              <select class="browser-default" [(ngModel)]="record.event" (change)="getEvent(record.event)"  id="event" name="event">
+                              <select class="browser-default" [(ngModel)]="record.event" (change)="getEvent(record.event)"  id="event" name="event" disabled>
                                   <option value="" disabled selected>Seleccione...</option>
                                   <option *ngFor="let event of events" value="{{ event._id }}">{{ event.name }}</option>
                               </select>
@@ -70,7 +70,7 @@
 
                             <!-- Fecha del incidente -->
                             <div class="input-field">
-                                <input [(ngModel)]="record.dateIncident" id="dateIncident" name="dateIncident" type="date" class="validate" readonly>
+                                <input [(ngModel)]="record.dateIncident" id="dateIncident" name="dateIncident" type="date" class="validate" disabled>
                                 <label class="active labelSelect" for="dateIncident">Fecha del Incidente:</label>
                             </div>
                         </div> <!-- Fin Columna 1 -->
@@ -79,7 +79,7 @@
                         <div class="col s12 xl6">
                             <!-- Columna 2 -->
                             <div class="input-field">
-                                <textarea [(ngModel)]="record.description" id="description" name="description" class="materialize-textarea" readonly></textarea>
+                                <textarea [(ngModel)]="record.description" id="description" name="description" class="materialize-textarea" disabled></textarea>
                                 <label class="labelSelect active" for="description">Descripción</label>
                             </div>
 
