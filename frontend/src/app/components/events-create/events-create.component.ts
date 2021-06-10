@@ -13,14 +13,14 @@ declare var M: any;
 })
 export class EventsCreateComponent implements OnInit {
 
-  events: Events;
+  event: Events;
   errorMessage: boolean = false
 
   constructor(
     private eventsService: EventsService,
     private router: Router
   ) {
-    this.events = new Events;
+    this.event = new Events;
   }
 
   ngOnInit(): void {
@@ -54,7 +54,7 @@ export class EventsCreateComponent implements OnInit {
   clearData(Form?: NgForm) {
     if (Form) {
       Form.reset();
-      this.events = new Events;
+      this.event = new Events;
     }
   }
 
