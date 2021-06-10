@@ -16,12 +16,9 @@ recordCtrl.getRecord = async (req, res) => {
     if (! recordData) 
         return res.status(401).send("The record doesn't exist");
     
-
     if (recordData) 
         return res.status(200).json({recordData});
     
-    console.log({recordData});
-
 };
 
 recordCtrl.getRecordNumber = async (req, res) => {

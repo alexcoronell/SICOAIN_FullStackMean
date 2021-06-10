@@ -49,6 +49,7 @@ export class RecordsUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.getRecords();
+    this.getEmployees();
   }
 
   search(SearchForm: NgForm) {
@@ -85,6 +86,34 @@ export class RecordsUpdateComponent implements OnInit {
         }
       )
   }
+
+  // Obtener todos los empleados
+  getEmployees = () => {
+    this.employeesService.getEmployees()
+      .subscribe(
+        res => {
+          this.employees = res as Employees[];
+          console.log(this.employees);
+        },
+        err => {
+          console.error(err.error);
+        }
+      )
+  }
+
+    // Obtener empleado seleccionado
+    getEmployee = (e) => {
+      this.employeesService.getEmployee(e)
+        .subscribe(
+          res => {
+            this.employee = res.employeeData as Employees;
+            this.record.employeeName = this.employee.names + ' ' + this.employee.lastNames;
+          },
+          err => {
+            console.error(err.error);
+          }
+        )
+    }
 
   update(form: NgForm) {
     console.log(form);
