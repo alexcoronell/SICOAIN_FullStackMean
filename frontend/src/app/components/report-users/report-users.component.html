@@ -19,14 +19,14 @@
 
       <tbody>
         <tr *ngFor="let user of users">
-            <td>{{user.user}}</td>
-            <td>{{user.name}}</td>
-            <td>{{user.superuser}}</td>
-            <td>{{user.admin}}</td>
-            <td>{{user.analyst}}</td>
-            <td>{{user.assistant}}</td>
-            <td>{{user.consultant}}</td>
-            <td *ngIf="user.consultant; then active; else inactive"></td>
+            <td style="text-align: center;">{{user.user}}</td>
+            <td style="text-align: center;">{{user.name}}</td>
+            <td *ngIf="user.superuser; then check; else uncheck"></td>
+            <span *ngIf="user.admin; then check; else uncheck"></span>
+            <span *ngIf="user.analyst; then check; else uncheck"></span>
+            <span *ngIf="user.assistant; then check; else uncheck"></span>
+            <span *ngIf="user.consultant; then check; else uncheck"></span>
+            <span *ngIf="user.consultant; then active; else inactive"></span>
         </tr>
       </tbody>
     </table>
@@ -43,8 +43,15 @@
 
 <!-- Templates -->
 <ng-template #active>
-  <p class="teal white-text" style="display: inline-block;padding-left:0.5rem; padding-right:0.5rem;">Activo</p>
+  <td style="text-align: center;"><span class="green darken-4 white-text" style="padding-left:0.5rem; padding-right:0.5rem;">Activo</span></td>
 </ng-template>
 <ng-template #inactive>
-  <p class="red darken-4 white-text" style="display: inline-block;padding-left:0.5rem; padding-right:0.5rem;">Inactivo</p>
+  <td style="text-align: center;"><span class="red accent-4 white-text text-center" style="padding-left:0.5rem; padding-right:0.5rem;">Inactivo</span></td>
+</ng-template>
+
+<ng-template #check>
+  <td style="text-align: center;" class="green-text"><i class="material-icons check">check</i></td>
+</ng-template>
+<ng-template #uncheck>
+    <td></td>
 </ng-template>
