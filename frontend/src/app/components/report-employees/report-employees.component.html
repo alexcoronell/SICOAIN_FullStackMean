@@ -30,27 +30,27 @@
       </thead>
 
       <tbody>
-        <tr>
-          <td>Alvin</td>
-          <td>Eclair</td>
-          <td>$0.87</td>
-          <td>$0.87</td>
-          <td>$0.87</td>
-          <td>$0.87</td>
-          <td>$0.87</td>
-          <td>$0.87</td>
-          <td>Alvin</td>
-          <td>Eclair</td>
-          <td>$0.87</td>
-          <td>$0.87</td>
-          <td>$0.87</td>
-          <td>$0.87</td>
-          <td>$0.87</td>
-          <td>$0.87</td>
-          <td>$0.87</td>
-          <td>$0.87</td>
-          <td>$0.87</td>
-          <th>Condición</th>
+        <tr *ngFor="let employee of employees">
+          <td style="text-align: center;">{{employee.identificationType}}</td>
+          <td style="text-align: center;">{{employee.identificationNumber}}</td>
+          <td style="text-align: center;">{{employee.names}}</td>
+          <td style="text-align: center;">{{employee.lastNames}}</td>
+          <td style="text-align: center;">{{employee.department}}</td>
+          <td style="text-align: center;">{{employee.municipality}}</td>
+          <td style="text-align: center;">{{employee.address}}</td>
+          <td style="text-align: center;">{{employee.phone}}</td>
+          <td style="text-align: center;">{{employee.mobile}}</td>
+          <td style="text-align: center;">{{employee.email}}</td>
+          <td style="text-align: center;">{{employee.company}}</td>
+          <td style="text-align: center;">{{employee.venues}}</td>
+          <td style="text-align: center;">{{employee.position}}</td>
+          <td style="text-align: center;">{{employee.eps}}</td>
+          <td style="text-align: center;">{{employee.arl}}</td>
+          <td style="text-align: center;">{{employee.emergencyContactName}}</td>
+          <td style="text-align: center;">{{employee.emergencyContactPhone}}</td>
+          <td style="text-align: center;">{{employee.emergencyContactRelationship}}</td>
+          <td style="text-align: center;">{{employee.coments}}</td>
+          <span *ngIf="employee.condition; then active; else inactive"></span>
         </tr>
       </tbody>
     </table>
@@ -63,3 +63,11 @@
   <i class="material-icons left">arrow_back</i>
 </a>
 </div>
+
+<!-- Templates -->
+<ng-template #active>
+  <td style="text-align: center;"><span class="green darken-4 white-text" style="padding-left:0.5rem; padding-right:0.5rem;">Activo</span></td>
+</ng-template>
+<ng-template #inactive>
+  <td style="text-align: center;"><span class="red accent-4 white-text text-center" style="padding-left:0.5rem; padding-right:0.5rem;">Inactivo</span></td>
+</ng-template>

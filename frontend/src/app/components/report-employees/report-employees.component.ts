@@ -1,3 +1,5 @@
+import { EmployeesService } from 'src/app/services/employees.service';
+import { Employees } from './../../models/employees';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReportEmployeesComponent implements OnInit {
 
-  constructor() { }
+  employees: Employees[];
+
+  constructor(
+    private employeesService: EmployeesService
+  ) { }
 
   ngOnInit(): void {
+    this.getEmployees();
+  }
+
+  // Obtener todos los empleados
+  getEmployees = () => {
+    this.employeesService.getEmployees()
+      .subscribe(
+        res => {
+          this.employees = res as Employees[];
+        },
+        err => {
+          console.error(err.error);
+        }
+      )
   }
 
 }
