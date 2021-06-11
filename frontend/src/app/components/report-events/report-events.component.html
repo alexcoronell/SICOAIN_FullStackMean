@@ -12,10 +12,10 @@
       </thead>
 
       <tbody>
-        <tr>
-          <td>Alvin</td>
-          <td>Eclair</td>
-        </tr>
+        <tr *ngFor="let event of events">
+          <td style="text-align: center;">{{event.name}}</td>
+          <span *ngIf="event.condition; then active; else inactive"></span>
+      </tr>
       </tbody>
     </table>
 
@@ -27,3 +27,11 @@
   <i class="material-icons left">arrow_back</i>
 </a>
 </div>
+
+<!-- Templates -->
+<ng-template #active>
+  <td style="text-align: center;"><span class="green darken-4 white-text" style="padding-left:0.5rem; padding-right:0.5rem;">Activo</span></td>
+</ng-template>
+<ng-template #inactive>
+  <td style="text-align: center;"><span class="red accent-4 white-text text-center" style="padding-left:0.5rem; padding-right:0.5rem;">Inactivo</span></td>
+</ng-template>
