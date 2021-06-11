@@ -1,3 +1,5 @@
+import { PositionsService } from './../../services/positions.service';
+import { Positions } from './../../models/positions';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReportPositionsComponent implements OnInit {
 
-  constructor() { }
+  positions: Positions[];
+
+  constructor(
+    private positionsService: PositionsService
+  ) { }
 
   ngOnInit(): void {
+    this.getPositions();
+    console.log(this.positions);
   }
 
+  // Obtener todos los cargos
+getPositions = () => {
+  this.positionsService.getPositions()
+    .subscribe(
+      res => {
+        this.positions = res as Positions[];
+      },
+      err => {
+        console.error(err.error);
+      }
+    )
+}
 }
