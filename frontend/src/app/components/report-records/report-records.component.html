@@ -13,25 +13,25 @@
             <th>Fecha de registro</th>
             <th>Fecha de incidente</th>
             <th>Descripción</th>
-            <th>Motivo anulación</th>
             <th>Evidencia digital</th>
+            <th>Motivo anulación</th>
             <th>Condición</th>
         </tr>
       </thead>
 
       <tbody>
-        <tr>
-          <td>Alvin</td>
-          <td>Eclair</td>
-          <td>$0.87</td>
-          <td>$0.87</td>
-          <td>$0.87</td>
-          <td>$0.87</td>
-          <td>$0.87</td>
-          <td>$0.87</td>
-          <td>Alvin</td>
-          <td>Eclair</td>
-        </tr>
+        <tr *ngFor="let record of records">
+          <td style="text-align: center;">{{record.idRecord}}</td>
+          <td style="text-align: center;">{{record.employee}}</td>
+          <td style="text-align: center;">{{record.employeeName}}</td>
+          <td style="text-align: center;">{{record.event}}</td>
+          <td style="text-align: center;">{{record.dateRecord}}</td>
+          <td style="text-align: center;">{{record.dateIncident}}</td>
+          <td style="text-align: center;">{{record.description}}</td>
+          <td style="text-align: center;">{{record.filename}}</td>
+          <td style="text-align: center;">{{record.reasonForCancellation}}</td>
+          <span *ngIf="record.condition; then active; else inactive"></span>
+      </tr>
       </tbody>
     </table>
 
@@ -43,3 +43,11 @@
   <i class="material-icons left">arrow_back</i>
 </a>
 </div>
+
+<!-- Templates -->
+<ng-template #active>
+  <td></td>
+</ng-template>
+<ng-template #inactive>
+  <td style="text-align: center;"><span class="red accent-4 white-text text-center" style="padding-left:0.5rem; padding-right:0.5rem;">Anulado</span></td>
+</ng-template>

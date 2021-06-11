@@ -1,3 +1,5 @@
+import { RecordsService } from './../../services/records.service';
+import { Records } from './../../models/records';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReportRecordsComponent implements OnInit {
 
-  constructor() { }
+  records: Records[];
+
+  constructor(
+    private recordsService: RecordsService
+  ) { }
 
   ngOnInit(): void {
+    this.getRecords();
   }
+
+// Obtener todos los registros activos
+getRecords() {
+  this.recordsService.getRecords()
+    .subscribe(
+      res => {
+        this.records = res as Records[];
+      },
+      err => {
+        console.error(err.error);
+      }
+    )
+}
 
 }

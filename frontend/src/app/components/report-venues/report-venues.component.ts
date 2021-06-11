@@ -1,4 +1,7 @@
+import { VenuesService } from './../../services/venues.service';
+import { Venues } from './../../models/venues';
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-report-venues',
@@ -7,9 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReportVenuesComponent implements OnInit {
 
-  constructor() { }
+  venues: Venues[];
+
+  constructor(
+    private venuesService: VenuesService
+  ) { }
 
   ngOnInit(): void {
+    this.getVenues();
+  }
+  getVenues() {
+    this.venuesService.getVenues()
+      .subscribe(
+        res => {
+          this.venues = res as Venues[];
+        },
+        err => {
+          console.log(err.error);
+          }
+      )
   }
 
 }

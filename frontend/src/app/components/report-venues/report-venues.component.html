@@ -15,12 +15,13 @@
       </thead>
 
       <tbody>
-        <tr>
-          <td>Alvin</td>
-          <td>Eclair</td>
-          <td>$0.87</td>
-          <th>Condición</th>
-        </tr>
+        <tr *ngFor="let venue of venues">
+          <td style="text-align: center;">{{venue.company}}</td>
+          <td style="text-align: center;">{{venue.name}}</td>
+          <td style="text-align: center;">{{venue.phone}}</td>
+          <td style="text-align: center;">{{venue.description}}</td>
+          <span *ngIf="venue.condition; then active; else inactive"></span>
+      </tr>
       </tbody>
     </table>
 
@@ -32,3 +33,11 @@
   <i class="material-icons left">arrow_back</i>
 </a>
 </div>
+
+<!-- Templates -->
+<ng-template #active>
+  <td style="text-align: center;"><span class="green darken-4 white-text" style="padding-left:0.5rem; padding-right:0.5rem;">Activo</span></td>
+</ng-template>
+<ng-template #inactive>
+  <td style="text-align: center;"><span class="red accent-4 white-text text-center" style="padding-left:0.5rem; padding-right:0.5rem;">Inactivo</span></td>
+</ng-template>

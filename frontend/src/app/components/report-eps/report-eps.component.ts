@@ -1,3 +1,5 @@
+import { EpsService } from './../../services/eps.service';
+import { Eps } from './../../models/eps';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReportEpsComponent implements OnInit {
 
-  constructor() { }
+  epss: Eps[];
+
+  constructor(
+    private epsService: EpsService
+  ) { }
 
   ngOnInit(): void {
+    this.getEpss();
+  }
+
+  getEpss() {
+    this.epsService.getEpss()
+      .subscribe(
+        res => {
+          this.epss = res as Eps[];
+        },
+        err => {
+          console.log(err.error);
+          }
+      )
   }
 
 }
