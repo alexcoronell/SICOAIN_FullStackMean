@@ -18,15 +18,15 @@
       </thead>
 
       <tbody>
-        <tr>
-          <td>Alvin</td>
-          <td>Eclair</td>
-          <td>$0.87</td>
-          <td>$0.87</td>
-          <td>$0.87</td>
-          <td>$0.87</td>
-          <td>$0.87</td>
-          <td>$0.87</td>
+        <tr *ngFor="let user of users">
+            <td>{{user.user}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.superuser}}</td>
+            <td>{{user.admin}}</td>
+            <td>{{user.analyst}}</td>
+            <td>{{user.assistant}}</td>
+            <td>{{user.consultant}}</td>
+            <td *ngIf="user.consultant; then active; else inactive"></td>
         </tr>
       </tbody>
     </table>
@@ -39,3 +39,12 @@
   <i class="material-icons left">arrow_back</i>
 </a>
 </div>
+
+
+<!-- Templates -->
+<ng-template #active>
+  <p class="teal white-text" style="display: inline-block;padding-left:0.5rem; padding-right:0.5rem;">Activo</p>
+</ng-template>
+<ng-template #inactive>
+  <p class="red darken-4 white-text" style="display: inline-block;padding-left:0.5rem; padding-right:0.5rem;">Inactivo</p>
+</ng-template>
